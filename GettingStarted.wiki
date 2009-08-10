@@ -1,0 +1,114 @@
+#summary Getting started with WebDriver
+#labels Featured
+
+= The 5 Minute Getting Started Guide =
+
+Before you start either:
+
+ * Download the latest binaries
+ * CheckOut the latest version of the code and build it following the instructions in BuildingWebDriver.
+
+Assuming that you've built everything and the source is located at {{{$WEBDRIVER_HOME}}}, and we're only going to use the HtmlUnitDriver to start with:
+
+ * Start a new Java project in your favourite IDE
+ * Add {{{$WEBDRIVER_HOME/common/build/webdriver-common.jar}}} to the {{{CLASSPATH}}}
+ * Add {{{$WEBDRIVER_HOME/htmlunit/build/webdriver-htmlunit.jar}}} to the {{{CLASSPATH}}}
+ * Add all the Jar files under {{{$WEBDRIVER_HOME/htmlunit/lib/runtime}}} to the {{{CLASSPATH}}}
+
+If you have downloaded the binaries, then the steps you need to follow are:
+
+  * Start a new Java project in your favourite IDE
+  * Unzip the HtmlUnitDriver binary and copy all the JAR files to the {{{CLASSPATH}}}
+
+Whichever way you chose, you can see that WebDriver acts just as a normal Java library does: it's entirely self-contained, and you don't need to remember to start any additional processes. 
+
+You're now ready to write some code. An easy way to get started is this example, which searches for the term "Cheese" on Google and then outputs the result page's title to the console.
+
+{{{
+package org.openqa.selenium.example;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+public class Example  {
+    public static void main(String[] args) {
+        // Create a new instance of the html unit driver
+        // Notice that the remainder of the code relies on the interface, 
+        // not the implementation.
+        WebDriver driver = new HtmlUnitDriver();
+
+        // And now use this to visit Google
+        driver.get("http://www.google.com");
+
+        // Find the text input element by its name
+        WebElement element = driver.findElement(By.name("q"));
+
+        // Enter something to search for
+        element.sendKeys("Cheese!");
+
+        // Now submit the form. WebDriver will find the form for us from the element
+        element.submit();
+
+        // Check the title of the page
+        System.out.println("Page title is: " + driver.getTitle());
+    }
+}
+
+}}}
+
+Compile and run it. You should see a line with the title of the Google search results as output. Congratulations, you've managed to get started with WebDriver!
+
+In this next example, let's use a page that requires Javascript to work properly, such as Google Suggest. You will also be using the FirefoxDriver. The easiest way to get hold of this is to download the binary package from the website, unzip it and copy the JAR files on to your {{{CLASSPATH}}}. Alternatively, you can build from source (using {{{rake firefox}}}), copying the built JARs from {{{firefox/build}}}, {{{firefox/lib/runtime}}} and {{{common/build}}} into your {{{CLASSPATH}}} 
+
+Once that's done, create a new class called GoogleSuggest, which looks like:
+
+{{{
+package org.openqa.selenium.example;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.RenderedWebElement;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class GoogleSuggest {
+    public static void main(String[] args) throws Exception {
+        // The Firefox driver supports javascript 
+        WebDriver driver = new FirefoxDriver();
+        
+        // Go to the Google Suggest home page
+        driver.get("http://www.google.com/webhp?complete=1&hl=en");
+        
+        // Enter the query string "Cheese"
+        WebElement query = driver.findElement(By.name("q"));
+        query.sendKeys("Cheese");
+
+        // Sleep until the div we want is visible or 5 seconds is over
+        long end = System.currentTimeMillis() + 5000;
+        while (System.currentTimeMillis() < end) {
+            // Browsers which render content (such as Firefox and IE) return "RenderedWebElements"
+            RenderedWebElement resultsDiv = (RenderedWebElement) driver.findElement(By.className("gac_m"));
+
+            // If results have been returned, the results are displayed in a drop down.
+            if (resultsDiv.isDisplayed()) {
+              break;
+            }
+        }
+
+        // And now list the suggestions
+        List<WebElement> allSuggestions = driver.findElements(By.xpath("//td[@class='gac_c']"));
+        
+        for (WebElement suggestion : allSuggestions) {
+            System.out.println(suggestion.getText());
+        }
+     }
+}
+}}}
+
+When you run this program, you'll see the list of suggestions being printed to the console. That's all there is to using WebDriver! 
+
+Hopefully, this will have whet your appetite for more. In the NextSteps page, you will learn how more about how to use WebDriver. It covers aspects such as navigating forward and backward in your browser's history, how to use frames and windows and it provides a more complete discussion of the examples than has been done as you've been GettingStarted. If you're ready, let's take the NextSteps!

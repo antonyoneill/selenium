@@ -1,0 +1,18 @@
+#summary Everything you wanted to know about the Internet Explorer driver
+
+= Internet Explorer Driver =
+
+This driver has been tested with IE 6 and 7 on XP, but should also work with IE 5.5.
+
+== Installing ==
+
+Simply copy the jars from the "jobbie/lib/runtime" directory on to the classpath and ensure that the internetexplorerdriver.dll is somewhere on the PATH.
+
+== Pros ==
+
+ * Runs in a real browser and supports Javascript
+
+== Cons ==
+
+ * Obviously the InternetExplorerDriver will only work on Windows!
+ * Comparatively slow
