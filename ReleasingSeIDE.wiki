@@ -8,9 +8,9 @@ The steps to releasing Se-IDE (because I keep forgetting something)
 
 = Details =
 
-  # Download release candidate build from bamboo
+  # Download release candidate build [http://ci.seleniumhq.org:8080/job/IDE/lastSuccessfulBuild/artifact/ from Jenkins]
   # Upload XPIs to release.seleniumhq.org
-    # SFTP to www.openqa.org and upload all XPIs from the Bamboo build used for the release
+    # SFTP to www.openqa.org and upload all XPIs from the Jenkins build used for the release
     # SSH to www.openqa.org
     # Copy all XPIs to /tmp
     # Switch to the release user (sudo su - release)
