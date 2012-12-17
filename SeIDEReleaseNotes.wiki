@@ -3,7 +3,7 @@
 
 ==1.10.0 (to be released)==
 
-  * New - Added support for Firefox 16
+  * New - Added support for Firefox 16 & 17
   * New - Implemented formatting for alert handling commands
   * Bug - Fixed options for Java 4 WebDriver formatter
   * Bug - Processing locators before use in getCssCount and getXpathCount. Fixes  issue 4784 
