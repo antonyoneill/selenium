@@ -29,5 +29,5 @@ The steps to releasing Se-IDE (because I keep forgetting something)
         * Note that for the IDE the hash is of the multi-xpi
         * Make sure the value starts with sha1:
   # Test upgrade
-  # Update release notes
+  # Update [http://code.google.com/p/selenium/wiki/SeIDEReleaseNotes release notes]
   # Announce
