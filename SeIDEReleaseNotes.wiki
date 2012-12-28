@@ -1,7 +1,7 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
-==1.10.0 (to be released)==
+==1.10.0==
 
   * New - Added support for Firefox 16 & 17
   * New - Implemented formatting for alert handling commands
