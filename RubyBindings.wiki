@@ -166,6 +166,15 @@ caps = Selenium::WebDriver::Remote::Capabilities.htmlunit(:javascript_enabled =>
 driver = Selenium::WebDriver.for(:remote, :desired_capabilities => caps)
 }}}
 
+You can change arbitrary capabilities:
+
+{{{
+caps = Selenium::WebDriver::Remote::Capabilities.internet_explorer
+caps['enablePersistentHover'] = false
+
+driver = Selenium::WebDriver.for(:remote, :desired_capabilities => caps)
+}}}
+
 You may want to set the proxy settings of the remote browser (this currently only works for Firefox):
 
 {{{
