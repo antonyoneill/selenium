@@ -399,6 +399,7 @@ Given these mappings, the server should always route requests whose final path s
 || GET || [#GET_/session/:sessionId/session_storage/size /session/:sessionId/session_storage/size] || Get the number of items in the storage. ||
 || POST || [#POST_/session/:sessionId/log /session/:sessionId/log] || Get the log for a given log type. ||
 || GET || [#GET_/session/:sessionId/log/types /session/:sessionId/log/types] || Get available log types. ||
+|| GET || [#GET_/session/:sessionId/application_cache/status /session/:sessionId/application_cache/status] || Get the status of the html5 application cache. ||
 
 
 == Command Detail ==
@@ -3488,6 +3489,33 @@ location for correctly generating native events.</dd>
 <dl>
 <dt>*Returns:*</dt>
 <dd>`{Array.<string>}` The list of available [#Log_Type log types].</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+
+----
+
+=== /session/:sessionId/application_cache/status ===
+
+<dl>
+<dd>
+==== GET /session/:sessionId/application_cache/status ====
+</dd>
+<dd>
+<dl>
+<dd>Get the status of the html5 application cache.</dd>
+<dd>
+<dl>
+<dt>*URL Parameters:*</dt>
+<dd>`:sessionId` - ID of the session to route the command to.</dd>
+</dl>
+</dd>
+<dd>
+<dl>
+<dt>*Returns:*</dt>
+<dd>`{number}` Status code for application cache: {UNCACHED = 0, IDLE = 1, CHECKING = 2, DOWNLOADING = 3, UPDATE_READY = 4, OBSOLETE = 5}</dd>
 </dl>
 </dd>
 </dl>
