@@ -13,20 +13,16 @@ Known issues can be added to the release notes.
 
 = For Everything =
 
-  # Gather feedback from other developers about the release: Define a time for the release, ask for release blockers and provide additional details that will help developers participate in the release process. This should be emailed to  'selenium-developers'. 
+  # Gather feedback from other developers about the release: Define a time for the release, ask for release blockers and provide additional details that will help developers participate in the release process. This should be emailed to  'selenium-developers' though working on IRC alone is just fine. 
   # Bump the revision numbers at the top of the Rakefile.
   # Bump the revision number in "javascript/firefox-driver/extension/install.rdf"
   # Bump the revision number in "java/server/src/org/openqa/selenium/server/VERSION.txt" and "javascript/selenium-core/scripts/selenium-version.js"
   # Commit version number bump.
-  # To find out the revision of the last release: `svn log http://selenium.googlecode.com/svn/tags --limit 1`
+  # To find out the revision of the last release: `git log --tags --simplify-by-decoration --pretty="format:%ci %d %h" | sort | tail -1 | awk '{print $NF}'`. This will give you the abbreviated hashcode for the last revision.
 
 = For Java =
 
-  # Run `./go clean release`
-  # Upload the new versions of the ZIP files from "build/dist" to the downloads page. Alternatively, run `./go push_release` to have the artifacts uploaded for you.
-  # Upload the new Android APK from build/android/app/android-server.apk to the downloads page.
-  # Add a subversion tag: `svn copy https://selenium.googlecode.com/svn/trunk/ https://selenium.googlecode.com/svn/tags/selenium-2.<REVISION>` 
-  # Update the docs. I do this on a UNIX variant:
+  # Update the docs. I do this on a UNIX variant (*TODO: modify for git): 
     # `./go javadocs`
     # `find docs/api/java -name "*.html" | grep -v svn | xargs rm`
     # `cp -r build/javadoc/* docs/api/java`
@@ -36,6 +32,11 @@ Known issues can be added to the release notes.
     # Commit new docs
   # Update the Java CHANGELOG under `java/CHANGELOG`
   # Update the SeHQ downloads page with updated links, release numbers and dates
+  # Run `./go clean release`
+  # Upload the new versions of the ZIP files from "build/dist" to the downloads page. Alternatively, run `./go push_release` to have the artifacts uploaded for you.
+  # Upload the new Android APK from build/android/app/android-server.apk to the downloads page.
+  # Add a git tag: `git tag selenium-2.<REVISION> hash` where "hash" refers to the revision to tag. This creates a lightweight tag, so there's no need to add a log message. You'll need to push that change to the origin repo with `git push origin --tags`
+  
 
 
 == Updating the Maven Repos ==
