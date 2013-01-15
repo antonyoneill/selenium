@@ -1,0 +1,32 @@
+#Workflow for selenium committers
+
+= Introduction =
+
+This page describes a standard committer workflow when fetching stuff from github into google code. It does not describe a "standard" commit/push cycle since that has been documented about 10000 other places.
+
+= Handling a pull request =
+
+git pull --no-ff https://github.com/<username>/selenium master
+
+The exact url will be noted in the pull request mail from github. Please note the branch name "master" may be different.
+
+This pull mechanism will create one commit for the actual submission and a merge on top of that, which will identify the person who accepted the pull request
+
+= Rebasing =
+
+We prefer that you rebase and squash whatever it is you are submitting to the project, so that each commit constists of a logical change that compiles and tests well.
+
+When accepting other people's changes, do *not* rebase their submission unless you have an explicit agreement with the submitter that this is ok. If the submitter is you, well consult yourself.
+
+The reason for this is that we can make no assumptions about the submitter's ability to grasp being rebased on, which requires some special handling.
+
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
