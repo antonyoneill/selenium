@@ -44,7 +44,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-@RunWith(BlockJUnit4ClassRunner.class)}
+@RunWith(BlockJUnit4ClassRunner.class)
 public class ChromeTest extends TestCase {
 
   private static ChromeDriverService service;
