@@ -19,14 +19,3 @@ We prefer that you rebase and squash whatever it is you are submitting to the pr
 When accepting other people's changes, do *not* rebase their submission unless you have an explicit agreement with the submitter that this is ok. If the submitter is you, well consult yourself.
 
 The reason for this is that we can make no assumptions about the submitter's ability to grasp being rebased on, which requires some special handling.
-
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
