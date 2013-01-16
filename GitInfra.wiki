@@ -14,7 +14,7 @@ git remote add github git@github.com:SeleniumHQ/selenium.git
 = script =
 
 
-The basic script to mirror to github is as follows:
+The basic script "updateMirror" is as follows:
 {{{
 cd mirrorRepo
 git fetch origin
@@ -25,5 +25,7 @@ git push --mirror github
 = crotab =
 Note: Push hook from github should replace crontab
 
+{{{
 kristian@base26:~$ crontab -l
 */1 * * * * /home/kristian/updateMirror
+}}}
