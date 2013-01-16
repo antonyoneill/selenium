@@ -6,7 +6,9 @@ This page describes a standard committer workflow when fetching stuff from githu
 
 = Handling a pull request =
 
+{{{
 git pull --no-ff https://github.com/<username>/selenium master
+}}}
 
 The exact url will be noted in the pull request mail from github. Please note the branch name "master" may be different.
 
