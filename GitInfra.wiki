@@ -20,3 +20,10 @@ cd mirrorRepo
 git fetch origin
 git push --mirror github
 }}}
+
+
+= crotab =
+Note: Push hook from github should replace crontab
+
+kristian@base26:~$ crontab -l
+*/1 * * * * /home/kristian/updateMirror
