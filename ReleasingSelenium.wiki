@@ -24,12 +24,10 @@ Known issues can be added to the release notes.
 
   # Update the docs. I do this on a UNIX variant (*TODO: modify for git): 
     # `./go javadocs`
-    # `find docs/api/java -name "*.html" | grep -v svn | xargs rm`
+    # `rm -rf docs/api/java/*`
     # `cp -r build/javadoc/* docs/api/java`
-    # `svn st docs/api/java | grep \! | awk '{print $2}' | xargs svn rm`
-    # `svn st docs/api/java | grep \? | awk '{print $2}' | xargs svn add`
-    # `find docs/api/java -name "*.html" | xargs svn ps "svn:mime-type" "text/html"`
-    # Commit new docs
+    # `git add docs/api/java`
+    # `git commit docs/api`
   # Update the Java CHANGELOG under `java/CHANGELOG`
   # Update the SeHQ downloads page with updated links, release numbers and dates
   # Run `./go clean release`
