@@ -2,7 +2,22 @@
 
 = Introduction =
 
-This page describes a standard committer workflow when fetching stuff from github into google code. It does not describe a "standard" commit/push cycle since that has been documented about 10000 other places.
+This page describes a standard committer workflow when fetching stuff from github into google code. 
+
+The state-machine of day-to-day git use looks like this:
+
+{{{
+1 .<make a change>
+2. (optional)git status # Inspect your change
+3. git commit -am"A nice commit message"
+4. (optional) Use gitk --all to inspect your commit ;)
+4. git push # Done if success
+5. If push fails, run git pull --rebase
+6. If pull --rebase succeeds, goto 4
+7. Fix merge conflicts, use git add <filename or *> to mark conflicts resolved. run git rebase --continue
+8. If you loose your confidence anywhere in steps 5-6 run  git rebase --abort
+}}}
+
 
 = Handling a pull request =
 
