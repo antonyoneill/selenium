@@ -22,7 +22,7 @@ Known issues can be added to the release notes.
 
 = For Java =
 
-  # Update the docs. I do this on a UNIX variant (*TODO: modify for git): 
+  # Update the docs. I do this on a UNIX variant (*TODO: modify for git*): 
     # `./go javadocs`
     # `rm -rf docs/api/java/*`
     # `cp -r build/javadoc/* docs/api/java`
