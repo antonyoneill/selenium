@@ -28,7 +28,7 @@ Known issues can be added to the release notes.
     # `cp -r build/javadoc/* docs/api/java`
     # `git add docs/api/java`
     # `git commit docs/api`
-  # Update the Java CHANGELOG under `java/CHANGELOG`
+  # Update the Java CHANGELOG under `java/CHANGELOG`. Do this by finding the revision number of the last release and running `git log oldRev..HEAD >> java/CHANGELOG`. You'll then need to edit the file by hand.
   # Update the SeHQ downloads page with updated links, release numbers and dates
   # Run `./go clean release`
   # Upload the new versions of the ZIP files from "build/dist" to the downloads page. Alternatively, run `./go push_release` to have the artifacts uploaded for you.
