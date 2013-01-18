@@ -6,17 +6,9 @@ This page describes a standard committer workflow when fetching stuff from githu
 
 The state-machine of day-to-day git use looks like this:
 
-{{{
-1 .<make a change>
-2. (optional)git status # Inspect your change
-3. git commit -am"A nice commit message"
-4. (optional) Use gitk --all to inspect your commit ;)
-4. git push # Done if success
-5. If push fails, run git pull --rebase
-6. If pull --rebase succeeds, goto 4
-7. Fix merge conflicts, use git add <filename or *> to mark conflicts resolved. run git rebase --continue
-8. If you loose your confidence anywhere in steps 5-6 run  git rebase --abort
-}}}
+http://wiki.selenium.googlecode.com/git/img/git-rebase-state-machine.png
+
+If you loose your confidence anywhere in steps on the right hand side,run  git rebase --abort to restore initial state
 
 
 = Handling a pull request =
