@@ -23,6 +23,16 @@ $ ./go safari
     # Add a new extension: `$SELENIUM_CLIENT/build/javascript/safari-driver/SafariDriver.safariextension`
     # Click Install
 
+== Releasing the !SafariDriver ==
+
+To push a new release of the !SafariDriver:
+  # Build and install the extension using the instructions above
+  # Open the Extension Builder and select the extension
+  # Click "Build Package ..."
+  # Save the package as !SafariDriver.safariextz
+  # Copy your !SafariDriver.safariextz file to `$SELENIUM_CLIENT/javascript/safari-driver/prebuilt/SafariDriver.safariextz`
+  # Commit your changes
+
 ----
 
 = Components =
