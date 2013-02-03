@@ -1,6 +1,8 @@
 #summary Information about the Safari Driver
 #labels WebDriver
 
+<wiki:toc max_depth="2" />
+
 = The !SafariDriver =
 
 The !SafariDriver is implemented as a Safari browser extension.  The driver inverts the traditional client/server relationship and communicates with the !WebDriver client using [http://en.wikipedia.org/wiki/WebSocket WebSockets].
