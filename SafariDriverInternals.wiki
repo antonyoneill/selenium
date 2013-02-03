@@ -9,6 +9,22 @@ This document provides a primer on the browser extension that powers the !Safari
 
 ----
 
+= Building the !SafariDriver =
+
+  # Sign up for Apple's (free) [https://developer.apple.com/programs/safari/ Safari Developer Program] and generate a signed certificate for the extension.
+  # Build the !SafariDriver extension:
+{{{
+$ ./go safari
+}}}
+  # Install the extension:
+    # Launch Safari
+    # Enable the Develop menu (Preferences > Advanced > Show Develop menu in menu bar)
+    # Open the Extension Builder (Develop > Show Extension Builder)
+    # Add a new extension: `$SELENIUM_CLIENT/build/javascript/safari-driver/SafariDriver.safariextension`
+    # Click Install
+
+----
+
 = Components =
 
 The !SafariDriver is implemented as a Safari browser extension.  There are three primary components within the extension: the [#Global_Extension global extension], [#Injected_Script injected script], and the [#Page_Script page script].
@@ -229,8 +245,3 @@ Next, check the global page: Develop > Show Extension Builder. Select the WebDri
 
 Once you have manually installed the !SafariDriver extension, as outlined above,
 you can reload your changes by re-compiling the extension, opening the extension builder, and clicking the "Reload" button for the !WebDriver extension.
-
-If you are using Mac OSX, you can automate this process by running
-{{{
-$ ./go safari:reinstall
-}}}
