@@ -9,24 +9,8 @@ The !SafariDriver requires Safari 5.1+
 
 == Getting Started ==
 
-While ready for use, the !SafariDriver still requires a bit of manual intervention before you can start writing tests.  If you're not comfortable checking out and [BuildingWebDriver building the Selenium project] from source, you may want to wait for us to make a general !SafariDriver release.
+Starting with Selenium 2.30.0, the !SafariDriver comes bundled with the Selenium server. If you wish to build the driver from source, head over to the SafariDriverInternals page.  For now, grab a copy of the [http://code.google.com/p/selenium/downloads/list Selenium jar] and add it to your classpath.  Writing a test for Safari is just as straightforward as using the FirefoxDriver:
 
-Still here? Ok, let's get started:
-
-First, sign up for Apple's (free) [https://developer.apple.com/programs/safari/ Safari Developer Program] and generate a signed certificate for the extension.
-
-Next, build the !SafariDriver extension:
-{{{
-$ ./go safari
-}}}
-
-Finally, install the extension.
-  # Launch Safari
-  # Open the Extension Builder (Develop > Show Extension Builder)
-  # Add a new extension: `$SELENIUM_CLIENT/build/javascript/safari-driver/SafariDriver.safariextension`
-  # Click Install
-
-Once you've installed the extension, you can start writing tests:
 {{{
 import static org.junit.Assume.assumeTrue;
 
@@ -75,13 +59,25 @@ public class SafariDriverTests {
 }
 }}}
 
-=== Debugging ===
+== Important System Properties ==
+
+The following system properties (read using `System.getProperty()` and set using `System.setProperty()` in Java code, or set from the command line with `-DpropertyName=value` command line flag) are using by the !SafariDriver:
+
+|| *Property* || *What it means* ||
+|| webdriver.safari.driver || Defines the location of an existing, pre-packaged !SafariDriver extension (a `.safariextz` file) to install. This file will be copied to the install directory so it may be reused for multiple invocations. ||
+|| webdriver.safari.noinstall || Set to `true` to skip installing the !SafariDriver extension (either the pre-built version included with the Selenium jar or one specified by the `webdriver.safari.driver` property. Use this option to run using a preinstalled extension. ||
+
+== Desired Capabilities ==
+
+See the DesiredCapabilities page for [DesiredCapabilities#Safari_specific Safari specific] capability options.
+
+== Debugging ==
 
 Sometimes, a test may hang after sending a command to the !SafariDriver. This usually indicates something blew up. Thankfully, the !SafariDriver is quite chatty.
 
 First open the !WebKit inspector on the page under test and check the console output. The console is cleared each time a page is loaded, so you'll only be able to see the logs for the most recent injected script. You can select the injected script and set break points inside the inspector, but it is sandboxed from the page, so you can't play with it using the inspector's REPL.
 
-Next, check the global page: Develop > Show Extension Builder. Select the WebDriver extension, and click "Inspect global page." Again, the !SafariDriver is super chatty, so you should see what went wrong on the console.  You can set script break points for the injected page and interact with it using the REPL.
+If you're using a copy of the extension [SafariDriverInternals built from source], you can also check the logs for the global page:  Develop > Show Extension Builder. Select the WebDriver extension, and click "Inspect global page." Again, the !SafariDriver is super chatty, so you should see what went wrong on the console.  You can set script break points for the injected page and interact with it using the REPL.
 
 == Known Issues ==
 
