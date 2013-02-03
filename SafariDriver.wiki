@@ -63,9 +63,12 @@ public class SafariDriverTests {
 
 The following system properties (read using `System.getProperty()` and set using `System.setProperty()` in Java code, or set from the command line with `-DpropertyName=value` command line flag) are using by the !SafariDriver:
 
-|| *Property* || *What it means* ||
-|| webdriver.safari.driver || Defines the location of an existing, pre-packaged !SafariDriver extension (a `.safariextz` file) to install. This file will be copied to the install directory so it may be reused for multiple invocations. ||
-|| webdriver.safari.noinstall || Set to `true` to skip installing the !SafariDriver extension (either the pre-built version included with the Selenium jar or one specified by the `webdriver.safari.driver` property. Use this option to run using a preinstalled extension. ||
+<dl>
+  <dt>`webdriver.safari.driver`</dt>
+  <dd>Defines the location of an existing, pre-packaged !SafariDriver extension (a `.safariextz` file) to install. This file will be copied to the install directory so it may be reused for multiple invocations.</dd>
+  <dt>`webdriver.safari.noinstall`</dt>
+  <dd>Set to `true` to skip installing the !SafariDriver extension (either the pre-built version included with the Selenium jar or one specified by the `webdriver.safari.driver` property. Use this option to run using a preinstalled extension.</dd>
+</dl>
 
 == Desired Capabilities ==
 
