@@ -3,6 +3,8 @@
 
 A higher level API integrating WebDriver and Hamcrest to give something in the style of LiFT is provided in the support project. We aim to allow writing tests that are very readable, almost like English sentences.
 
+Note: to use LiFT-style API you may want to add the Hamcrest library to the classpath unless you use "all-inclusive" selenium-selver-standalone distribution package.
+
 = Details =
 
 This is very much work in progress at the moment, and the set of HTML tags that can be matched is quite limited at the moment, but easily expanded by following the patterns of what is there. Here's a quick start guide and an example:
