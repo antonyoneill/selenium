@@ -1,4 +1,6 @@
+#summary A guide to using the JavaScript bindings for WebDriver.
 #labels WebDriver,JavaScript
+
 = WebDriverJS User’s Guide =
 <wiki:toc max_depth=4/>
 
