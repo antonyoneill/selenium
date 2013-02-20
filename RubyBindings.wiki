@@ -8,8 +8,8 @@ There are many other Selenium gems out there, but this is the only official, mai
 
 The bindings support Ruby 1.8.7 through 1.9.2, JRuby and Rubinius.
 
-  * [http://selenium.googlecode.com/svn/trunk/docs/api/rb/index.html API docs]
-  * [http://selenium.googlecode.com/svn/trunk/rb/CHANGES Changelog]
+  * [http://selenium.googlecode.com/git/docs/api/rb/index.html API docs]
+  * [http://selenium.googlecode.com/git/rb/CHANGES Changelog]
 
 The gem also includes the older selenium-client gem for use with Selenium RC. When reading the docs, keep in mind that these two namespaces refer to different APIs:
 
