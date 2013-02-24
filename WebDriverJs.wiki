@@ -6,6 +6,8 @@
 
 == Getting Started ==
 === With Node ===
+_(requires Node v0.8+)_
+
 WebDriverJS for Node currently does not have native driver support (_e.g._, you can only write tests against a remote !WebDriver server).  Thus, you must also obtain a copy of the [http://code.google.com/p/selenium/downloads/list Selenium server].  Once the server has been started, you can run your first test:
 {{{
 var webdriver = require('selenium-webdriver');
