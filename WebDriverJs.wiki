@@ -5,7 +5,6 @@
 <wiki:toc max_depth=4/>
 
 == Getting Started ==
-=== With Node ===
 _(requires Node v0.8+)_
 
 WebDriverJS for Node currently does not have native driver support (_e.g._, you can only write tests against a remote !WebDriver server).  Thus, you must also obtain a copy of the [http://code.google.com/p/selenium/downloads/list Selenium server].  Once the server has been started, you can run your first test:
@@ -31,95 +30,40 @@ driver.quit();
 
 If you omit the call to `Builder#usingServer(url)`, the `Builder` will default to http://localhost:4444/wd/hub.  You can change this URL using the API (as shown above), or by setting the `wdurl` environment variable.
 
-==== Installing from NPM ====
+=== Starting the Server Programatically ===
+You can manage the life and death of the Selenium server using the `selenium-webdriver/remote` module:
+{{{
+var webdriver = require('selenium-webdriver'),
+    SeleniumServer = require('selenium-webdriver/remote');
+
+var server = new SeleniumServer({
+  jar: pathToSeleniumJar,
+  port: 4444
+});
+
+server.start();
+
+var driver = new webdriver.Builder().
+    usingServer(server.address()).
+    withCapabilities({'browserName': 'firefox'}).
+    build();
+// ...
+}}}
+
+See `selenium-webdriver/example/google_search.js` (included in the NPM package) for a full-working example.
+
+=== Installing from NPM ===
 {{{
 % npm install selenium-webdriver
 }}}
 
-==== Building from Source ====
+=== Building from Source ===
 {{{
 % git clone https://code.google.com/p/selenium/
 % cd selenium
 % ./go //javascript/node:selenium-webdriver
 }}}
 The commands above will clone the Selenium repository and build the `selenium-webdriver` module. This module will be placed in the `./build/javascript/node` directory of your Selenium client.
-
-=== In the Browser ===
-In addition to node, WebDriverJS may also be used directly in the browser. To compile the browser module, which has a smaller set of dependencies than node, run:
-{{{
-% ./go //javascript/webdriver:webdriver
-}}}
-The WebDriverJS client must be used with the [http://code.google.com/p/selenium/downloads/list Selenium server].  Just as with node, you can create a WebDriver instance using the `webdriver.Builder` class:
-{{{
-<!DOCTYPE html>
-<script src="webdriver.js"></script>
-<script>
-  var driver = new webdriver.Builder().
-     usingServer('http://localhost:4444/wd/hub').
-     withCapabilities({'browserName': 'chrome'}).
-     build();
-
- driver.get('http://www.google.com');
- driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
- driver.findElement(webdriver.By.name('btnG')).click();
- driver.getTitle().then(function(title) {
-   if (title !== 'webdriver - Google Search') {
-     throw new Error(
-         'Expected "webdriver - Google Search", but was "' + title + '"');
-   }
- });
-
- driver.quit();
-</script>
-}}}
-
-==== Controlling the Host Browser ====
-Launching a browser to run a !WebDriver test against another browser is a tad redundant (compared to simply using [WebDriverJs#Node node]). Instead, using WebDriverJS in the browser is intended for automating the browser actually running the script. This can be accomplished as long as the URL for the server and session ID for the browser are known. While these values may be passed to the builder directly, they may also be defined using the `wdurl` and `wdsid` "environment variables", which are parsed from the loading page's URL query data:
-{{{
-<!-- Assuming HTML URL is
- -- /test.html?wdurl=http://localhost:4444/wd/hub&wdsid=foo1234
- -->
-<!DOCTYPE html>
-<script src="webdriver.js"></script>
-<input id="input" type="text"/>
-<script>
- // Attaches to the server and session controlling this browser.
- var driver = new webdriver.Builder().build();
-
- var input = driver.findElement(webdriver.By.tagName('input'));
- input.sendKeys('foo bar baz').then(function() {
-   assertEquals('foo bar baz',
-       document.getElementById('input').value);
- });
-</script>
-}}}
-
-==== Caveats ====
-There are a few caveats to using WebDriverJS in the browser. First, the `webdriver.Builder` class may only be used to attach to an existing session. In order to create a new session, you must manually create a session, as shown in the first [WebDriverJs#In_the_Browser browser-based] example. Second, there are commands which may impact the page running the WebDriverJS script.
-
-  * `webdriver.WebDriver#quit`: The quit command will terminate the entire browser process, including the window running WebDriverJS. Do not use this command unless you are absolutely sure you want to lose everything.
-  * `webdriver.WebDriver#get`: !WebDriver is designed to emulate a user as closely as possible. This means that regardless of which frame a !WebDriver client is currently focused on, navigation commands (_e.g._, `driver.get(url)`) always target the top-most frame. When controlling its host browser, a WebDriverJS script could navigate away from itself by issuing a `WebDriver.get` command while focused on its own window. If you wish to automate the host browser and still navigate between pages, focus your !WebDriver client on a second window (this is similar in concept to Selenium RC's multi-window mode):
-{{{
-<!DOCTYPE html>
-<script src="webdriver.js"></script>
-<script>
- var testWindow = window.open('', 'slave');
-
- var driver = new webdriver.Builder().build();
- driver.switchTo().window('slave');
- driver.get('http://www.google.com');
- driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
- driver.findElement(webdriver.By.name('btnG')).click();
-</script>
-}}}
-
-==== Supported Browsers ====
-WebDriverJS is supported in the following browsers:
-  * IE 8+
-  * Firefox 10+
-  * Chrome 12+
-  * Opera 12+
-  * Android 4.0+
 
 ----
 == Understanding the API ==
@@ -667,3 +611,81 @@ webdriver.promise.fullyResolved(flows).then(function() {
 });
 
 }}}
+
+----
+== Working in a Browser ==
+In addition to node, WebDriverJS may also be used directly in the browser. To compile the browser module, which has a smaller set of dependencies than node, run:
+{{{
+% ./go //javascript/webdriver:webdriver
+}}}
+The WebDriverJS client must be used with the [http://code.google.com/p/selenium/downloads/list Selenium server].  Just as with node, you can create a WebDriver instance using the `webdriver.Builder` class:
+{{{
+<!DOCTYPE html>
+<script src="webdriver.js"></script>
+<script>
+  var driver = new webdriver.Builder().
+     usingServer('http://localhost:4444/wd/hub').
+     withCapabilities({'browserName': 'chrome'}).
+     build();
+
+ driver.get('http://www.google.com');
+ driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
+ driver.findElement(webdriver.By.name('btnG')).click();
+ driver.getTitle().then(function(title) {
+   if (title !== 'webdriver - Google Search') {
+     throw new Error(
+         'Expected "webdriver - Google Search", but was "' + title + '"');
+   }
+ });
+
+ driver.quit();
+</script>
+}}}
+
+=== Controlling the Host Browser ===
+Launching a browser to run a !WebDriver test against another browser is a tad redundant (compared to simply using [WebDriverJs#Node node]). Instead, using WebDriverJS in the browser is intended for automating the browser actually running the script. This can be accomplished as long as the URL for the server and session ID for the browser are known. While these values may be passed to the builder directly, they may also be defined using the `wdurl` and `wdsid` "environment variables", which are parsed from the loading page's URL query data:
+{{{
+<!-- Assuming HTML URL is
+ -- /test.html?wdurl=http://localhost:4444/wd/hub&wdsid=foo1234
+ -->
+<!DOCTYPE html>
+<script src="webdriver.js"></script>
+<input id="input" type="text"/>
+<script>
+ // Attaches to the server and session controlling this browser.
+ var driver = new webdriver.Builder().build();
+
+ var input = driver.findElement(webdriver.By.tagName('input'));
+ input.sendKeys('foo bar baz').then(function() {
+   assertEquals('foo bar baz',
+       document.getElementById('input').value);
+ });
+</script>
+}}}
+
+=== Caveats ===
+There are a few caveats to using WebDriverJS in the browser. First, the `webdriver.Builder` class may only be used to attach to an existing session. In order to create a new session, you must manually create a session, as shown in the first [WebDriverJs#In_the_Browser browser-based] example. Second, there are commands which may impact the page running the WebDriverJS script.
+
+  * `webdriver.WebDriver#quit`: The quit command will terminate the entire browser process, including the window running WebDriverJS. Do not use this command unless you are absolutely sure you want to lose everything.
+  * `webdriver.WebDriver#get`: !WebDriver is designed to emulate a user as closely as possible. This means that regardless of which frame a !WebDriver client is currently focused on, navigation commands (_e.g._, `driver.get(url)`) always target the top-most frame. When controlling its host browser, a WebDriverJS script could navigate away from itself by issuing a `WebDriver.get` command while focused on its own window. If you wish to automate the host browser and still navigate between pages, focus your !WebDriver client on a second window (this is similar in concept to Selenium RC's multi-window mode):
+{{{
+<!DOCTYPE html>
+<script src="webdriver.js"></script>
+<script>
+ var testWindow = window.open('', 'slave');
+
+ var driver = new webdriver.Builder().build();
+ driver.switchTo().window('slave');
+ driver.get('http://www.google.com');
+ driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
+ driver.findElement(webdriver.By.name('btnG')).click();
+</script>
+}}}
+
+=== Supported Browsers ===
+WebDriverJS is supported in the following browsers:
+  * IE 8+
+  * Firefox 10+
+  * Chrome 12+
+  * Opera 12+
+  * Android 4.0+
