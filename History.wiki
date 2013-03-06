@@ -5,7 +5,7 @@
 This is a work in progress.  Feel free to add things you know or remember.
 
 
-= How did the Automation Atoms come about? =
+== How did the Automation Atoms come about? ==
 
 On 2012-04-04, jimevans asked on the #selenium IRC channel: 
  "What I wanted to ask you about was the history of the automation atoms.  I seem to remember them springing fully formed, as if from the head of Zeus, and I'm sure that wasn't the case. Can you refresh my memory as to how the concept happened?"
@@ -43,3 +43,31 @@ jimevans replied: "molecular drivers?"
 
 And simonstewart finished with:
  Indeed :)  The idea is that the atoms are the lowest level.  And we compose the atoms to conform to the WebDriver or RC apis in "javascript/{selenium,webdriver}-atoms" respecitively.  And then suck those in as necessary.
+
+== An informal naming of our releases (by channel topic in IRC) ==
+
+  * Selenium 2 beta 3 'the next generation browser release' now available - http://bit.ly/i9bkC2
+  * Selenium 2 RC1 'the grid release' now available - http://bit.ly/jgZxW8
+  * Selenium 2 RC2 the 'works better release' now available - http://bit.ly/mJJX1z
+  * Selenium RC3 - "the next one is the 'big' one" release - http://bit.ly/kpiACx
+  * Selenium 2.0 Final unleashed upon the unspecting masses
+  * Selenium 2.1.0 now available (yes, even for maven users now)
+  * Selenium 2.2.0 now available (in nuget .. and yes, even maven)
+  * Selenium 2.3.0 available now. A new tradition!
+  * Selenium 2.4.0 is out -- stuff changed, but there is no blog post yet
+  * Selenium 2.5.0. mmmm. bacon.
+  * Selenium 2.6.0 is now available. Switch and save 15% or more on car insurance
+  * Ruby bindings for Selenium 2.7.0 first out of the gate (on twitter at any rate). Jari is a machine...
+  * Selenium 2.8.0 is out now -- day old bacon is still bacon
+ 
+  * sadly we are missing IRC logs...
+
+  * Selenium 2.22: The month long weekly release is finally here!
+  * Selenium 2.23: "Now with awesome!" Wait. What? Now?!
+  * Selenium 2.24: Now with more, erm, stuff?
+  * Selenium 2.25: Tracking nicely
+  * 2.26 is out!
+  * Selenium 2.27 has been released with fixes for Firefox 17. Get it while it's hot!
+  * (there was no 2.28 topic update) code.google.com/p/selenium mirrored on github.com/seleniumHQ/selenium - we're on git now!
+  * 2.29.0 is out now! First git release with FF18 support!
+  * BOOM! 2.31 is released with native event support for Firefox 19 even.
