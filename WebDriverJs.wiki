@@ -30,8 +30,22 @@ driver.quit();
 
 If you omit the call to `Builder#usingServer(url)`, the `Builder` will default to http://localhost:4444/wd/hub.  You can change this URL using the API (as shown above), or by setting the `wdurl` environment variable.
 
-=== Starting the Server Programatically ===
-You can manage the life and death of the Selenium server using the `selenium-webdriver/remote` module:
+=== Installing from NPM ===
+{{{
+% npm install selenium-webdriver
+}}}
+
+=== Building from Source ===
+{{{
+% git clone https://code.google.com/p/selenium/
+% cd selenium
+% ./go //javascript/node:selenium-webdriver
+}}}
+The commands above will clone the Selenium repository and build the `selenium-webdriver` module. This module will be placed in the `./build/javascript/node` directory of your Selenium client.
+
+----
+== Using the Stand-alone Selenium Server ==
+You can manage the life and death of the [https://code.google.com/p/selenium/downloads/list Selenium server] using the `selenium-webdriver/remote` module:
 {{{
 var webdriver = require('selenium-webdriver'),
     SeleniumServer = require('selenium-webdriver/remote');
@@ -52,18 +66,37 @@ var driver = new webdriver.Builder().
 
 See `selenium-webdriver/example/google_search.js` (included in the NPM package) for a full-working example.
 
-=== Installing from NPM ===
+----
+== Writing Tests ==
+_(since 2.32.0)_
+
+The `selenium-webdriver/testing` module may be used to write tests that may be run with Mocha:
 {{{
-% npm install selenium-webdriver
+var assert = require('assert'),
+    test = require('selenium-webdriver/testing'),
+    webdriver = require('selenium-webdriver');
+
+test.describe('Google Search', function() {
+  test.it('should work', function() {
+    var driver = new webdriver.Builder().build();
+
+    var searchBox = driver.findElement(webdriver.By.name('q'));
+    searchBox.sendKeys('webdriver');
+    searchBox.getAttribute('value').then(function(value) {
+      assert.equal(value, 'webdriver');
+    });
+
+    driver.quit();
+  });
+});
 }}}
 
-=== Building from Source ===
+A full example is provided in the `selenium-webdriver/example` package. To run the test, you must first install [http://visionmedia.github.com/mocha/ Mocha] and download the [https://code.google.com/p/selenium/downloads/list stand-alone Selenium server].
 {{{
-% git clone https://code.google.com/p/selenium/
-% cd selenium
-% ./go //javascript/node:selenium-webdriver
+% curl https://selenium.googlecode.com/files/selenium-server-standalone-2.31.0.jar > selenium-server-standalone.jar
+% npm install mocha
+% SELENIUM=selenium-server-standalone.jar mocha -R list selenium-webdriver/example/google_search_test.js
 }}}
-The commands above will clone the Selenium repository and build the `selenium-webdriver` module. This module will be placed in the `./build/javascript/node` directory of your Selenium client.
 
 ----
 == Understanding the API ==
