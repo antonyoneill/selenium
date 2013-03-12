@@ -44,6 +44,51 @@ jimevans replied: "molecular drivers?"
 And simonstewart finished with:
  Indeed :)  The idea is that the atoms are the lowest level.  And we compose the atoms to conform to the WebDriver or RC apis in "javascript/{selenium,webdriver}-atoms" respecitively.  And then suck those in as necessary.
 
+== A Story of Crazy-Fun ==
+
+Simon Stewart :
+
+    So, let's go back to the very beginning of the project<br>
+    When it was me, on my own<br>
+    (the webdriver project, that is, not selenium itself)<br>
+    I knew that I wanted to cover multiple different languages, and so wanted a build tool that could work with all of them<br>
+    That is, that didn't have a built in preference for one that made working with other languages painful<br>
+    ant is java biased. As is maven.<br>
+    nant and msbuild are .net biased<br>
+    rake, otoh, supports nothing very well<br>
+    But, and this is key, any valid rake script is also a valid ruby program<br>
+    It's possible to extend rake to build _anything_<br>
+    So: rake it was<br>
+    The initial rake file was pretty small and manageable<br>
+    But as the project grew, so did the Rakefile<br>
+    Until there was only person who could deal with it (me), and even then it was pretty shaky<br>
+    So, rather than have a project that couldn't be built, I extracted some helper methods to do some of the heavy lifting<br>
+    Which made the Rakefile comprehensible again<br>
+    But they project kept. getting. bigger<br>
+    And the Rakefile got harder and harder to grok<br>
+    At the time, I was working at Google, who have a wonderful build system<br>
+    Google's system is declarative and works across multiple different languages consistently<br>
+    And, most important, it breaks up the build from a single file into little fragments<br>
+    I asked the OSS chaps at Google if it was okay to open source the build grammar, and they gave it the green light<br>
+    So we layered that build grammar into the selenium codebase<br>
+    With one minor change (we handle dictionary args)<br>
+    But that grammar sits on top of rake<br>
+    still, after all this time<br>
+    And there's a problem<br>
+    And that's that rake is single threaded<br>
+    So our builds are constrained to run serially<br>
+    We could use "multitask" types to improve things, but when I've tried that things got very messy, very fast<br>
+    So, our next hurdle is that crazyfun.rb is slow: we need to go faster<br>
+    Which implies a rewrite of crazyfun<br>
+    I'm most comfortable in java<br>
+    So, I've spiked a new version in java that handles the java and js compilation<br>
+    It's significantly faster<br>
+    But, and this is also important, it's a spike<br>
+    The code was designed to be disposable.<br>
+    Now that things have been proved out, I'd really like to do a clean implementation<br>
+    But I'm torn<br>
+    Do I "finish" the new, very fast crazyfun java enough to replace the ruby version?<br>
+
 == An informal naming of our releases (by channel topic in IRC) ==
 
   * Selenium 2 beta 3 'the next generation browser release' now available - http://bit.ly/i9bkC2
