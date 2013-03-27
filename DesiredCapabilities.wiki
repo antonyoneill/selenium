@@ -7,7 +7,7 @@ Not all server implementations will support every !WebDriver feature. Therefore,
 === Used by the selenium server for browser selection ===
 
 || *Key* || *Type* || *Description* ||
-|| browserName || string || The name of the browser being used; should be one of `{android|chrome|firefox|htmlunit|internet explorer|iPhone|iPad|opera}`. ||
+|| browserName || string || The name of the browser being used; should be one of `{android|chrome|firefox|htmlunit|internet explorer|iPhone|iPad|opera|safari}`. ||
 || version || string || The browser version, or the empty string if unknown. ||
 || platform || string || A key specifying which platform the browser should be running on. This value should be one of `{WINDOWS|XP|VISTA|MAC|LINUX|UNIX}`. When requesting a new session, the client may specify `ANY` to indicate any available platform may be used. ||
 
@@ -126,6 +126,7 @@ Not all server implementations will support every !WebDriver feature. Therefore,
 == Safari specific ==
 === !WebDriver ===
 || safari.cleanSession || boolean || Whether to make sure the session has no cookies, cache entries, local storage, or databases. ||
+|| safari.dataDir || string || Location of Safari's user data directory. If not set, the default location will be used.<ul><li>OS X: `/Users/$USER/Library/Safari`</li><li>Windows: `%APPDATA%\Apple Computer\Safari`</li></ul> ||
 
 === RC ===
 || mode || string || Mode for browser. Possible values: filebased, proxyInjectionMode, proxy. Defaults to filebased. Note: filebased does not work on newer Safaris. proxyInjection requires -proxyInjection to be passed to server command line. ||
