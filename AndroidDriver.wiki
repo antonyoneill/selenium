@@ -141,127 +141,21 @@ Download the selenium-java-X.zip from our [http://code.google.com/p/selenium/dow
 
 == Using the Android Test Framework ==
 
-This approach runs the tests directly on the device using the [http://developer.android.com/guide/topics/testing/testing_android.html Android test framework].
-
-You first need to download Android WebDriver, which is an SDK extra. Open the Android SDK manager and select: Available packages → Extras →  Google →  WebDriver.
-Once the SDK manager has downloaded WebDriver, the jars will be under the directory android_sdk/extras/google/webdriver/ . In the same directory you will also find sample code containing and Android project named "SimpleApp" and an Android test project called "TestAnAndroidWebApp".
-
-The SimpleApp project, contains an activity with no layout:
-{{{
-public class SimpleAppActivity extends Activity {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-}
-}}}
-
-The reason the activity does not have any layout is because Android WebDriver will create the WebView and automatically set the layout in that activity.
-
-The TestAnAndroidWebApp is an Android test project which contains a simple test that open www.google.com, makes a search and validates that the result page's title contains the word "Google". Let's take a look at the code.
-
-We instantiate the driver by passing the activity in which the WebView will run.
-{{{
-WebDriver driver = new AndroidWebDriver(getActivity());
-}}}
-
-Then we use the driver in a test to drive the web application.
-{{{
-    public void testGoogleWorks() {
-        // Loads www.google.com
-        driver.get("http://www.google.com");
-        // Lookup the search box on the page by it's HTML name property
-        WebElement searchBox = driver.findElement(By.name("q"));
-        // Enter keys in the search box
-        searchBox.sendKeys("Android Rocks!");
-        // Hit enter
-        searchBox.submit();
-        // Ensure the title contains "Google"
-        assertTrue(driver.getTitle().contains("Google"));
-        // Ensure that there is at least one link with the keyword "Android"
-        assertTrue(driver.findElements(By.partialLinkText("Android")).size() > 1);
-    }
-}}}
-
-Here a are some instructions to help you setup you project.
+Is really not recommended. None of the core development team have experience with this, and very few people in the community are using the android driver this way.
  
-=== Configuring from an Eclipse Project ===
-If you are using Eclipse, first make sure that the [http://developer.android.com/sdk/eclipse-adt.html Eclipse ADT plugin] is installed .
-   # Open Eclipse
-   # Right click on the Android Test project → Build Path → Configure Build Path... → Libraries → Add External Jars
-   # Select the android_webdriver_library.jar
-
-If you would like to step in the code for debugging or see the javadoc from Eclipse, it’s recommended you link the sources as well. 
-   # Open the Referenced Libraries
-   # Right click on android_webdriver_library.jar → Properties → Java Source Attachment
-   # Select android_webdriver_library-srcs.jar
-
-Let's import the examples and run the sample code:
-   # Open Eclipse
-   # File → Import... → General → Existing Projects into Workspace
-   # Select the directory your_android_sdk/extras/google/webdriver which contains SimpleApp and TestAnAndroidWebApp projects.
-   # Right click on TestAnAndroidWebApp → Run As → Android JUnit Test
-
-You will see the tests executing on your device or emulator.
-
-=== Configuring command line managed projects ===
-
-If you are managing you project from the [http://developer.android.com/guide/developing/projects/projects-cmdline.html command line], copy android_webdriver_library.jar under the /libs directory of your Android test project. 
-First we need to build and install the SimpleApp application.
-{{{
-$ cd SimpleApp
-$ adb update project
-$ ant debug
-$ adb install bin/SimpleAppActivity-debug.apk
-}}}
-
-Then let's build and install the test application:
-{{{
-$ cd TestAnAndroidWebApp
-$ adb update test project
-$ ant debug
-$ adb install bin/TestAnAndroidWebApp-debug.apk
-}}}
-
-Now we can run the tests! Execute the following command to see your tests running:
-{{{
-$ adb shell am instrument -w simple.app.test/android.test.InstrumentationTestRunner
-}}}
-
-Android WebDriver requires the following permissions in the application's manifest file to work properly:
-   * android.permission.INTERNET
-   * android.permission.ACCESS_NETWORK_STATE
-   * android.permission.WRITE_SETTINGS
-   * android.permission.WAKE_LOCK
-   * android.permission.CLEAR_APP_CACHE
-   * android.permission.ACCESS_COARSE_LOCATION
-   * android.permission.ACCESS_MOCK_LOCATION
-   * android.permission.ACCESS_FINE_LOCATION
-   * android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
-   * android.permission.CHANGE_CONFIGURATION
-   * android.permission.SET_DEBUG_APP
-   * android.permission.WRITE_EXTERNAL_STORAGE
-   * android.permission.WRITE_APN_SETTINGS
-
-
 = Get Involved =
 
 Want to fix a bug? Add a feature? Or simply play with the code? Here is a quick tutorial to help you get started with Android WebDriver. 
 
-   * Check out the code:
-{{{
-$ svn checkout https://selenium.googlecode.com/svn/trunk/ webdriver
-$ cd webdriver
-}}}
-
-Edit the {{{properties.yml}}} file to reflect the location of your Android SDK, and set the platform target you want to use. If you want a list of all available target, execute the following command:
+First, CheckOut the code. Then edit the {{{properties.yml}}} file to reflect the location of your Android SDK, and set the platform target you want to use. If you want a list of all available target, execute the following command:
 {{{
 ./android list targets
 }}}
 
-On Linux, android SDK is distributed for 32-bits machine. If you have a 64-bit machine you will need to install ia32-libs http://developer.android.com/sdk/installing.html#troubleshooting
+On Linux, Android SDK is distributed for 32-bits machine. If you have a 64-bit machine you will need to install ia32-libs http://developer.android.com/sdk/installing.html#troubleshooting
 
 == Build the Android WebDriver Code ==
+
 Android WebDriver consists of 3 parts. The client and the server used to run Android WebDriver tests remotely, and a library. The library does most of the real work and is used by Android WebDriver to control the WebView. The server piece simply wraps the library in an  Android application together with the HTTP server.
 
    * To build the library, the client and the server
@@ -345,7 +239,8 @@ $ ./go //android:android-server
 
 Check-in the new prebuilt apk:
 {{{
-$ svn ci android/prebuilt/android-server.apk
+$ git commit -m "Updating android apk" android/prebuilt/android-server.apk
+$ git push
 }}}
 
 Upload the new APK on the downloads page with the corresponding release notes.
