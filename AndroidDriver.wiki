@@ -170,10 +170,6 @@ $./go android_client
 {{{
 $./go android_server
 }}}
-   * To build the library
-{{{
-$./go //android/library/src/java/org/openqa/selenium/android:android_library
-}}}
    * To run the tests
 {{{
 $./go test_android
