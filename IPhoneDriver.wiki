@@ -26,7 +26,7 @@ The iphone driver connects through HTTP to the iphone, ipod or iphone simulator.
 
 == In the simulator ==
 
-First, install the Xcode (at least version 4.2) from here: https://developer.apple.com/xcode/index.php 
+First, install the Xcode (at least version 4.6) from here: https://developer.apple.com/xcode/index.php 
 
 Download the source from [http://code.google.com/p/selenium/source/checkout here] and open selenium/iphone/iWebDriver.xcodeproj in xcode.
 
