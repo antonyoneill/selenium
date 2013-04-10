@@ -116,3 +116,4 @@ Simon Stewart :
   * (there was no 2.28 topic update) code.google.com/p/selenium mirrored on github.com/seleniumHQ/selenium - we're on git now!
   * 2.29.0 is out now! First git release with FF18 support!
   * BOOM! 2.31 is released with native event support for Firefox 19 even.
+  * "correlation does not imply causation" 2.32.0 released with Firefox 20 support.
