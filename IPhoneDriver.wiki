@@ -1,7 +1,13 @@
 #summary Information about the iPhone Driver
 #labels Phase-Deploy,WebDriver,Mobile
 
-= iPhone Driver =
+= automating iOS =
+
+If you are looking to use WebDriver with iOS mobile Safari and are currently testing only on simulators please have a look at [http://ios-driver.github.io/ios-driver/ ios-driver] or [http://appium.io/ appium]
+
+Both of these projects are much better implementations of WebDriver for iOS, the only reason it is not a wholesale replacement now is that they can not run on real devices for mobile safari right now.
+
+= iPhone Driver (DEPRECATED) =
 
 The iphone driver allows testing on a UIWebView (a webkit browser accessible for 3rd party applications) on the iphone. It works through the use of an iphone application running on your iphone, ipod touch or iphone simulator. 
 
