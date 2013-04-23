@@ -34,7 +34,7 @@ There are more detailed instructions about how the build system works in the Cra
 
 By default, the output of the build is somewhat terse. A log of the java compilation stages is kept in "build/build_log.xml". You can also get more verbose output by adding "log=true" to the build targets. eg:
 
-{{{./go //java/client/test/org/openqa/selenium/support:test:run log=true}}}
+{{{./go //java/client/test/org/openqa/selenium/support:LargeTests:run log=true}}}
 
 Finally, you can get even more verbose logging by modifying the Rakefile and commenting out the line that reads:
 
