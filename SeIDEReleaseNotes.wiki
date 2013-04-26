@@ -1,6 +1,12 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
+==2.0.0==
+
+  * New - WebDriver playback support (http://blog.reallysimplethoughts.com/2013/02/18/webdriver-playback-in-selenium-ide-is-here/)
+  * New - Added support for Firefox 19 & 20
+  * New - Selenium IDE icon on toolbar is added on first install
+
 ==1.10.0==
 
   * New - Added support for Firefox 16 & 17
