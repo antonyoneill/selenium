@@ -126,6 +126,7 @@ Parameters allowed for -browser:
 browserName={android, chrome, firefox, htmlunit, internet explorer, iphone, opera} 
 version={browser version}
 firefox_binary={path to executable binary}
+chrome_binary={path to executable binary}
 maxInstances={maximum number of browsers of this type}
 platform={WINDOWS, LINUX, MAC}
 
