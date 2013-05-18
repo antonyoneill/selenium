@@ -396,23 +396,36 @@ Each command in the WebDriverJS API wraps a call to `ControlFlow#execute()`, ens
 {{{
 driver.get(“http://www.google.com”).
     then(function() {
+      return driver.findElement(webdriver.By.name('q'));
+    }).
+    then(function(q) {
+      return q.sendKeys('webdriver');
+    }).
+    then(function() {
+      return driver.findElement(webdriver.By.name('btnG'));
+    }).
+    then(function(btnG) {
+      return btnG.click();
+    }).
+    then(function() {
       return driver.getTitle();
-    }).then(function(title) {
+    }).
+    then(function(title) {
       console.log(title);
     });
 
-// Google
+// webdriver - Google Search
 }}}
 *Using the promise manager*
 {{{
-driver.get(“http://www.google.com”).
-    then(function() {
-      return driver.getTitle();
-    }).then(function(title) {
-      console.log(title);
-    });
+driver.get(“http://www.google.com”);
+driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
+driver.findElement(webdriver.By.name('btnG')).click();
+driver.getTitle().then(function(title) {
+  console.log(title);
+});
 
-// Google
+// webdriver - Google Search
 }}}
 ==== Framing ====
 The `ControlFlow` class's execution queue ensures tasks are executed in order, but what about nested tasks?  Nested calls to `execute()` push a new frame to the `ControlFlow`'s internal call stack.  Upon each turn of its execution loop, the `ControlFlow` will pull a task to execute from the queue of the top-most frame.
