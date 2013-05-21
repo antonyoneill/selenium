@@ -19,7 +19,7 @@ First, create a new remote for the repo to pull from and prepare a new branch to
 
 {{{
 git remote add somename https://github.com/<username>/selenium
-git fetch
+git fetch somename
 git checkout master
 git pull
 git checkout -b feature
