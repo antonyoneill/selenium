@@ -3,7 +3,7 @@
 
 = The PageFactory =
 
-In order to support the !PageObject pattern, !WebDriver's support library contains a factory class.
+In order to support the PageObject pattern, !WebDriver's support library contains a factory class.
 
 == A Simple Example ==
 
