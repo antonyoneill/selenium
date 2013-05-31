@@ -1,9 +1,9 @@
-#summary Description of the !PageFactory in the !WebDriver support library.
+#summary Description of the PageFactory in the WebDriver support library.
 #labels WebDriver
 
 = The PageFactory =
 
-In order to support the PageObject pattern, WebDriver's support library contains a factory class.
+In order to support the !PageObject pattern, !WebDriver's support library contains a factory class.
 
 == A Simple Example ==
 
