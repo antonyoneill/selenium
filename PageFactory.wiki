@@ -7,7 +7,7 @@ In order to support the PageObject pattern, WebDriver's support library contains
 
 == A Simple Example ==
 
-In order to use the PageFactory, first declare some fields on a PageObject that are WebElements or List<WebElement>, for example:
+In order to use the !PageFactory, first declare some fields on a !PageObject that are !WebElements or List`<`!WebElement`>`, for example:
 
 {{{
 package org.openqa.selenium.example;
