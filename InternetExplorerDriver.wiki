@@ -23,13 +23,17 @@ The standalone server executable must be downloaded from the [http://code.google
 
 == Command-Line Switches ==
 
-As a standalone executable, the behavior of the IE driver can be modified through various command-line arguments. To set the value of these command-line arguments, you should consult the documentation for the language binding you are using. The command line switches supported are described in the table below.
+As a standalone executable, the behavior of the IE driver can be modified through various command-line arguments. To set the value of these command-line arguments, you should consult the documentation for the language binding you are using. The command line switches supported are described in the table below. All -`<switch>`, --`<switch>` and /`<switch>` are supported.
 
 || Switch || Meaning ||
 || --port=`<portNumber>` || Specifies the port on which the HTTP server of the IE driver will listen for commands from language bindings. Defaults to 5555. ||
 || --host=`<hostAdapterIPAddress>` || Specifies the IP address of the host adapter on which the HTTP server of the IE driver will listen for commands from language bindings. Defaults to 127.0.0.1. ||
 || --log-level=`<logLevel>` || Specifies the level at which logging messages are output. Valid values are FATAL, ERROR, WARN, INFO, DEBUG, and TRACE. Defaults to FATAL. ||
 || --log-file=`<logFile>` || Specifies the full path and file name of the log file. Defaults to stdout. ||
+|| --extract-path=`<path>` || Specifies the full path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
+|| --silent || Suppresses diagnostic output when the server is started. ||
+|| --force-createprocess || Forces launching Internet Explorer using the CreateProcess API. If this option is not specified, IE is launched using the IELaunchURL, if it is available. For IE 8 and above, this option requires the TabProcGrowth registry value to be set to 0. ||
+|| --ie-switches=`<switches>` || Specifies command-line switches with which to launch Internet Explorer. This option is only valid when used with the --force-createprocess option. ||
 
 == Required Configuration ==
 
