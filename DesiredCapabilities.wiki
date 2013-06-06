@@ -118,7 +118,7 @@ See [https://code.google.com/p/chromedriver/wiki/CapabilitiesAndSwitches Chrome 
 || host || string || The address of the host adapter on which the server will listen for commands. ||
 || extractPath || string || The path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
 || silent || boolean || Suppresses diagnostic output when the server is started. ||
-|| forceCreateProcess || string || Forces launching Internet Explorer using the CreateProcess API. If this option is not specified, IE is launched using the IELaunchURL, if it is available. For IE 8 and above, this option requires the TabProcGrowth registry value to be set to 0. ||
+|| forceCreateProcess || boolean || Forces launching Internet Explorer using the CreateProcess API. If this option is not specified, IE is launched using the IELaunchURL, if it is available. For IE 8 and above, this option requires the TabProcGrowth registry value to be set to 0. ||
 || internetExplorerSwitches || string || Specifies command-line switches with which to launch Internet Explorer. This is only valid when used with the forceCreateProcess. ||
 
 === RC ===
