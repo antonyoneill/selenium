@@ -11,6 +11,15 @@ Logging is important both for developers and users of !WebDriver. Users might ne
 
 In general, to debug a certain configuration it is useful to have access to logs from each of the _nodes_ in the configuration. That is, from the *client*, *server*, *driver*, and the *browser*. Still, logs for all these nodes may not be available in all configurations. The server log being the simple example, but logs may also not be supported, or possible to retrieve due to the browser. In addition, there may be more logs available than the mentioned baseline. For instance, there may be support for logs specifically collecting performance data. 
 
+The known log types are:
+
+|| *Log type*    || *Meaning* ||
+|| browser        || Javascript console logs from the browser ||
+|| client            || Logs from the client side implementation of the WebDriver protocol (e.g. the Java bindings) ||
+|| driver            || Logs from the internals of the driver (e.g. FirefoxDriver internals) || 
+|| performance || Logs relating to the performance characteristics of the page under test (e.g. resource load timings) ||
+|| server           || Logs from within the selenium server. ||
+
 For more information on which command to use to retrieve available log types, and a baseline of general log types, please view the [JsonWireProtocol wire protocol].
 
 
