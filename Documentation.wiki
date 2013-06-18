@@ -42,7 +42,7 @@ In order to be able to commit you need an Google account with the appropriate pr
 We use reStructured Text for structuring and shaping the documentation, therefore it is required to know the basics of it by reading
 
  * http://jrst.labs.libre-entreprise.org/jrst/en/user/RSTpresentation.html (shorter, concise)
- * http://docutils.sourceforge.net/docs/user/rst/quickref.html(short, with lots of examples)
+ * http://docutils.sourceforge.net/docs/user/rst/quickref.html (short, with lots of examples)
  * http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html (longer, more advanced)
 
 == Local machine parsing using Sphinx ==
