@@ -220,13 +220,13 @@ If no event listeners have been registered, the `ControlFlow` will rethrow the e
 ==== Deferred Objects ====
 There are two halves to !WebDriver's promise API: a promise, and a deferred.  The promises discussed so far represent the _consumer_ half of the API and provide functions for interacting with a computed value. Sometimes you will need to _produce_ a promise and control when its value is set. For this, you will use a `Deferred` object.
 
-A deferred object is a special version of a promise that provides two additional functions for setting a promise's value: `resolve()` and `reject()`.  Calling `resolve()` will set the promise value and invoke the callback chain. Likewise, call `reject()` to set an error and trigger any error-handlers.  The example below demonstrates how to create a promise that will resolve after a set amount of time:
+A deferred object is a special version of a promise that provides two additional functions for setting a promise's value: `fulfill()` and `reject()`.  Calling `fulfill()` will set the promise value and invoke the callback chain. Likewise, call `reject()` to set an error and trigger any error-handlers.  The example below demonstrates how to create a promise that will resolve after a set amount of time:
 {{{
 function timeout(ms) {
  var d = webdriver.promise.defer();
  var start = Date.now();
  setTimeout(function() {
-   d.resolve(Date.now() - start);
+   d.fulfill(Date.now() - start);
  }, ms);
  return d.promise;
 }
@@ -241,17 +241,17 @@ timeout(500).then(printElapsed);
 // time: 500 ms
 // time: 750 ms
 }}}
-In the example above, the `timeout()` function returns the deferred object's promise property.  This property provides consumers access to the `then()` function while reserving `reject()` and `resolve()` for `timeout()`.
+In the example above, the `timeout()` function returns the deferred object's promise property.  This property provides consumers access to the `then()` function while reserving `reject()` and `fulfill()` for `timeout()`.
 
 Two functions are provided for quickly creating promises from known values:
 {{{
 // This...
-var p1 = webdriver.promise.resolved(123);
+var p1 = webdriver.promise.fulfilled(123);
 var p2 = webdriver.promise.rejected(new Error('boom'));
 
 // ...is shorthand for:
 var d1 = webdriver.promise.defer();
-d1.resolve(123);
+d1.fulfill(123);
 var p1 = d1.promise;
 
 var d2 = webdriver.promise.defer();
