@@ -13,7 +13,7 @@ var webdriver = require('selenium-webdriver');
 
 var driver = new webdriver.Builder().
    usingServer('http://localhost:4444/wd/hub').
-   withCapabilities({'browserName': 'chrome'}).
+   withCapabilities(webdriver.Capabilities.chrome()).
    build();
 
 driver.get('http://www.google.com');
@@ -59,7 +59,7 @@ server.start();
 
 var driver = new webdriver.Builder().
     usingServer(server.address()).
-    withCapabilities({'browserName': 'firefox'}).
+    withCapabilities(webdriver.Capabilities.firefox()).
     build();
 // ...
 }}}
@@ -671,7 +671,7 @@ The WebDriverJS client must be used with the [http://code.google.com/p/selenium/
 <script>
   var driver = new webdriver.Builder().
      usingServer('http://localhost:4444/wd/hub').
-     withCapabilities({'browserName': 'chrome'}).
+     withCapabilities(webdriver.Capabilities.chrome()).
      build();
 
  driver.get('http://www.google.com');
