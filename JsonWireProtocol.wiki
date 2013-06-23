@@ -458,7 +458,7 @@ Create a new session. The server should attempt to create a session that most cl
 <dd>
 <dl>
 <dt>*Returns:*</dt>
-<dd>A `303 See Other` redirect to `/session/:sessionId`, where `:sessionId` is the ID of the newly created session.</dd>
+<dd>`{object}` An object describing the session's [#Actual_Capabilities capabilities].</dd>
 </dl>
 </dd>
 <dd>
