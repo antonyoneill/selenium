@@ -215,7 +215,7 @@ $./adb logcat
 }}}
 
 The Android logcat logs are the most useful piece of information for debugging and fixing an issue.
-You can also filter the logs by adding "ActivityMAnager:W" for example to the logcat command.
+You can also filter the logs by adding "ActivityManager:W" for example to the logcat command. Android includes examples on how to create filters at http://developer.android.com/tools/debugging/debugging-log.html
 
    * To access the JS console:
 - Open the android browser
