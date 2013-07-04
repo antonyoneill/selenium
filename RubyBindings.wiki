@@ -115,7 +115,7 @@ Make sure that _Internet Options_ → _Security_ has the same _Protected Mode_ s
 
 === Command line switches ===
 
-For a list of switches, see [http://src.chromium.org/svn/trunk/src/chrome/common/chrome_switches.cc chrome_switches.cc]:
+For a list of switches, see [http://peter.sh/experiments/chromium-command-line-switches/ this list].
 
 {{{
 driver = Selenium::WebDriver.for :chrome, :switches => %w[--ignore-certificate-errors --disable-popup-blocking --disable-translate]
