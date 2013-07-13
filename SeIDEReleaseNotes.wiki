@@ -3,7 +3,7 @@
 
 ==2.3.0 (Unreleased)== 
 
-  * New - Added support for HTML5 input fields recording
+  * New - Added support for HTML5 input fields recording - issue 3765
   * New - Recording for sendKeys command
   * Enh - Removal of deprecated `*`TextPresent commands from right click menu
 
