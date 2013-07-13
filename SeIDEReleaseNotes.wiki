@@ -1,6 +1,12 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
+==2.3.0 (Unreleased)== 
+
+  * New - Added support for HTML5 input fields recording
+  * New - Recording for sendKeys command
+  * Enh - Removal of deprecated `*`TextPresent commands from right click menu
+
 ==2.2.0==
 
   * Fix - keyUp, keyDown, keyPress, typeKeys fixed on Firefox 22
