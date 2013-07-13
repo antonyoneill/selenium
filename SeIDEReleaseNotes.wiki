@@ -9,13 +9,13 @@
 
 ==2.2.0==
 
-  * Fix - keyUp, keyDown, keyPress, typeKeys fixed on Firefox 22
+  * Fix - keyUp, keyDown, keyPress, typeKeys fixed on Firefox 22 - issue 5883, issue 5884
 
 ==2.1.0==
 
   * Enh - Plugin system changed (http://blog.reallysimplethoughts.com/2013/07/07/changes-to-selenium-ide-plugin-system/)
   * New - Added support for Firefox 22 + 23 beta
-  * Fix - Click fixed for Firefox 22
+  * Fix - Click fixed for Firefox 22 - issue 5841
 
 ==2.0.0==
 
