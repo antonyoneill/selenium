@@ -63,7 +63,7 @@ Now that we're done with the test environment setup, let's take a look at how to
 Here is a comparaison of both approach to help you choose which one suits you best.
 
 ||  * Android WebDriver using the remote server* || * Android WebDriver using the Android test framework * ||
-|| Tests can be written in any supported language binding (Java, Python, Ruby, etc.) || Tests can only br written in Java ||
+|| Tests can be written in any supported language binding (Java, Python, Ruby, etc.) || Tests can only be written in Java ||
 || Runs slower because every command makes extra RPCs (HTTP requests/responses) || Runs fasters because the tests are on the device ||
 || Ideal if you use the same WebDriver tests on other browsers || Ideal if you don't use the same tests on other browsers and if you already use the Android test framework ||
 
