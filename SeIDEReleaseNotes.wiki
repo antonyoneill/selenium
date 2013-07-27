@@ -7,6 +7,7 @@
   * New - Recording for sendKeys command
   * Enh - Removal of deprecated `*`TextPresent commands from right click menu
   * Fix - Dead object error in recording IDE tests - issue 4761
+  * Fix - Fixed could not continue in recording - issue 5820
 
 ==2.2.0==
 
