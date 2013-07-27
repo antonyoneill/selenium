@@ -8,6 +8,7 @@
   * Enh - Removal of deprecated `*`TextPresent commands from right click menu
   * Fix - Dead object error in recording IDE tests - issue 4761
   * Fix - Fixed could not continue in recording - issue 5820
+  * Enh - UTF-8 encoded user-extensions.js support - issue 1646
 
 ==2.2.0==
 
