@@ -6,6 +6,7 @@
   * New - Added support for HTML5 input fields recording - issue 3765
   * New - Recording for sendKeys command
   * Enh - Removal of deprecated `*`TextPresent commands from right click menu
+  * Fix - Dead object error in recording IDE tests - issue 4761
 
 ==2.2.0==
 
