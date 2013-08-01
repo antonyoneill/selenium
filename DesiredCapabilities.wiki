@@ -113,13 +113,15 @@ See [https://code.google.com/p/chromedriver/wiki/CapabilitiesAndSwitches Chrome 
 || enableElementCacheCleanup || boolean || Determines whether the driver should attempt to remove obsolete elements from the element cache on page navigation (true by default). This is to help manage the IE driver's memory footprint, removing references to invalid elements. ||
 || requireWindowFocus || boolean || Determines whether to require that the IE window have focus before performing any user interaction operations (mouse or keyboard events). This capability is false by default, but delivers much more accurate native events interactions. ||
 || browserAttachTimeout || integer || The timeout, in milliseconds, that the driver will attempt to locate and attach to a newly opened instance of Internet Explorer. The default is zero, which indicates waiting indefinitely. ||
+|| ie.forceCreateProcessApi || boolean || Forces launching Internet Explorer using the CreateProcess API. If this option is not specified, IE is launched using the IELaunchURL, if it is available. For IE 8 and above, this option requires the TabProcGrowth registry value to be set to 0. ||
+|| ie.browserCommandLineSwitches || string || Specifies command-line switches with which to launch Internet Explorer. This is only valid when used with the forceCreateProcess. ||
+|| ie.usePerProcessProxy || boolean || When a proxy is specified using the proxy capability, this capability sets the proxy settings on a per-process basis when set to true. The default is false, which means the proxy capability will set the system proxy, which IE will use. ||
+|| ie.ensureCleanSession || boolean || When set to true, this capability clears the cache, cookies, history, and saved form data. When using this capability, be aware that this clears the cache for all running instances of Internet Explorer, including those started manually. ||
 || logFile || string || The path to file where server should write log messages to. By default it writes to stdout. ||
 || logLevel || string || The log level used by the server. Valid values are TRACE, DEBUG, INFO, WARN, ERROR, and FATAL. Defaults to FATAL if not specified. ||
 || host || string || The address of the host adapter on which the server will listen for commands. ||
 || extractPath || string || The path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
 || silent || boolean || Suppresses diagnostic output when the server is started. ||
-|| forceCreateProcess || boolean || Forces launching Internet Explorer using the CreateProcess API. If this option is not specified, IE is launched using the IELaunchURL, if it is available. For IE 8 and above, this option requires the TabProcGrowth registry value to be set to 0. ||
-|| internetExplorerSwitches || string || Specifies command-line switches with which to launch Internet Explorer. This is only valid when used with the forceCreateProcess. ||
 
 === RC ===
 || mode || string || Mode for browser. Possible values: iehta, proxyInjectionMode, proxy. Defaults to iehta if not set. proxyInjection requires -proxyInjection to be passed to server command line. ||
