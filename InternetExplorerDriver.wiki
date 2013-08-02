@@ -32,8 +32,6 @@ As a standalone executable, the behavior of the IE driver can be modified throug
 || --log-file=`<logFile>` || Specifies the full path and file name of the log file. Defaults to stdout. ||
 || --extract-path=`<path>` || Specifies the full path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
 || --silent || Suppresses diagnostic output when the server is started. ||
-|| --force-createprocess || Forces launching Internet Explorer using the CreateProcess API. If this option is not specified, IE is launched using the IELaunchURL, if it is available. For IE 8 and above, this option requires the TabProcGrowth registry value to be set to 0. ||
-|| --ie-switches=`<switches>` || Specifies command-line switches with which to launch Internet Explorer. This option is only valid when used with the --force-createprocess option. ||
 
 == Required Configuration ==
 
@@ -73,5 +71,12 @@ This restriction is filed as issue 3508.
 
 With the creation of the IEDriverServer.exe, it should be possible to create and use multiple simultaneous instances of the InternetExplorerDriver. However, this functionality is largely untested, and there may be issues with cookies, window focus, and the like. If you attempt to use multiple instances of the IE driver, and run into such issues, consider using the RemoteWebDriver and virtual machines.
 
+There are 2 solutions for problem with cookies (and another session items) shared between multiple instances of InternetExplorer.
+
+The first is to start your InternetExplorer in private mode. After that InternetExplorer will be started with clean session data and will not save changed session data at quiting. To do so you need to pass 2 specific capabilities to driver: `ie.forceCreateProcessApi` with `true` value and `ie.browserCommandLineSwitches` with `-private` value. Be note that it will work only for InternetExplorer 8 and newer, and Windows Registry `HKLM_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\Main` path should contain key `TabProcGrowth` with `0` value.
+
+The second is to clean session during InternetExplorer starting. For this you need to pass specific `ie.ensureCleanSession` capability with `true` value to driver. This clears the cache for all running instances of InternetExplorer, including those started manually.
+
 == Running IEDriverServer.exe Remotely ==
+
 The HTTP server started by the IEDriverServer.exe sets an access control list to only accept connections from the local machine, and disallows incoming connections from remote machines. At present, this cannot be changed without modifying the source code to the IEDriverServer.exe. To run the Internet Explorer driver on a remote machine, use the Java standalone remote server in connection with your language binding's equivalent of RemoteWebDriver.
