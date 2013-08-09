@@ -11,8 +11,8 @@
   * Fix - Dead object error in recording IDE tests - issue 4761
   * Fix - Fixed could not continue in recording - issue 5820
   * Enh - UTF-8 encoded user-extensions.js support - issue 1646
-  * Enh special keys support for sendKeys in Selenium IDE and webdriver playback - issue #6052
-  * Enh - Special keys support to sendKeys in all official formatters - issue 6053
+  * New special keys support for sendKeys in Selenium IDE and webdriver playback - issue #6052
+  * New - Special keys support to sendKeys in all official formatters - issue 6053
   * Enh - Plugin api enhancement for specifying formatter type + documentaton comments
   * Fix - Invalid XPath error in Firefox 23 - issue 6055
   * New - Added support for Firefox 23
