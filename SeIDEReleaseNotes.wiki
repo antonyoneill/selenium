@@ -3,9 +3,9 @@
 
 ==2.4.0 (unreleased) == 
   * Enh - Adding ability to show commands as deprecated in Selenium IDE and smartness to show the correct alternative command
-  * Enh - Deprecating Selenium IDE commands *TextPresent, typeKeys, keyUp, keyDown and keyPress
+  * Enh - Deprecating Selenium IDE commands `*`TextPresent, typeKeys, keyUp, keyDown and keyPress
   * Enh - Import json library in exported Ruby Webdriver tests
-  * Enh - Adding support for waitFor* and waitForNot* commands in Webdriver playback - issue 5913
+  * Enh - Adding support for waitFor`*` and waitForNot`*` commands in Webdriver playback - issue 5913
 
 ==2.3.0== 
 
