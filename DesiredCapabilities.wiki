@@ -122,6 +122,7 @@ See [https://code.google.com/p/chromedriver/wiki/CapabilitiesAndSwitches Chrome 
 || host || string || The address of the host adapter on which the server will listen for commands. ||
 || extractPath || string || The path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
 || silent || boolean || Suppresses diagnostic output when the server is started. ||
+|| ie.setProxyByServer || boolean || Defines used proxy setter. False means WindowsProxyManager will be used for setting proxy settings. True means IEDriverServer will be used for setting proxy settings. Currently it's False by default. In next releases it will be set to True by default and removed. ||
 
 === RC ===
 || mode || string || Mode for browser. Possible values: iehta, proxyInjectionMode, proxy. Defaults to iehta if not set. proxyInjection requires -proxyInjection to be passed to server command line. ||
