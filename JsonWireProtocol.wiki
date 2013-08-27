@@ -6,7 +6,7 @@
 
 DO NOT EDIT THIS WIKI PAGE THROUGH THE UI.
 
-Instead, use http://selenium.googlecode.com/svn/trunk/wire.py
+Instead, use http://selenium.googlecode.com/git/wire.py
 
 $ svn co https://selenium.googlecode.com/svn/ --depth=empty wire_protocol
 $ cd wire_protocol
@@ -2464,7 +2464,7 @@ location for correctly generating native events.</dd>
 </dd>
 <dd>
 <dl>
-<dd>Get the current browser orientation. The server should return a valid orientation value as defined in [http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
+<dd>Get the current browser orientation. The server should return a valid orientation value as defined in [http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
 <dd>
 <dl>
 <dt>*URL Parameters:*</dt>
@@ -2474,7 +2474,7 @@ location for correctly generating native events.</dd>
 <dd>
 <dl>
 <dt>*Returns:*</dt>
-<dd>`{string}` The current browser orientation corresponding to a value defined in [http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
+<dd>`{string}` The current browser orientation corresponding to a value defined in [http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
 </dl>
 </dd>
 <dd>
@@ -2493,7 +2493,7 @@ location for correctly generating native events.</dd>
 </dd>
 <dd>
 <dl>
-<dd>Set the browser orientation. The orientation should be specified as defined in [http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
+<dd>Set the browser orientation. The orientation should be specified as defined in [http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
 <dd>
 <dl>
 <dt>*URL Parameters:*</dt>
@@ -2503,7 +2503,7 @@ location for correctly generating native events.</dd>
 <dd>
 <dl>
 <dt>*JSON Parameters:*</dt>
-<dd>`orientation` - `{string}` The new browser orientation as defined in [http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
+<dd>`orientation` - `{string}` The new browser orientation as defined in [http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/ScreenOrientation.html ScreenOrientation]: `{LANDSCAPE|PORTRAIT}`.</dd>
 </dl>
 </dd>
 <dd>
@@ -3035,8 +3035,8 @@ location for correctly generating native events.</dd>
 <dd>
 <dl>
 <dt>*JSON Parameters:*</dt>
-<dd>`xSpeed` - `{number}` The x speed in pixels per second.</dd>
-<dd>`ySpeed` - `{number}` The y speed in pixels per second.</dd>
+<dd>`xspeed` - `{number}` The x speed in pixels per second.</dd>
+<dd>`yspeed` - `{number}` The y speed in pixels per second.</dd>
 </dl>
 </dd>
 </dl>
