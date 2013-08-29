@@ -172,7 +172,7 @@ There are a handful of known issues with !ChromeDriver, listed below:
 
 === Think you've found a bug? ===
 
-Check if the bug has been [http://code.google.com/p/selenium/issues/list reported] yet.  If it hasn't, please open a new issue and be sure to include the [SeleniumHelp following]:
+Check if the bug has been [http://code.google.com/p/chromedriver/issues/list reported] yet.  If it hasn't, please open a [http://code.google.com/p/chromedriver/issues/entry new issue] and be sure to include the [SeleniumHelp following]:
 
  * What platform are you running on?
  * What version of the chromedriver are you using?
