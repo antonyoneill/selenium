@@ -7,7 +7,7 @@ This is information about using the client implementation of the RemoteWebDriver
 
 == Installing ==
 
-Copy "webdriver-all.jar" and all the associated JARs to your CLASSAPATH. This will give you the remote webdriver client, which is generally what you need. Please consult the RemoteWebDriverServer for information on how to set up the server-side of the remote webdriver.
+Download the "selenium-server.zip" and unpack. Put the JARs on the CLASSPATH. This will give you the remote webdriver client, which is generally what you need. Please consult the RemoteWebDriverServer for information on how to set up the server-side of the remote webdriver.
 
 == Pros ==
  
