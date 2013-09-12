@@ -50,8 +50,7 @@ You can manage the life and death of the [https://code.google.com/p/selenium/dow
 var webdriver = require('selenium-webdriver'),
     SeleniumServer = require('selenium-webdriver/remote');
 
-var server = new SeleniumServer({
-  jar: pathToSeleniumJar,
+var server = new SeleniumServer(pathToSeleniumJar, {
   port: 4444
 });
 
