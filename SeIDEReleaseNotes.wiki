@@ -1,7 +1,11 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
-==2.4.0 (unreleased) == 
+==2.5.0 (unreleased) == 
+
+
+==2.4.0== 
+
   * Enh - Base URL history, recent test cases and recent test suites can be cleared - issue 6135
   * Enh - Special key now have shorter names
   * Enh - Support for user extensions in Webdriver playback - issue 5675
