@@ -34,7 +34,7 @@ Not all server implementations will support every !WebDriver feature. Therefore,
 || nativeEvents || boolean || Whether the session is capable of generating native events when simulating user input. ||
 || proxy || proxy object || Details of any proxy to use. If no proxy is specified, whatever the system's current or default state is used. The format is specified under Proxy JSON Object. ||
 || unexpectedAlertBehaviour || string || What the browser should do with an unhandled alert before throwing out the !UnhandledAlertException. Possible values are "accept", "dismiss" and "ignore" ||
-
+|| elementScrollBehavior || integer || Allows the user to specify whether elements are scrolled into the viewport for interaction to align with the top (0) or bottom (1) of the viewport. The default value is to align with the top of the viewport. Supported in IE and Firefox (since 2.36) ||
 
 
 = RemoteWebDriver specific =
@@ -108,7 +108,6 @@ See [https://code.google.com/p/chromedriver/wiki/CapabilitiesAndSwitches Chrome 
 || ignoreProtectedModeSettings || boolean || Whether to skip the protected mode check. If set, tests may become flaky, unresponsive, or browsers may hang. If not set, and protected mode settings are not the same for all zones, an exception will be thrown on driver construction. Only "best effort" support is provided when using this capability. ||
 || ignoreZoomSetting || boolean ||| Indicates whether to skip the check that the browser's zoom level is set to 100%. Value is set to false by default. ||
 || initialBrowserUrl || string || Allows the user to specify the initial URL loaded when IE starts. Intended to be used with `ignoreProtectedModeSettings` to allow the user to initialize IE in the proper Protected Mode zone. Using this capability may cause browser instability or flaky and unresponsive code. Only "best effort" support is provided when using this capability. ||
-|| elementScrollBehavior || integer || Allows the user to specify whether elements are scrolled into the viewport for interaction to align with the top (0) or bottom (1) of the viewport. The default value is to align with the top of the viewport. ||
 || enablePersistentHover || boolean || Determines whether persistent hovering is enabled (true by default). Persistent hovering is achieved by continuously firing mouse over events at the last location the mouse cursor has been moved to. ||
 || enableElementCacheCleanup || boolean || Determines whether the driver should attempt to remove obsolete elements from the element cache on page navigation (true by default). This is to help manage the IE driver's memory footprint, removing references to invalid elements. ||
 || requireWindowFocus || boolean || Determines whether to require that the IE window have focus before performing any user interaction operations (mouse or keyboard events). This capability is false by default, but delivers much more accurate native events interactions. ||
