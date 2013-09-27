@@ -45,7 +45,7 @@ The commands above will clone the Selenium repository and build the `selenium-we
 You can manage the life and death of the [https://code.google.com/p/selenium/downloads/list Selenium server] using the `selenium-webdriver/remote` module:
 {{{
 var webdriver = require('selenium-webdriver'),
-    SeleniumServer = require('selenium-webdriver/remote');
+    SeleniumServer = require('selenium-webdriver/remote').SeleniumServer;
 
 var server = new SeleniumServer(pathToSeleniumJar, {
   port: 4444
