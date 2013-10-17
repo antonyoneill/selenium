@@ -117,3 +117,4 @@ Simon Stewart :
   * 2.29.0 is out now! First git release with FF18 support!
   * BOOM! 2.31 is released with native event support for Firefox 19 even.
   * "correlation does not imply causation" 2.32.0 released with Firefox 20 support.
+  * the US government is open again! Let's celebrate with 2.36 newly released, with FF24 support
