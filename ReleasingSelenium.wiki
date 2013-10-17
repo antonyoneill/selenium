@@ -117,9 +117,8 @@ Known issues can be added to the release notes.
  # Bump the version number to the next version with dev e.g. 2.(n+1).0 and commit changes
  # Update the SeHQ downloads page with updated links, release numbers and dates
  # Update the pydoc:
-   # cd trunk/py/docs
-   # make pickle; make html
-   # check in trunk/docs/api/py
+   # `./go py_docs`
+   # check in docs/api/py
 
 
 = Areas to Improve =
