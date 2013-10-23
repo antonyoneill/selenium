@@ -1,7 +1,7 @@
 #summary Information about the Opera WebDriver implementation
 #labels WebDriver
 
-= OperaDriver =
+= !OperaDriver =
 
 [https://github.com/operasoftware/operadriver/ OperaDriver] is a vendor-supported !WebDriver implementation developed by [http://opera.com/ Opera Software] and volunteers that implements [http://code.google.com/p/selenium/ WebDriver API] for Opera.
 
