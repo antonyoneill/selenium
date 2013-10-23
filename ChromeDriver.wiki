@@ -3,13 +3,13 @@
 
 = Chrome Driver =
 
+Documenta
+
 Developed in collaboration with the Chromium team, the !ChromeDriver is a standalone server which implements !WebDriver's  [JsonWireProtocol wire protocol].
 
 The !ChromeDriver consists of three separate pieces. There is the browser itself ("chrome"), the language bindings provided by the Selenium project ("the driver") and an executable downloaded from the Chromium project which acts as a bridge between "chrome" and the "driver". This executable is called "chromedriver", but we'll try and refer to it as the "server" in this page to reduce confusion.
 
 == Requirements ==
-
-The !ChromeDriver controls the browser using Chrome's automation proxy framework.
 
 The server expects you to have Chrome installed in the default location for each system:
 || *OS* || *Expected Location of Chrome* ||
@@ -22,153 +22,24 @@ The server expects you to have Chrome installed in the default location for each
 
 == Getting Started ==
 
-To get set up, first [http://code.google.com/p/chromedriver/downloads/list download] the appropriate prebuilt server.  Make sure the server can be located on your `PATH` or specify its location via the `webdriver.chrome.driver` system property. Finally, all you need to do is create a new `ChromeDriver` instance:
-{{{
-WebDriver driver = new ChromeDriver();
-driver.get("http://www.google.com");
-}}}
+Read [https://sites.google.com/a/chromium.org/chromedriver/home ChromeDriver user documentation]
 
-=== Running the server in a child process ===
+=== Running !ChromeDriver as a standalone process ===
 
-You may notice that the `ChromeDriver` class is merely a convenience class that starts the server upon creation and shuts it down when you call [http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/WebDriver.html#quit() quit].  While the server is light weight, starting and stopping it multiple times will add a noticeable delay to a larger test suite.  To compensate for this, you can directly control the life and death of the server using the `ChromeDriverService`:
-{{{
-import static org.junit.Assert.assertEquals;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-@RunWith(BlockJUnit4ClassRunner.class)
-public class ChromeTest extends TestCase {
-
-  private static ChromeDriverService service;
-  private WebDriver driver;
-
-  @BeforeClass
-  public static void createAndStartService() {
-    service = new ChromeDriverService.Builder()
-        .usingDriverExecutable(new File("path/to/my/chromedriver"))
-        .usingAnyFreePort()
-        .build();
-    service.start();
-  }
-
-  @AfterClass
-  public static void createAndStopService() {
-    service.stop();
-  }
-
-  @Before
-  public void createDriver() {
-    driver = new RemoteWebDriver(service.getUrl(),
-        DesiredCapabilities.chrome());
-  }
-
-  @After
-  public void quitDriver() {
-    driver.quit();
-  }
-
-  @Test
-  public void testGoogleSearch() {
-    driver.get("http://www.google.com");
-    WebElement searchBox = driver.findElement(By.name("q"));
-    searchBox.sendKeys("webdriver");
-    searchBox.quit();
-    assertEquals("webdriver - Google Search", driver.getTitle());
-  }
-}
-}}}
-
-=== Running the server as a standalone process ===
-
-Since the !ChromeDriver implements the wire protocol, it is fully compatible with any RemoteWebDriver client. Simply start up your server, create a client, and away you go:
+Since the !ChromeDriver implements the wire protocol, it is fully compatible with any RemoteWebDriver client. Simply start up the !ChromeDriver executable (that works as a server), create a client, and away you go:
 {{{
 WebDriver driver = new RemoteWebDriver("http://localhost:9515", DesiredCapabilities.chrome());
 driver.get("http://www.google.com");
 }}}
 
-== Advanced Usage ==
-
-=== Starting Chromium with Specific Flags ===
-
-The !ChromeDriver can be made to start the browser with specific command line flags using the `chrome.switches` capability key; this key should define a list of command line flags that should be passed to the browser on start-up.  For example, to start Chrome as a maximized window:
-{{{
-  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-  capabilities.setCapability("chrome.switches", Arrays.asList("--start-maximized"));
-  WebDriver driver = new ChromeDriver(capabilities);
-}}}
-
-Similarly, to load an extension when Chrome starts:
-{{{
-  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-  capabilities.setCapability("chrome.switches", Arrays.asList("--load-extension=/path/to/extension/directory"));
-  WebDriver driver = new ChromeDriver(capabilities);
-}}}
-
-Or to load with a specific profile (note that the default profile directories can be found [http://www.chromium.org/user-experience/user-data-directory here]):
-{{{
-  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-  capabilities.setCapability("chrome.switches", Arrays.asList("--user-data-dir=/path/to/profile/directory"));
-  WebDriver driver = new ChromeDriver(capabilities);
-}}}
-
-The full list of flags can be found [http://peter.sh/experiments/chromium-command-line-switches/ here].
-
-
-=== Setting Chrome's proxy configuration ===
-
-Since ChromeDriver 18.0.995.0, !WebDriver's [DesiredCapabilities Proxy Desired Capability] can be used.
-If you're using a previous version. The following can be used:
-
-{{{
-  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-  capabilities.setCapability("chrome.switches", Arrays.asList("--proxy-server=http://your-proxy-domain:4443"));
-  WebDriver driver = new ChromeDriver(capabilities);
-}}}
-
-=== Overriding the Chrome binary location ===
-
-You can specify the location of the Chrome binary by passing the "chrome.binary" capability, e.g. with a typical Chromium install on Debian:
-
-{{{
-  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-  capabilities.setCapability("chrome.binary", "/usr/lib/chromium-browser/chromium-browser");
-  WebDriver driver = new ChromeDriver(capabilities);
-}}}
-
-Or in Ruby:
-{{{
-  Selenium::WebDriver::Chrome.path = "/usr/lib/chromium-browser/chromium-browser"
-  driver = Selenium::WebDriver.for :chrome
-}}}
-
-=== Chrome Extensions ===
-
-The ‘chrome.extensions’ capability can be used to specify a list of extensions, each in the form of a base64 encoded crx file, to install on startup.
-
 === Troubleshooting ===
 
-If you are using the Remote WebDriver and you get the _The path to the chromedriver executable must be set by the webdriver.chrome.driver system property_ error message you likely need to check that one of these conditions is met:
+If you are using the RemoteWebDriver and you get the _The path to the chromedriver executable must be set by the webdriver.chrome.driver system property_ error message you likely need to check that one of these conditions is met:
 
   * The chromedriver binary is in the system path, or
   * The Selenium Server was started with -Dwebdriver.chrome.driver=c:\path\to\your\chromedriver.exe
 
-== Known Issues ==
-
-There are a handful of known issues with !ChromeDriver, listed below:
-
-  # Can only retrieve the name and value of set cookies (no domain, path, etc.)
-  # Typing does not work with rich-text enabled documents
-  # Cannot specify a custom profile
-  # [http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/remote/html5/package-summary.html HTML 5 API] not implemented
-  # If running Selenium as a Windows Service, be sure to use the alternate 'standalone' chrome install.  This will install chrome for all users, not just the current user.  The Selenium service will try and start Chrome as the SYSTEM user and will not be able to find the binary, as noted in [http://code.google.com/p/chromedriver/issues/detail?id=46 Issue #46].  The alternate install is an easy way to correct that problem.  The alternate install can be [http://www.google.com/chrome/eula.html?system=true&standalone=1 found here].
+[https://sites.google.com/a/chromium.org/chromedriver/home ChromeDriver user documentation] provides more information on the known issues and workarounds.
 
 === Think you've found a bug? ===
 
@@ -184,14 +55,10 @@ Of course, if your bug has already been reported, you can update the issue with 
 
 == Testing earlier versions of Chrome ==
 
-As previously mentioned, the !ChromeDriver is only compatible with Chrome version 12.0.712.0 or newer.  If you need to test an older version of Chrome, use Selenium RC  and a Selenium-backed WebDriver instance:
+!ChromeDriver is only compatible with Chrome version 12.0.712.0 or newer. If you need to test an older version of Chrome, use Selenium RC  and a Selenium-backed WebDriver instance:
 {{{
 URL seleniumServerUrl = new URL("http://localhost:4444");
 URL serverUnderTest = new URL("http://www.google.com");
 CommandExecutor executor = new SeleneseCommandExecutor(seleniumServerUrl, serverUnderTest, DesiredCapabilities.chrome());
 WebDriver driver = new RemoteWebDriver(executor);
 }}}
-
-== Building From Source ==
-
-The !ChromeDriver is available as part of the [http://www.chromium.org Chromium] project.  See this [http://dev.chromium.org/developers/testing/webdriver-for-chrome page] if you'd like to build the server yourself.
