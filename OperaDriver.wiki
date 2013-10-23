@@ -3,15 +3,17 @@
 
 = OperaDriver =
 
-!OperaDriver is a vendor-supported !WebDriver implementation developed by [http://opera.com/ Opera Software] and volunteers that implements [http://code.google.com/p/selenium/ WebDriver] for Opera.
+[https://github.com/operasoftware/operadriver/ OperaDriver] is a vendor-supported !WebDriver implementation developed by [http://opera.com/ Opera Software] and volunteers that implements [http://code.google.com/p/selenium/ WebDriver API] for Opera.
 
 !OperaDriver can drive the browser running various tests on your web pages, just as if a real user was navigating through them.  It can emulate actions like clicking links, entering text and submitting forms, and reports results back to you so you know your website works as intended.
+
+Current implementation of !OperaDriver supports only 12.x and older versions of Opera browser (based on Presto engine) and does not support newer versions (based on Blink engine).
 
 !OperaDriver's end-user emulation ensures that your entire stack (HTML, scripts, styling embedded resources and backend setup) is functioning correctly, and this without tedious manual testing routines.
 
 == Requirements ==
 
-You will need a Java Runtime Environment 1.5 or newer (Oracle or OpenJDK) to use OperaDriver.  It uses the [http://dragonfly.opera.com/app/scope-interface/ Scope interface] (same as for [http://www.opera.com/dragonfly/ Dragonfly]) to communicate directly with Opera from Java.  Consequently, it is compatible out-of-the-box with Opera version 11.6 or newer, although it works for older versions with some tweaks.
+You will need a Java Runtime Environment 1.5 or newer (Oracle or OpenJDK) to use !OperaDriver.  It uses the [http://dragonfly.opera.com/app/scope-interface/ Scope interface] (same as for [http://www.opera.com/dragonfly/ Dragonfly]) to communicate directly with Opera from Java.  Consequently, it is compatible out-of-the-box with Opera version 11.6 or newer, although it works for older versions with some tweaks.
 
 The !OperaDriver server expects you to have Opera or Opera Next installed in the default location for each system:
 
