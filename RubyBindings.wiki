@@ -125,12 +125,28 @@ driver = Selenium::WebDriver.for :chrome, :switches => %w[--ignore-certificate-e
 
 For a list of prefs, see [http://src.chromium.org/svn/trunk/src/chrome/common/pref_names.cc pref_names.cc].
 
+Using chromedriver 1:
+
 {{{
 profile = Selenium::WebDriver::Chrome::Profile.new
 profile['download.prompt_for_download'] = false
 profile['download.default_directory'] = "/path/to/dir"
 
 driver = Selenium::WebDriver.for :chrome, :profile => profile
+}}}
+
+Using chromdriver 2 (supported since selenium-webdriver 2.37): 
+
+{{{
+  prefs = {
+    :download => {
+      :prompt_for_download => false, 
+      :default_directory => "/path/to/dir"
+      }
+    }
+  }
+  
+  driver = Selenium::WebDriver.for :chrome, :prefs => prefs
 }}}
 
 See also ChromeDriver.
