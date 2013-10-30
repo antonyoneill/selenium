@@ -138,15 +138,15 @@ driver = Selenium::WebDriver.for :chrome, :profile => profile
 Using chromdriver 2 (supported since selenium-webdriver 2.37): 
 
 {{{
-  prefs = {
-    :download => {
-      :prompt_for_download => false, 
-      :default_directory => "/path/to/dir"
-      }
+prefs = {
+  :download => {
+    :prompt_for_download => false, 
+    :default_directory => "/path/to/dir"
     }
   }
-  
-  driver = Selenium::WebDriver.for :chrome, :prefs => prefs
+}
+
+driver = Selenium::WebDriver.for :chrome, :prefs => prefs
 }}}
 
 See also ChromeDriver.
