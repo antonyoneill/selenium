@@ -3,7 +3,7 @@
 
 = Chrome Driver =
 
-Documenta
+[http://chromedriver.storage.googleapis.com/index.html Download chromedriver]
 
 Developed in collaboration with the Chromium team, the !ChromeDriver is a standalone server which implements !WebDriver's  [JsonWireProtocol wire protocol].
 
