@@ -101,7 +101,7 @@ In a terminal type:
 $./adb -s <serialId> forward tcp:8080 tcp:8080
 }}}
 
-This will make the android server available at http://localhost:8080/wd/hub from the host machine. You're now ready to run the tests. Let's take a look at some code.
+This will make the android server available at `http://localhost:8080/wd/hub/status` from the host machine. (See DeveloperTips#Manually_interacting_with_RemoteWebDriverServer)  You're now ready to run the tests. Let's take a look at some code.
 
 === Run the Tests === 
 {{{
