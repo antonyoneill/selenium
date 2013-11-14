@@ -104,7 +104,18 @@ GET /wd/hub/status/ HTTP/1.0
 
 }}}
 
-In both cases the RemoteWebDriverServer should respond with 
+On Macs and Unix in general try `curl` 
+
+{{{
+curl  http://localhost:8080/wd/hub/status
+}}}
+
+And on linux `wget`
+{{{
+wget http://localhost:8080/wd/hub/status
+}}}
+
+In all these cases the RemoteWebDriverServer should respond with 
 {{{
 
 {status:0} 
