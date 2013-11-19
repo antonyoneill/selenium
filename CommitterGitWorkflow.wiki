@@ -49,10 +49,6 @@ git branch -D feature
 
 This will result in a single commit on to HEAD that contains all the changes from the pull request, though it may well appear to come from the past. Which isn't confusing at all.
 
-## Alternative Workflows
-
-### Kristian
-
 KristianRosenvold has a different process:
 
 {{{
@@ -63,7 +59,7 @@ The exact url will be noted in the pull request mail from github. Please note th
 
 This pull mechanism will create one commit for the actual submission and a merge on top of that, which will identify the person who accepted the pull request.
 
-= Rebasing =
+= Squashing and Rebasing =
 
 We prefer that you squash and rebase whatever it is you are submitting
 to the project, so that each commit consists of a logical change that
@@ -81,9 +77,9 @@ Squashing a patch can be done interactively:
 git rebase -i --autosquash `git merge-base HEAD origin/master`
 }}}
 
-This will autosquash any fixups and drop you into your editor to pick
-which commits should be treated as fixups, or which should remain as
-distinct, individual commits.
+This will automatically squash any fixups and drop you into your
+editor to pick which commits should be treated as fixups, or which
+should remain as distinct, individual commits.
 
 After squashing the branch you can rebase it on master by doing this:
 
