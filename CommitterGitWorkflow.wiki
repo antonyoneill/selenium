@@ -2,7 +2,7 @@
 
 = Introduction =
 
-This page describes a standard committer workflow when fetching stuff from github into google code. 
+This page describes a standard committer workflow when fetching stuff from github into google code.
 
 The state-machine of day-to-day git use looks like this:
 
@@ -49,6 +49,10 @@ git branch -D feature
 
 This will result in a single commit on to HEAD that contains all the changes from the pull request, though it may well appear to come from the past. Which isn't confusing at all.
 
+## Alternative Workflows
+
+### Kristian
+
 KristianRosenvold has a different process:
 
 {{{
@@ -57,10 +61,32 @@ git pull --no-ff https://github.com/<username>/selenium master
 
 The exact url will be noted in the pull request mail from github. Please note the branch name "master" may be different.
 
-This pull mechanism will create one commit for the actual submission and a merge on top of that, which will identify the person who accepted the pull request
+This pull mechanism will create one commit for the actual submission and a merge on top of that, which will identify the person who accepted the pull request.
 
 = Rebasing =
 
-We prefer that you rebase and squash whatever it is you are submitting to the project, so that each commit consists of a logical change that compiles and tests well.
+We prefer that you squash and rebase whatever it is you are submitting
+to the project, so that each commit consists of a logical change that
+compiles and tests well.
 
-When accepting other people's changes, warn them that their submission will be rebased.
+This also helps keep a clean one-dimensional history of changes that
+are fairly easy to revert when a patch needs to be backed out.
+Patches integrated by merging in git have a tendency to be hard to
+re-revert (applying the revert) again.  When accepting other people's
+changes, warn them that their submission will be rebased.
+
+Squashing a patch can be done interactively:
+
+{{{
+git rebase -i --autosquash `git merge-base HEAD origin/master`
+}}}
+
+This will autosquash any fixups and drop you into your editor to pick
+which commits should be treated as fixups, or which should remain as
+distinct, individual commits.
+
+After squashing the branch you can rebase it on master by doing this:
+
+{{{
+git rebase origin/master
+}}}
