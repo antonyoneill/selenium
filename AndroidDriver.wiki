@@ -1,5 +1,10 @@
-#summary Getting Started With Android Driver
 #labels Mobile,WebDriver,Android,automation
+=REMOVED FROM THE PROJECT=
+
+Use [http://selendroid.io/webview.html Selendroid] instead.
+
+
+#summary Getting Started With Android Driver
 
 <wiki:toc max_depth="3" />
 
@@ -145,103 +150,6 @@ Download the selenium-java-X.zip from our [http://code.google.com/p/selenium/dow
 
 Is really not recommended. None of the core development team have experience with this, and very few people in the community are using the android driver this way.
  
-= Get Involved =
-
-Want to fix a bug? Add a feature? Or simply play with the code? Here is a quick tutorial to help you get started with Android WebDriver. 
-
-First, CheckOut the code. Then edit the {{{properties.yml}}} file to reflect the location of your Android SDK, and set the platform target you want to use. If you want a list of all available target, execute the following command:
-{{{
-./android list targets
-}}}
-
-On Linux, Android SDK is distributed for 32-bits machine. If you have a 64-bit machine you will need to install ia32-libs http://developer.android.com/sdk/installing.html#troubleshooting
-
-== Build the Android WebDriver Code ==
-
-Android WebDriver consists of 3 parts. The client and the server used to run Android WebDriver tests remotely, and a library. The library does most of the real work and is used by Android WebDriver to control the WebView. The server piece simply wraps the library in an  Android application together with the HTTP server.
-
-   * To build the library, the client and the server
-{{{
-$./go android
-}}}
-   * To build the client
-{{{
-$./go android_client
-}}}
-   * To build the server
-{{{
-$./go android_server
-}}}
-   * To run the tests
-{{{
-$./go test_android
-}}}
-This command will start the emulator install the Android WebDriver application and start the tests. 
- If the emulator/device screen is locked, simply unlock it to see the tests running. 
-
-Note that "./go test_android" will fail if there is already an emulator running.
-
-== Update the Atoms Used by Android WebDriver ==
-First let's build all the fragment Android WebDriver uses:
-{{{
-./go //javascript/android-driver:atoms
-}}}
-
-Then copy the new AndroidAtoms.java: 
-{{{
-cp build/javascript/android-driver/AndroidAtoms.java java/client/src/org/openqa/selenium/android/library/AndroidAtoms.java
-}}}
-
-Compile and run the tests to make sure nothing broke! Then make a release of the new APK by following the instructions [http://code.google.com/p/selenium/wiki/AndroidDriver#Make_a_Release here].
-
-== Debug on Android ==
-   * Run the tests
-It's advised to start your own emulator instance (instructions above), leave the emulator running and run the tests. This will prevent you from paying the cost of starting a new emulator for every test run. To run the tests on an already running emulator:
-{{{
-$./go //java/client/test/org/openqa/selenium/android:java-test:run  haltonerror=false haltonfailure=false
-}}}
-
-   * To run one test class only:
-{{{
-./go //java/client/test/org/openqa/selenium/android:java-test:run onlyrun=LocalStorageTest haltonerror=false haltonfailure=false
-}}}
-
-   * To run one test method only:
-{{{
-./go //java/client/test/org/openqa/selenium/android:java-test:run method=testShouldTreatReadonlyAsAValue
-}}}
-
-   * To access the Android logs (server side logs):
-{{{
-$./adb logcat
-}}}
-
-The Android logcat logs are the most useful piece of information for debugging and fixing an issue.
-You can also filter the logs by adding "ActivityManager:W" for example to the logcat command. Android includes examples on how to create filters at http://developer.android.com/tools/debugging/debugging-log.html
-
-   * To access the JS console:
-- Open the android browser
-- Type "about:debug" in the address bar, this is a toggle setting that will enable the JS console
-- Execute Js in the browser by typing javascript:<your JS>, you will see the JS console opening
-
-   * View the client side logs:
-{{{
-$ls build/test_logs/
-}}}
-
-== Make a Release == 
-To release an apk, build the new apk:
-{{{
-$ ./go //android:android-server
-}}}
-
-Check-in the new prebuilt apk:
-{{{
-$ git commit -m "Updating android apk" android/prebuilt/android-server.apk
-$ git push
-}}}
-
-Upload the new APK on the downloads page with the corresponding release notes.
 
 = FAQ =
 
