@@ -4,8 +4,6 @@
 ==Use [http://selendroid.io/webview.html Selendroid] instead.==
 
 
-#summary Getting Started With Android Driver
-
 <wiki:toc max_depth="3" />
 
 = Introduction =
