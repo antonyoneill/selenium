@@ -1,7 +1,7 @@
 #labels Mobile,WebDriver,Android,automation
 =REMOVED FROM THE PROJECT=
 
-Use [http://selendroid.io/webview.html Selendroid] instead.
+==Use [http://selendroid.io/webview.html Selendroid] instead.==
 
 
 #summary Getting Started With Android Driver
