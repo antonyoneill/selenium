@@ -1,8 +1,17 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
-==2.5.0 (unreleased) == 
+==2.6.0 (unreleased) == 
 
+==2.5.0== 
+
+  * Enh - Select an element for a command by clicking on the element in the browser window
+  * Enh - Start playing a test suite from any test case (Using right click menu) - issue 1987
+  * Enh - Add a new test case using a keyboard shortcut (ctrl-N or cmd+N)
+  * Fix - Fixed delete test case through right click menu was sometimes disabled - issue 5003
+  * Fix - Fixed Selenium IDE icon is sometimes not visible - issue 5712
+  * Fix - Fixed selectWindow using a variable - issue 3270
+  * Some minor changes
 
 ==2.4.0== 
 
