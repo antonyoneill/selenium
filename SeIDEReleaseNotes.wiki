@@ -3,9 +3,11 @@
 
 ==2.6.0 (unreleased) == 
 
+  * Enh - Schedule tests for automatic playback at a certain time or periodic intervals.
+
 ==2.5.0== 
 
-  * Enh - Select an element for a command by clicking on the element in the browser window
+  * Enh - Select an element for a command by clicking on the element in the browser window (http://blog.reallysimplethoughts.com/2014/01/05/manually-adding-and-updating-element-locators-the-easy-way/)
   * Enh - Start playing a test suite from any test case (Using right click menu) - issue 1987
   * Enh - Add a new test case using a keyboard shortcut (ctrl-N or cmd+N)
   * Fix - Fixed delete test case through right click menu was sometimes disabled - issue 5003
