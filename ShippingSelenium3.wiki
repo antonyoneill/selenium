@@ -12,6 +12,12 @@
 
 = Clean up =
 
+== Using WebDriver after quit() should be an IllegalStateException ==
+
+Multiple calls to WebDriver.quit() should still be safe.
+
+== Clean up WebDriver constructors, pulling heavy initialization logic into a Builder class ==
+
 == Migrate to Netty or webbit server ==
 
 == Delete unnecessary cruft ==
