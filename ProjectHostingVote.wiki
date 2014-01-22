@@ -2,11 +2,11 @@
 
 * edit this page and put your name in a column
 
-|| Stay on google code || Move *EVERYTHING* to Github || Other (specify) || Abstain ||
+|| Stay on google code (Continue using GitHub as mirror) || Move *EVERYTHING* to Github || Other (specify) || Abstain ||
 || || Luke IS || || ||
-|| ato || || || Continue using GitHub as mirror ||
-|| paul hammant || || || Continue using GitHub as mirror ||
-|| jmleyba || || || Continue using !GitHub as mirror ||
+|| ato || || ||  ||
+|| paul hammant || || ||  ||
+|| jmleyba || || ||  ||
 || || krosenvold|| || ||
 || - || - || - || - ||
-|| 3 || 1 || 0 || 0 ||
+|| 3 || 2 || 0 || 0 ||
