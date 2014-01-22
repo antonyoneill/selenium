@@ -7,8 +7,9 @@
 || ato || || ||  ||
 || paul hammant || || ||  ||
 || jmleyba || || ||  ||
+|| automatedtester || || ||  ||
 || || krosenvold|| || ||
 || || jarib|| || ||
 ||   ||   || kmenard (Bitbucket) || ||
 || - || - || - || - ||
-|| 3 || 3 || 0 || 0 ||
+|| 4 || 3 || 0 || 0 ||
