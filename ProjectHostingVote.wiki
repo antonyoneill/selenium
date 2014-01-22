@@ -9,5 +9,6 @@
 || jmleyba || || ||  ||
 || || krosenvold|| || ||
 || || jarib|| || ||
+||   ||   || kmenard (Bitbucket) || ||
 || - || - || - || - ||
 || 3 || 3 || 0 || 0 ||
