@@ -6,6 +6,6 @@
 || || Luke IS || || ||
 || ato || || || Continue using GitHub as mirror ||
 || paul hammant || || || Continue using GitHub as mirror ||
-|| simon stewart || || || Continue using GitHub as mirror ||
+|| jmleyba || || || Continue using !GitHub as mirror ||
 || - || - || - || - ||
-|| 1 || 1 || 0 || 0 ||
+|| 3 || 1 || 0 || 0 ||
