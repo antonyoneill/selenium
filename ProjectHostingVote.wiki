@@ -8,8 +8,9 @@
 || paul hammant || || ||  ||
 || jmleyba || || ||  ||
 || automatedtester || || ||  ||
+|| dawagner || || ||  ||
 || || krosenvold|| || ||
 || || jarib|| || ||
 ||   ||   || kmenard (Bitbucket) || ||
 || - || - || - || - ||
-|| 4 || 3 || 0 || 0 ||
+|| 5 || 3 || 0 || 0 ||
