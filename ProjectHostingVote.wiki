@@ -7,5 +7,6 @@
 || ato || || || Continue using GitHub as mirror ||
 || paul hammant || || || Continue using GitHub as mirror ||
 || jmleyba || || || Continue using !GitHub as mirror ||
+|| || krosenvold|| || ||
 || - || - || - || - ||
 || 3 || 1 || 0 || 0 ||
