@@ -6,6 +6,7 @@
 || || Luke IS || || ||
 || ato || || ||  ||
 || paul hammant || || ||  ||
+|| simon stewart || || || ||
 || jmleyba || || ||  ||
 || automatedtester || || ||  ||
 || dawagner || || ||  ||
@@ -15,4 +16,4 @@
 || || santiycr || || ||
 || || dominikdary || || ||
 || - || - || - || - ||
-|| 5 || 5 || 1 || 0 ||
+|| 6 || 5 || 1 || 0 ||
