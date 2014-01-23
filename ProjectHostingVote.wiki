@@ -13,5 +13,6 @@
 || || jarib|| || ||
 ||   ||   || kmenard (Bitbucket) || ||
 || || santiycr || || ||
+|| || dominikdary || || ||
 || - || - || - || - ||
 || 5 || 4 || 1 || 0 ||
