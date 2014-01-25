@@ -33,6 +33,17 @@ As a standalone executable, the behavior of the IE driver can be modified throug
 || --extract-path=`<path>` || Specifies the full path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
 || --silent || Suppresses diagnostic output when the server is started. ||
 
+== Important System Properties ==
+
+The following system properties (read using {{{System.getProperty()}}} and set using {{{System.setProperty()}}} in Java code or the "{{{-DpropertyName=value}}}" command line flag) are used by the InternetExplorerDriver:
+
+|| *Property* || *What it means* ||
+|| webdriver.ie.driver || The location of the IE driver binary. ||
+|| webdriver.ie.driver.host || Specifies the IP address of the host adapter on which the IE driver will listen. ||
+|| webdriver.ie.driver.loglevel || Specifies the level at which logging messages are output. Valid values are FATAL, ERROR, WARN, INFO, DEBUG, and TRACE. Defaults to FATAL. ||
+|| webdriver.ie.driver.logfile || Specifies the full path and file name of the log file. Defaults to stdout. ||
+|| webdriver.ie.driver.silent || Suppresses diagnostic output when the IE driver is started. ||
+
 == Required Configuration ==
 
  * The IEDriverServer exectuable must be [http://code.google.com/p/selenium/downloads/list downloaded] and placed in your [http://en.wikipedia.org/wiki/PATH_(variable) PATH].
