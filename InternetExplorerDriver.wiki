@@ -3,7 +3,7 @@
 
 = Internet Explorer Driver =
 
-The InternetExplorerDriver is a standalone server which implements WebDriver's wire protocol. This driver has been tested with IE 6, 7, 8 and 9 on appropriate combinations of XP, Vista and Windows 7. 
+The InternetExplorerDriver is a standalone server which implements WebDriver's wire protocol. This driver has been tested with IE 6, 7, 8, 9, and 10 on appropriate combinations of XP, Vista and Windows 7. 
 
 The driver supports running 32-bit and 64-bit versions of the browser. The choice of how to determine which "bit-ness" to use in launching the browser depends on which version of the IEDriverServer.exe is launched. If the 32-bit version of IEDriverServer.exe is launched, the 32-bit version of IE will be launched. Similarly, if the 64-bit version of IEDriverServer.exe is launched, the 64-bit version of IE will be launched.
 
@@ -91,3 +91,6 @@ The second is to clean session during InternetExplorer starting. For this you ne
 == Running IEDriverServer.exe Remotely ==
 
 The HTTP server started by the IEDriverServer.exe sets an access control list to only accept connections from the local machine, and disallows incoming connections from remote machines. At present, this cannot be changed without modifying the source code to the IEDriverServer.exe. To run the Internet Explorer driver on a remote machine, use the Java standalone remote server in connection with your language binding's equivalent of RemoteWebDriver.
+
+== IE 11 Support ==
+Support for Internet Explorer 11 has been delayed pending information from Microsoft on how to disable a new feature in that version of the browser. The IE11 implementation of a new feature of the browser can cause the driver to cross Protected Mode zone boundaries, even if the Protected Mode settings are properly set to prevent such a boundary crossing (i.e., to the same value for all zones). There is no known workaround to this issue that is guaranteed to be 100% effective; Microsoft has been made aware of the issue, and their team is investigating.
