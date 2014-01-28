@@ -86,7 +86,7 @@ Not all server implementations will support every !WebDriver feature. Therefore,
 || opera.logging.level || string ||  How verbose the logging should be. Available levels are: SEVERE (highest value), WARNING, INFO, CONFIG, FINE, FINER, FINEST (lowest value), ALL. Default is INFO. TODO: These seem the wrong way around. Also what about off. Also, unify with firefox loggingPrefs. ||
 
 == Chrome specific ==
-See [https://code.google.com/p/chromedriver/wiki/CapabilitiesAndSwitches Chrome capabilities]
+See [https://sites.google.com/a/chromium.org/chromedriver/capabilities Chrome capabilities]
 
 == Firefox specific ==
 === !WebDriver ===
