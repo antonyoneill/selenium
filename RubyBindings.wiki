@@ -263,6 +263,7 @@ profile = Selenium::WebDriver::Firefox::Profile.new
 profile['browser.download.dir'] = "/tmp/webdriver-downloads"
 profile['browser.download.folderList'] = 2
 profile['browser.helperApps.neverAsk.saveToDisk'] = "application/pdf"
+profile['pdfjs.disabled'] = true
 
 driver = Selenium::WebDriver.for :firefox, :profile => profile
 }}}
