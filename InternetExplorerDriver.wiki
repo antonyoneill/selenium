@@ -93,5 +93,10 @@ The second is to clean session during InternetExplorer starting. For this you ne
 
 The HTTP server started by the IEDriverServer.exe sets an access control list to only accept connections from the local machine, and disallows incoming connections from remote machines. At present, this cannot be changed without modifying the source code to the IEDriverServer.exe. To run the Internet Explorer driver on a remote machine, use the Java standalone remote server in connection with your language binding's equivalent of RemoteWebDriver.
 
+== Running IEDriverServer.exe Under a Windows Service ==
+
+Attempting to use IEDriverServer.exe as part of a Windows Service application is expressly unsupported. Service processes, and processes spawned by them, have much different requirements than those executing in a regular user context. IEDriverServer.exe is explicitly untested in that environment, and includes Windows API calls that are documented to be prohibited to be used in service processes. While it may be possible to get the IE driver to work while running under a service process, users encountering problems in that environment will need to seek out their own solutions.
+
 == IE 11 Support ==
+
 Support for Internet Explorer 11 has been delayed pending information from Microsoft on how to disable a new feature in that version of the browser. The IE11 implementation of a new feature of the browser can cause the driver to cross Protected Mode zone boundaries, even if the Protected Mode settings are properly set to prevent such a boundary crossing (i.e., to the same value for all zones). There is no known workaround to this issue that is guaranteed to be 100% effective; Microsoft has been made aware of the issue, and their team is investigating.
