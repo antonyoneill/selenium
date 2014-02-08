@@ -95,7 +95,9 @@ public class GoogleSuggest {
         for (WebElement suggestion : allSuggestions) {
             System.out.println(suggestion.getText());
         }
-     }
+
+        driver.quit();
+    }
 }
 }}}
 
