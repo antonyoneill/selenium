@@ -349,6 +349,25 @@ driver = Selenium::WebDriver.for :safari
 driver.navigate.to "http://apple.com"
 }}}
 
+To configure the driver, use the Selenium::WebDriver::Safari::Options class, e.g.:
+
+{{{
+opts = Selenium::WebDriver::Safari::Options.new
+opts.add_extension '/my/custom/extension.safariextz'
+
+driver = Selenium::WebDriver.for :safari, :options => opts
+}}}
+
+This class can also be used to configure a remote driver:
+
+{{{
+opts = Selenium::WebDriver::Safari::Options.new
+opts.port = 54321
+opts.add_extension '/my/custom/extension.safariextz'
+opts.clean_session = true
+
+driver = Selenium::WebDriver.for :remote, :desired_capabilities => opts.to_capabilities
+}}}
 
 == Timeouts ==
 
