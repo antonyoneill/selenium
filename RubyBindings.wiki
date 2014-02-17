@@ -349,7 +349,7 @@ driver = Selenium::WebDriver.for :safari
 driver.navigate.to "http://apple.com"
 }}}
 
-To configure the driver, use the Selenium::WebDriver::Safari::Options class, e.g.:
+To configure the driver, use the Selenium::WebDriver::Safari::Options class (available since 2.40.0):
 
 {{{
 opts = Selenium::WebDriver::Safari::Options.new
