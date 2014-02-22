@@ -60,10 +60,15 @@ When developing Selenium, it is recommended you run the tests before and after m
 from the root of your local copy. Other browsers can be tested by changing `firefox` to the browser you wish to test, for example:
 {{{
 ./go //py:chrome_test:run
+./go //py:phantomjs_test:run
 }}} 
 To rerun a single test method that may have failed, you can do that like this:
 {{{
 ./go //py:firefox_test:run method=testShouldExplicitlyWaitForASingleElement
+}}}
+To run as a different version of python (for example if your default is 2.7 and you have 3 installed)
+{{{
+./go test_py pyversion=python3
 }}}
 
 = Usage =
