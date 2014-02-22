@@ -5,7 +5,7 @@
 
 The python bindings for Selenium 2 are now available. The bindings include the full functionality of Selenium 1 and 2 (WebDriver). The package currently supports the Remote, Firefox, Chrome and IE protocols natively.
 
-_note_ : Currently Selenium only supports Python 2.6 and Python 2.7
+_note_ : Currently Selenium only supports Python 2.6, 2.7, 3.2, 3.3
 
 
 If using selenium 1, before attempting to run a test, be sure to [http://code.google.com/p/selenium/downloads/list download the Selenium Server jar] file, and run it via 
@@ -19,7 +19,7 @@ in your terminal/cmd prompt, before attempting to run a test. Selenium 2 however
 Currently, there are two versions of Selenium available for use. 
 
 == Latest Official Release ==
-The first version, is the latest official release, which is available on the Python Package Index [http://python.org/pypi]. To use this version, in your terminal type:
+The first version, is the latest official release, which is available on the Python Package Index [http://python.org/pypi/selenium]. To use this version, in your terminal type:
 
 {{{[sudo] easy_install selenium}}} or {{{[sudo] pip install selenium}}}
 
