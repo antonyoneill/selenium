@@ -27,6 +27,7 @@ driver.wait(function() {
 driver.quit();
 }}}
 
+Reference [http://selenium.googlecode.com/git/docs/api/javascript/index.html API Docs]
 === Installing from NPM ===
 {{{
 % npm install selenium-webdriver
