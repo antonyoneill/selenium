@@ -133,6 +133,10 @@ See [https://sites.google.com/a/chromium.org/chromedriver/capabilities Chrome ca
 === !WebDriver ===
 || *Key* || *Type* || *Description* ||
 || safari.options || object || A map of configuration options, as enumerated below. ||
+
+Available options:
+
+|| *Key* || *Type* || *Description* ||
 || cleanSession || boolean || Whether to make sure the session has no cookies, cache entries, local storage, or databases. ||
 || dataDir || string || Location of Safari's user data directory. If not set, the default location will be used.<ul><li>OS X: `/Users/$USER/Library/Safari`</li><li>Windows: `%APPDATA%\Apple Computer\Safari`</li></ul> ||
 || extensions || array || The extensions that should be installed when starting Safari. Each extension should be specified as the base64 encoding of a `.safariextz` file. ||
