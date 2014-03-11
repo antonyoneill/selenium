@@ -331,6 +331,7 @@ Given these mappings, the server should always route requests whose final path s
 || POST || [#POST_/session/:sessionId/ime/deactivate /session/:sessionId/ime/deactivate] || De-activates the currently-active IME engine. ||
 || POST || [#POST_/session/:sessionId/ime/activate /session/:sessionId/ime/activate] || Make an engines that is available (appears on the listreturned by getAvailableEngines) active. ||
 || POST || [#POST_/session/:sessionId/frame /session/:sessionId/frame] || Change focus to another frame on the page. ||
+|| POST || [#POST_/session/:sessionId/frame/parent /session/:sessionId/frame/parent] || Change focus to the parent context. ||
 || POST || [#POST_/session/:sessionId/window /session/:sessionId/window] || Change focus to another window. ||
 || DELETE || [#DELETE_/session/:sessionId/window /session/:sessionId/window] || Close the current window. ||
 || POST || [#POST_/session/:sessionId/window/:windowHandle/size /session/:sessionId/window/:windowHandle/size] || Change the size of the specified window. ||
@@ -1163,6 +1164,27 @@ should switch to the page's default content.</dd>
 <dt>*Potential Errors:*</dt>
 <dd>`NoSuchWindow` - If the currently selected window has been closed.</dd>
 <dd>`NoSuchFrame` - If the frame specified by `id` cannot be found.</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+
+----
+
+=== /session/:sessionId/frame/parent ===
+
+<dl>
+<dd>
+==== POST /session/:sessionId/frame/parent ====
+</dd>
+<dd>
+<dl>
+<dd>Change focus to the parent context. If the current context is the top level browsing context, the context remains unchanged.</dd>
+<dd>
+<dl>
+<dt>*URL Parameters:*</dt>
+<dd>`:sessionId` - ID of the session to route the command to.</dd>
 </dl>
 </dd>
 </dl>
