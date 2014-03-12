@@ -63,8 +63,8 @@ The "uber" implicit targets build a single "uber jar" containing all the compile
 
 {{{//java/server/src/org/openqa/grid/selenium:selenium:project-srcs}}} will give you some sources.
 
-== Building the Android driver ==
-See [http://code.google.com/p/selenium/wiki/AndroidDriver#Get_Involved Android Wiki]
+== Building the Android Atoms ==
+{{{./go //javascript/android-atoms:atoms}}}
 
 = Useful Targets =
 
