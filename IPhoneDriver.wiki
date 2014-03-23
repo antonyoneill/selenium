@@ -16,7 +16,11 @@ The iphone driver allows testing on a UIWebView (a webkit browser accessible for
  * To test on a device you need the iphone SDK and a provisioning profile (for running on an actual device)
 
 = Building =
-From your [http://code.google.com/p/selenium/source/checkout checked-out copy of trunk], run:
+From your [http://code.google.com/p/selenium/source/checkout checked-out copy of trunk], and checkout the last git tag that the source was available:
+{{{
+git checkout selenium-2.38.0
+}}}
+then run:
 {{{
 ./go iphone
 }}}
