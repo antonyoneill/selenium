@@ -118,3 +118,6 @@ Simon Stewart :
   * BOOM! 2.31 is released with native event support for Firefox 19 even.
   * "correlation does not imply causation" 2.32.0 released with Firefox 20 support.
   * the US government is open again! Let's celebrate with 2.36 newly released, with FF24 support
+  
+  * 2.40 is wow much automate so fixes such awe
+  * 2.41 - the last ie6 "supported" release
