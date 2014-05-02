@@ -391,7 +391,7 @@ Use the Wait class to explicitly wait for some condition:
 
 === Internal timeouts ===
 
-Internally, !WebDriver uses HTTP to communicate with a lot of the drivers (the JsonWireProtocol). By default, `Net::HTTP` from Ruby's standard library is used, which has a default timeout of 60 seconds. If you call `Driver#get` on a page that takes more than 60 seconds to load, you'll see a `TimeoutError` raised from `Net::HTTP`. You can configure this timeout (before launching a browser) by doing:
+Internally, !WebDriver uses HTTP to communicate with a lot of the drivers (the JsonWireProtocol). By default, `Net::HTTP` from Ruby's standard library is used, which has a default timeout of 60 seconds. If you call e.g. `Driver#get`, `Driver#click` on a page that takes more than 60 seconds to load, you'll see a `Timeout::Error` raised from `Net::HTTP`. You can configure this timeout (before launching a browser) by doing:
 
 {{{
   client = Selenium::WebDriver::Remote::Http::Default.new
