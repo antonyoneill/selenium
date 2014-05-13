@@ -43,7 +43,7 @@ The following system properties (read using {{{System.getProperty()}}} and set u
 || webdriver.ie.driver.loglevel || Specifies the level at which logging messages are output. Valid values are FATAL, ERROR, WARN, INFO, DEBUG, and TRACE. Defaults to FATAL. ||
 || webdriver.ie.driver.logfile || Specifies the full path and file name of the log file. ||
 || webdriver.ie.driver.silent || Suppresses diagnostic output when the IE driver is started. ||
-|| webdriver.ie.extractpath || Specifies the full path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
+|| webdriver.ie.driver.extractpath || Specifies the full path to the directory used to extract supporting files used by the server. Defaults to the TEMP directory if not specified. ||
 
 == Required Configuration ==
 
