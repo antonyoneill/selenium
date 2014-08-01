@@ -556,7 +556,7 @@ try {
 This could be rewritten using WebDriverJS as:
 {{{
 driver.switchTo().alert().dismiss().then(null, function(e) {
-  if (e.code !== webdriver.ErrorCode.NO_ALERT_PRESENT) {
+  if (e.code !== webdriver.ErrorCode.NO_SUCH_ALERT) {
     throw e;
   }
 });
