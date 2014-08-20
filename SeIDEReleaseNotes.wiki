@@ -1,9 +1,12 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
-==2.6.0 (unreleased) == 
+==2.7.0 (unreleased) == 
 
   * Enh - Schedule tests for automatic playback at a certain time or periodic intervals.
+
+==2.6.0== 
+
   * Fix - Fixed broken autocompletion in FF31+ - issue 7645
   * Fix - Fixed options validation on options reset - issue 1050
   * Fix - Fixed C# code formatting for select elements
