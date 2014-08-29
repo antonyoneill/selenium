@@ -6,7 +6,7 @@ The Ruby bindings for Selenium/!WebDriver are available as the [http://rubygems.
 
 There are many other Selenium gems out there, but this is the only official, maintained gem. If you're looking for a slightly higher level API built on the same technology, you may want to check out [http://watirwebdriver.com/ watir-webdriver] or [https://github.com/jnicklas/capybara capybara].
 
-The bindings support Ruby 1.9.2 through 2.0.0, JRuby and Rubinius.
+The bindings support Ruby 1.9.2 through 2.1.
 
   * [http://selenium.googlecode.com/git/docs/api/rb/index.html API docs]
   * [http://selenium.googlecode.com/git/rb/CHANGES Changelog]
@@ -19,6 +19,8 @@ The gem also includes the older selenium-client gem for use with Selenium RC. Wh
 The WebDriver API is the successor to the Selenium RC API. For people who don't have a significant investment in the legacy API, we recommend starting directly with `Selenium::WebDriver`, and focusing on the two main classes, `Selenium::WebDriver::Driver` and `Selenium::WebDriver::Element`. This is the entry point to the whole !WebDriver API.
 
 For people who already have tests written against the Selenium RC API, it's possible to use [#-backed_Selenium WebDriver-backed Selenium] to ease the migration. The rest of this document deals with `Selenium::WebDriver` exclusively.
+
+If you're interested in developing the Ruby bindings for Selenium, see the RubyDevelopment page.
 
 = API Example =
 
