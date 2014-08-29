@@ -11,6 +11,14 @@ The CrazyFunBuild runs on a bundled JRuby jar and is based on Rake. Use the 'go'
 
 Since this is just a wrapper for Rake, familiar commands (like `go -T` to list targets) all work.
 
+== Setting up ==
+
+Tests will be run with your local Ruby installation, which should be a version >= 1.9.2. 
+Make sure you have bundler and our dependencies installed by running
+
+* `gem install bundler`
+* `./go //rb:bundle`
+
 == Building ==
 
 After making changes, you need to build the code (this is needed since we depend on other parts of the project):
@@ -27,14 +35,16 @@ Using/requiring the ruby code from `rb/lib` directly is not recommended.
 
 == Testing ==
 
-Most of the Ruby targets should work on both MRI (using `rake //rb:<target>`) or the bundled JRuby jar (using `./go //rb:<target>`). One notable exception is the //rb:remote-test target, which relies on being able to compile the server jar. You can however do the build with JRuby/go, then use rake to run the tests. 
-
-For MRI, it's a good idea to run `rake //rb:install-gems` to make sure you have the dependencies installed. 
-
 || `./go //rb:unit-test` || Run unit tests for WebDriver. ||
 || `./go //rb:firefox-test` || Run integration tests for Firefox - replace "firefox" with any driver. ||
 || `./go //rb:rc-client-unit-test` || Run unit tests for selenium-client (Se 1.x/RC) ||
 || `./go //rb:rc-client-integration-test` || Run integration tests for selenium-client (Se 1.x/RC) ||
+
+Try `./go -T | grep //rb` to see all the Ruby targets.
+
+== Building ==
+
+You can build the gem with `./go //rb:gem:build`, which will place the gem in `build/`. See ReleasingSelenium for how to make a gem release.
 
 == Contributing == 
 
