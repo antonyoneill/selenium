@@ -50,5 +50,5 @@ You can build the gem with `./go //rb:gem:build`, which will place the gem in `b
 
   # Make your feature addition or bug fix.
   # Add tests for it. This is important so we don't break it in a future version unintentionally.
-  # Create a patch: `svn diff > my-feature.patch`
+  # Create a patch: `git diff > my-feature.patch`
   # Create a [http://code.google.com/p/selenium/issues/entry new issue], attach the patch and add the Lang-Ruby label.
