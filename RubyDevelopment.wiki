@@ -16,8 +16,8 @@ Since this is just a wrapper for Rake, familiar commands (like `go -T` to list t
 Tests will be run with your local Ruby installation, which should be a version >= 1.9.2. 
 Make sure you have bundler and our dependencies installed by running
 
-* `gem install bundler`
-* `./go //rb:bundle`
+  # `gem install bundler`
+  # `./go //rb:bundle`
 
 == Building ==
 
@@ -27,9 +27,9 @@ After making changes, you need to build the code (this is needed since we depend
   * `./go //rb:chrome`
   * etc.
 
-Build results go in the `build/rb` directory. You can play with your changes in irb from there:
+Build results go in the `build/rb` directory. You can play with your changes in a REPL from there:
 
-  `irb -I build/rb/lib -r selenium-webdriver`
+  `cd build/rb && bundle console`
 
 Using/requiring the ruby code from `rb/lib` directly is not recommended.
 
