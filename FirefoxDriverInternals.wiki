@@ -1,7 +1,7 @@
 #summary How the FirefoxDriver works
 #labels WebDriver
 
-= FirefoxDriver Interals =
+= FirefoxDriver Internals =
 
 The FirefoxDriver is largely written in the form of a Firefox extension. Language bindings control the driver by connecting over a socket and sending commands (described in the JsonWireProtocol page) in UTF-8. The extension makes use of the XPCOM primitives offered by Firefox in order to do its work. The important thing to notice is that the command names map directly on to methods exposed on the "FirefoxDriver.prototype" in the javascript code.
 
