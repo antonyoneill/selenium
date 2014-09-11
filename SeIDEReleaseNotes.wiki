@@ -3,6 +3,7 @@
 
 ==2.7.0 (unreleased) == 
 
+  * Fix - Fixed switching between tabs in the bottom info panel in FF32 - issue 7824
   * Enh - Schedule tests for automatic playback at a certain time or periodic intervals.
 
 ==2.6.0== 
