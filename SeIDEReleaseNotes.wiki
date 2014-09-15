@@ -9,6 +9,24 @@
 
   * Fix - Fixed switching between tabs in the bottom info panel in FF32 - issue 7824
   * Fix - Fixes for https://bugzilla.mozilla.org/show_bug.cgi?id=1016305
+  * Enh: Let comments (and commands) span the full width of the commands table
+  * Enh: Show the result of the test case in the log after it has been played
+  * Enh: Group items in the Action menu by function
+  * Enh: Collect more statistics about test case and suite including running time for reporting purposes
+  * Enh: Improved listboxes supporting drag and drop reordering
+  * Enh: Provide common utility function for plugin authors to deal with files
+  * Enh: Allow pressing tab in the command text box to accept the current autocomplete and move to the target text box
+  * Enh: Select an autocomplete match when typing in the command text box to speed up manual entry of commands
+  * Enh: Make promises implementation available via deferred.js for plugin developers
+  * Enh: Make simple http functions available for plugin developers
+  * Enh: Easier to use confirmations for internal use and for plugins
+  * Fix: Disable autocomplete when editing comments
+  * Fix: Fixed error TypeError: command.isRollup is not a function
+  * Fix: Fixed TypeError: debugContext.currentCommand is undefined
+  * Fix: Fixed TypeError: this.treebox is undefined treeView.js
+  * Fix: Various errors when selecting a comment (usually hidden from the user)
+  * Fix: Incorrect doctype in overlay
+  * Fix: Adding Selenium IDE item under Settings->Developer menu - issue 7268
   * TODO list the remaining changes in this release
 
 ==2.6.0== 
