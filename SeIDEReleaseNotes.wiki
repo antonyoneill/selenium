@@ -27,7 +27,7 @@
   * Fix - Various errors when selecting a comment (usually hidden from the user)
   * Fix - Incorrect doctype in overlay
   * Fix - Adding Selenium IDE item under Settings->Developer menu - issue 7268
-  * TODO list the remaining changes in this release
+  * Fix - Ignore Firefox developer tools while recording
 
 ==2.6.0== 
 
