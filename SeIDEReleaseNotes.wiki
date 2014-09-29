@@ -1,9 +1,18 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
-==2.8.0 (unreleased) == 
+==2.9.0 (unreleased) == 
 
   * Enh - Schedule tests for automatic playback at a certain time or periodic intervals.
+
+==2.8.0== 
+
+  * New - Added visual assist option to help users requiring stronger constrast in colors, turned off by default. Turn it on from the Options dialog. - Issue 7696
+  * New - Health Service to catch unhandled exceptions, statistics, metrics and diagnostics
+  * Enh - Added Search Issues menu item in Help menu to make it easier to search all issues so that we do not get so many duplicate reports of the same issue
+  * Fix - Fixed broken autocomplete - issue 7928
+  * Fix - Fixed cancelling of select button when page is reloaded - issue 7793
+  * Fix - Adding select button to the sidebar and reduced button size - issue 7815
 
 ==2.7.0== 
 
