@@ -142,10 +142,10 @@ Other things to check:
 
 == Building the Firefox prebuilts on Linux ==
 
-* Get yourself a 64 bit machine running Ubuntu
-* Install the following: .... (list TBD)
-* run `./go firefox`
-* update the index to tell git that the files are modified (so you can git add them) `git update-index --no-assume-unchanged cpp/prebuilt/*/libwebdriver_firefox_*`
+ * Get yourself a 64 bit machine running Ubuntu
+ # Install the following: .... (list TBD)
+ # run `./go firefox`
+ # update the index to tell git that the files are modified (so you can git add them) `git update-index --no-assume-unchanged cpp/prebuilt/*/libwebdriver_firefox_*`
 
-* use lxc to create an instance of Ubuntu for 32 bit (i386)
-* and repeat steps above ^
+ * use lxc to create an instance of Ubuntu for 32 bit (i386)
+ # and repeat steps above ^
