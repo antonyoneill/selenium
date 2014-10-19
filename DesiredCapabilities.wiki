@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Not all server implementations will support every !WebDriver feature. Therefore, the client and server should use JSON objects with the properties listed below when describing which features a user requests that a session support. If a session cannot support a capability that is requested in the desired capabilities, no error is thrown; a read-only capabilities object is returned that indicates the capabilities the session actually supports. 
+Not all server implementations will support every !WebDriver feature. Therefore, the client and server should use JSON objects with the properties listed below when describing which features a user [JsonWireProtocol#POST_/session requests] that a session support. If a session cannot support a capability that is requested in the desired capabilities, no error is thrown; a read-only capabilities object is returned that indicates the capabilities the session actually supports. 
 
 === Used by the selenium server for browser selection ===
 

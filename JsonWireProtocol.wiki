@@ -98,7 +98,7 @@ The protocol will assume that the WebDriver API has been "flattened", but there 
 <dt>
 ==== Desired Capabilities ====
 </dt>
-<dd>A Capabilities JSON Object sent by the client describing the capabilities a new session created by the server should possess. Any omitted keys implicitly indicate the corresponding capability is irrelevant.</dd>
+<dd>A Capabilities JSON Object sent by the client describing the capabilities a new session created by the server should possess. Any omitted keys implicitly indicate the corresponding capability is irrelevant. More at [DesiredCapabilities].</dd>
 
 <dt>
 ==== Actual Capabilities ====
