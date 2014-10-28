@@ -1,11 +1,11 @@
 #summary Information about the Chrome Driver
 #labels WebDriver
 
-= Chrome Driver =
+= [https://sites.google.com/a/chromium.org/chromedriver/ ChromeDriver Site] =
 
-[http://chromedriver.storage.googleapis.com/index.html Download chromedriver]
+Developed in collaboration with the Chromium team, [https://sites.google.com/a/chromium.org/chromedriver/ ChromeDriver] is a standalone server which implements !WebDriver's  [JsonWireProtocol wire protocol].
 
-Developed in collaboration with the Chromium team, the !ChromeDriver is a standalone server which implements !WebDriver's  [JsonWireProtocol wire protocol].
+== [https://sites.google.com/a/chromium.org/chromedriver/downloads ChromeDriver downloads] ==
 
 The !ChromeDriver consists of three separate pieces. There is the browser itself ("chrome"), the language bindings provided by the Selenium project ("the driver") and an executable downloaded from the Chromium project which acts as a bridge between "chrome" and the "driver". This executable is called "chromedriver", but we'll try and refer to it as the "server" in this page to reduce confusion.
 
@@ -62,3 +62,13 @@ URL serverUnderTest = new URL("http://www.google.com");
 CommandExecutor executor = new SeleneseCommandExecutor(seleniumServerUrl, serverUnderTest, DesiredCapabilities.chrome());
 WebDriver driver = new RemoteWebDriver(executor);
 }}}
+
+== More !ChromeDriver links ==
+ 
+  * [https://sites.google.com/a/chromium.org/chromedriver/capabilities ChromeDriver capabilities]
+  * [https://sites.google.com/a/chromium.org/chromedriver/contributing Contribution guide]
+  * [https://sites.google.com/a/chromium.org/chromedriver/getting-started Getting started]
+  * [https://sites.google.com/a/chromium.org/chromedriver/logging Logging]
+  * [https://sites.google.com/a/chromium.org/chromedriver/mobile-emulation Mobile emulation]
+  * [https://sites.google.com/a/chromium.org/chromedriver/help Need help?]
+  * [https://sites.google.com/a/chromium.org/chromedriver/support-policy Chromedriver support policy]
