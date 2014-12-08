@@ -161,10 +161,16 @@ A JSON object describing a Proxy configuration.
 || noProxy || string || (Optional, Ignored if proxyType != *manual*) Specifies proxy bypass addresses. Format is driver specific. || 
 
 == LoggingPreferences JSON object ==
-A json object describing logging preferences.
+A JSON object describing the logging level of different components in the browser, the driver, or any intermediary WebDriver servers.
+
+Available values for most loggers are "OFF", "SEVERE", "WARNING", "INFO", "CONFIG", "FINE", "FINER", "FINEST", "ALL".
+
+This produces a JSON object looking something like: {{{{"loggingPrefs": {"driver": "INFO", "server": "OFF", "browser": "FINE"}}}}}.
+
+See the documentation of each driver for what browser specific logging components are available.
 
 || *Key* || *Type* || *Description* ||
-|| driver || Level || How verbose the logging should be. Available levels are: OFF, SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST, ALL. Default is INFO. ||
+|| component || string || How verbose the logging should be. ||
 
 == FirefoxProfile settings ==
 Preferences accepted by the FirefoxProfile with special meaning, in the WebDriver API:
