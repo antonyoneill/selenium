@@ -1,11 +1,11 @@
 #summary Information about the Chrome Driver
 #labels WebDriver
 
-= [https://sites.google.com/a/chromium.org/chromedriver/ ChromeDriver Site] =
-
 Developed in collaboration with the Chromium team, [https://sites.google.com/a/chromium.org/chromedriver/ ChromeDriver] is a standalone server which implements !WebDriver's  [JsonWireProtocol wire protocol].
 
-== [https://sites.google.com/a/chromium.org/chromedriver/downloads ChromeDriver downloads] ==
+== [https://sites.google.com/a/chromium.org/chromedriver/ Visit the full ChromeDriver site] =
+
+== [https://sites.google.com/a/chromium.org/chromedriver/downloads View all ChromeDriver downloads] ==
 
 The !ChromeDriver consists of three separate pieces. There is the browser itself ("chrome"), the language bindings provided by the Selenium project ("the driver") and an executable downloaded from the Chromium project which acts as a bridge between "chrome" and the "driver". This executable is called "chromedriver", but we'll try and refer to it as the "server" in this page to reduce confusion.
 
@@ -22,7 +22,7 @@ The server expects you to have Chrome installed in the default location for each
 
 == Getting Started ==
 
-Read [https://sites.google.com/a/chromium.org/chromedriver/home ChromeDriver user documentation]
+* Read [https://sites.google.com/a/chromium.org/chromedriver/home ChromeDriver user documentation]
 
 === Running !ChromeDriver as a standalone process ===
 
@@ -67,8 +67,8 @@ WebDriver driver = new RemoteWebDriver(executor);
  
   * [https://sites.google.com/a/chromium.org/chromedriver/capabilities ChromeDriver capabilities]
   * [https://sites.google.com/a/chromium.org/chromedriver/contributing Contribution guide]
-  * [https://sites.google.com/a/chromium.org/chromedriver/getting-started Getting started]
+  * [https://sites.google.com/a/chromium.org/chromedriver/getting-started Getting started with ChromeDriver]
   * [https://sites.google.com/a/chromium.org/chromedriver/logging Logging]
   * [https://sites.google.com/a/chromium.org/chromedriver/mobile-emulation Mobile emulation]
-  * [https://sites.google.com/a/chromium.org/chromedriver/help Need help?]
   * [https://sites.google.com/a/chromium.org/chromedriver/support-policy Chromedriver support policy]
+  * [https://sites.google.com/a/chromium.org/chromedriver/help Need help?]
