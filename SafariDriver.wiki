@@ -11,7 +11,7 @@ The !SafariDriver requires Safari 5.1+
 
 == Getting Started ==
 
-Starting with Selenium 2.30.0, the !SafariDriver comes bundled with the Selenium server. If you wish to build the driver from source, head over to the SafariDriverInternals page.  For now, grab a copy of the [http://code.google.com/p/selenium/downloads/list Selenium jar] and add it to your classpath.  Writing a test for Safari is just as straightforward as using the FirefoxDriver:
+Starting with Selenium 2.45.0, you must manually install the !SafariDriver browser extension. Simply open the latest copy of [http://selenium-release.storage.googleapis.com/index.html SafariDriver.safariextz] in Safari and click the "install" button. Once installed, writing a test for Safari is just as straightforward as using the FirefoxDriver:
 
 {{{
 import static org.junit.Assume.assumeTrue;
@@ -60,17 +60,6 @@ public class SafariDriverTests {
   }
 }
 }}}
-
-== Important System Properties ==
-
-The following system properties (read using `System.getProperty()` and set using `System.setProperty()` in Java code, or set from the command line with `-DpropertyName=value` command line flag) are using by the !SafariDriver:
-
-<dl>
-  <dt>`webdriver.safari.driver`</dt>
-  <dd>Defines the location of an existing, pre-packaged !SafariDriver extension (a `.safariextz` file) to install. This file will be copied to the install directory so it may be reused for multiple invocations.</dd>
-  <dt>`webdriver.safari.noinstall`</dt>
-  <dd>Set to `true` to skip installing the !SafariDriver extension (either the pre-built version included with the Selenium jar or one specified by the `webdriver.safari.driver` property. Use this option to run using a preinstalled extension.</dd>
-</dl>
 
 == Desired Capabilities ==
 
