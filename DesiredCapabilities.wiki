@@ -138,9 +138,7 @@ Available options:
 
 || *Key* || *Type* || *Description* ||
 || cleanSession || boolean || Whether to make sure the session has no cookies, cache entries, local storage, or databases. ||
-|| dataDir || string || Location of Safari's user data directory. If not set, the default location will be used.<ul><li>OS X: `/Users/$USER/Library/Safari`</li><li>Windows: `%APPDATA%\Apple Computer\Safari`</li></ul> ||
-|| extensions || array || The extensions that should be installed when starting Safari. Each extension should be specified as the base64 encoding of a `.safariextz` file. ||
-|| skipExtensionInstallation || boolean || Whether to skip installing the SafariDriver extension (an extension must be pre-installed; this is intended for working directly on the !SafariDriver). ||
+
 
 === RC ===
 || mode || string || Mode for browser. Possible values: filebased, proxyInjectionMode, proxy. Defaults to filebased. Note: filebased does not work on newer Safaris. proxyInjection requires -proxyInjection to be passed to server command line. ||
