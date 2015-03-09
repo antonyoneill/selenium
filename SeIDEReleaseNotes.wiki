@@ -3,7 +3,7 @@
 
 ==2.9.0== 
 
-  * Enh - Schedule tests for automatic playback at a certain time or periodic intervals.
+  * Enh - Schedule tests for automatic playback at a certain time or periodic intervals. (http://blog.reallysimplethoughts.com/2015/03/09/selenium-ide-scheduler-has-arrived-part-1/)
   * Enh - Allow submission of diagnostic information via a gist.
   * Enh - Improved health logging, including alerts normally hidden.
 
