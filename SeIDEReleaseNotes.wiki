@@ -1,9 +1,11 @@
 #labels ide,releasenotes
 =Selenium IDE - Release Notes=
 
-==2.9.0 (unreleased) == 
+==2.9.0== 
 
   * Enh - Schedule tests for automatic playback at a certain time or periodic intervals.
+  * Enh - Allow submission of diagnostic information via a gist.
+  * Enh - Improved health logging, including alerts normally hidden.
 
 ==2.8.0== 
 
