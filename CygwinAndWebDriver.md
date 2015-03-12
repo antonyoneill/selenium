@@ -1,20 +1,17 @@
-#summary Instructions and guidance for building WebDriver in cygwin
-#labels WebDriver
-
-= Prerequisites =
+# Prerequisites
 
 To use rake, you need to have installed the Ruby package with cygwin.  If you didn't (check this by running `which ruby` - it should point at /usr/bin/ruby.  If it's something beginning with /cygdrive, you have not installed cygwin Ruby.  You will probably get errors complaining about "No medium" if you try to run non-cygwin Ruby).
 
 Make sure your environment variable $RUBYOPT is blank (specifically, does not contain -rubygems).
 
 You then need to install RubyGems.  Do this by:
- # Download the RubyGems tarball from [http://rubyforge.org/projects/rubygems/ Ruby Forge]
- # Unpack the tarball (tar xvfz rubygems-`*`.tgz)
- # Navigate to the unpacked tarball
- # Run the following command: {{{ruby setup.rb install}}}
- # Update RubyGems by running the following: {{{gem update --system}}} (You may need to do this twice).
+  1. Download the RubyGems tarball from [Ruby Forge](http://rubyforge.org/projects/rubygems/)
+  1. Unpack the tarball (tar xvfz rubygems-`*`.tgz)
+  1. Navigate to the unpacked tarball
+  1. Run the following command: `ruby setup.rb install`
+  1. Update RubyGems by running the following: `gem update --system` (You may need to do this twice).
 
-Then install rake.  Do this by: {{{gem install --remote rake}}}
+Then install rake.  Do this by: `gem install --remote rake`
 
 `which rake` should now show /usr/bin/rake
 
