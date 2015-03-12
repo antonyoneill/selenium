@@ -1,13 +1,11 @@
-#summary Instructions on how to define a new command in the remote wire protocol.
+# Defining A New Wire Protocol Command
 
-= Defining A New Wire Protocol Command =
+Defining a new command in WebDriver's [remote wire protocol](JsonWireProtocol.md) can seem like a daunting task to new developers, but the process is really straight forward.  This page documents the steps one need follow to extend WebDriver's functionality.
 
-Defining a new command in !WebDriver's [JsonWireProtocol remote wire protocol] can seem like a daunting task to new developers, but the process is really straight forward.  This page documents the steps one need follow to extend !WebDriver's functionality.
+## Update the Wire Protocol
 
-== Update the Wire Protocol ==
-
-The first step is to update the formal protocol [JsonWireProtocol spec].  To ensure that everything is consistently formatted, you should use the provided script instead of editing the page through the UI:
-{{{
+The first step is to update the formal protocol [spec](JsonWireProtocol.md).  To ensure that everything is consistently formatted, you should use the provided script instead of editing the page through the UI:
+```
 # Set up your client.
 $ svn co https://selenium.googlecode.com/svn/ --depth=empty wire_protocol
 $ cd wire_protocol
@@ -23,14 +21,14 @@ $ svn diff ./wiki/JsonWireProtocol.wiki
 
 # Commit everything together so changes can be easily tracked in the logs.
 $ svn commit ./trunk/wire.py ./wiki/JsonWireProtocol.wiki
-}}}
+```
 
-== Implement the Command for Each Driver ==
+## Implement the Command for Each Driver
 
-The details for updating each driver is beyond the scope of this document, so we shall only cover the !FirefoxDriver as an illustrative example.
+The details for updating each driver is beyond the scope of this document, so we shall only cover the FirefoxDriver as an illustrative example.
 
- # Configure the mapping from resource URL to command handler in `//firefox/src/extension/components/dispatcher.js`
-{{{
+  1. Configure the mapping from resource URL to command handler in `//firefox/src/extension/components/dispatcher.js`
+```
 Dispatcher.prototype.init_ = function() {
   // ...
 
@@ -39,32 +37,32 @@ Dispatcher.prototype.init_ = function() {
 
   // ...
 };
-}}}
- # Implement the individual command handlers in `//firefox/src/extension/components/firefoxDriver.js`
-{{{
+```
+  1. Implement the individual command handlers in `//firefox/src/extension/components/firefoxDriver.js`
+```
 FirefoxDriver.prototype.implicitlyWait = function(response, parameters) {
   response.session.setImplicitWait(parameters.ms);
   response.send();
 };
-}}}
+```
 
-== Update the !RemoteWebDriver Clients ==
+## Update the RemoteWebDriver Clients
 
-=== Java ===
+### Java
 
- # Define a constant for the command in `org.openqa.selenium.remote.DriverCommand`
-{{{
+  1. Define a constant for the command in `org.openqa.selenium.remote.DriverCommand`
+```
   String IMPLICITLY_WAIT = "implicitlyWait";
-}}}
- # Map this constant to the correct resource URL in `org.openqa.selenium.remote.HttpCommandExecutor`
-{{{
+```
+  1. Map this constant to the correct resource URL in `org.openqa.selenium.remote.HttpCommandExecutor`
+```
   nameToUrl = ImmutableMap.<String, CommandInfo>builder()
       // ...
       .put(IMPLICITLY_WAIT, post("/session/:sessionId/timeouts/implicit_wait"))
       .build();
-}}}
- # Define the public facing API in `org.openqa.selenium.remote.RemoteWebDriver` (or `RemoteWebElement`, where appropriate)
-{{{
+```
+  1. Define the public facing API in `org.openqa.selenium.remote.RemoteWebDriver` (or `RemoteWebElement`, where appropriate)
+```
 public class RemoteWebDriver implements WebDriver {
 
   // ...
@@ -88,24 +86,24 @@ public class RemoteWebDriver implements WebDriver {
     }
   }
 }
-}}}
+```
 
-=== Ruby ===
-
-TODO
-
-=== Python ===
+### Ruby
 
 TODO
 
-=== C# ===
+### Python
 
 TODO
 
-== Update the !RemoteWebDriver Server ==
+### C#
 
- # Define a new `org.openqa.selenium.remote.server.handler.WebDriverHandler`.
-{{{
+TODO
+
+## Update the RemoteWebDriver Server
+
+  1. Define a new `org.openqa.selenium.remote.server.handler.WebDriverHandler`.
+```
 public class ImplicitlyWait extends WebDriverHandler implements JsonParametersAware {
 
   private volatile long millis;
@@ -129,12 +127,12 @@ public class ImplicitlyWait extends WebDriverHandler implements JsonParametersAw
     return String.format("[implicitly wait: %s]", millis);
   }
 }
-}}}
- # Map the command handler to the appropriate resource URL in `org.openqa.selenium.remote.server.DriverServlet`
-{{{
+```
+  1. Map the command handler to the appropriate resource URL in `org.openqa.selenium.remote.server.DriverServlet`
+```
 private void setupMappings(DriverSessions driverSessions, ServletLogTo logger) {
   // ...
   postMapper.bind("/session/:sessionId/timeouts/implicit_wait", ImplicitlyWait.class)
       .on(ResultType.SUCCESS, new EmptyResult());
 }
-}}}
+```
