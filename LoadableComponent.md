@@ -1,20 +1,18 @@
-#summary Using the LoadableComponent
 
-<wiki:toc max_depth="2" />
 
-= Using the LoadableComponent =
+# Using the LoadableComponent
 
-== What Is It? ==
+## What Is It?
 
 The LoadableComponent is a base class that aims to make writing PageObjects less painful. It does this by providing a standard way of ensuring that pages are loaded and providing hooks to make debugging the failure of a page to load easier. You can use it to help reduce the amount of boilerplate code in your tests, which in turn make maintaining your tests less tiresome.
 
 There is currently an implementation in Java that ships as part of Selenium 2, but the approach used is simple enough to be implemented in any language.
 
-== Simple Usage ==
+## Simple Usage
 
-As an example of a UI that we'd like to model, take a look at the [http://code.google.com/p/selenium/issues/entry new issue] page. From the point of view of a test author, this offers the service of being able to file a new issue. A basic Page Object would look like:
+As an example of a UI that we'd like to model, take a look at the [new issue](http://code.google.com/p/selenium/issues/entry) page. From the point of view of a test author, this offers the service of being able to file a new issue. A basic Page Object would look like:
 
-{{{
+```
 package com.example.webdriver;
 
 import org.openqa.selenium.By;
@@ -49,21 +47,21 @@ public class EditIssue {
     field.sendKeys(text);
   }
 }
-}}}
+```
 
 In order to turn this into a LoadableComponent, all we need to do is to set that as the base type:
 
-{{{
+```
 public class EditIssue extends LoadableComponent<EditIssue> {
   // rest of class ignored for now
 }
-}}}
+```
 
 This signature looks a little unusual, but it all it means is that this class represents a LoadableComponent that loads the EditIssue page.
 
 By extending this base class, we need to implement two new methods:
 
-{{{
+```
   @Override
   protected void load() {
     driver.get("http://code.google.com/p/selenium/issues/entry");
@@ -74,13 +72,13 @@ By extending this base class, we need to implement two new methods:
     String url = driver.getCurrentUrl();
     assertTrue("Not on the issue entry page: " + url, url.endsWith("/entry"));
   }
-}}}
+```
 
 The `load` method is used to navigate to the page, whilst the `isLoaded` method is used to determine whether we are on the right page. Although the method looks like it should return a boolean, instead it performs a series of assertions using JUnit's Assert class. There can be as few or as many assertions as you like. By using these assertions it's possible to give users of the class clear information that can be used to debug tests.
 
 With a little rework, our PageObject looks like:
 
-{{{
+```
 package com.example.webdriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -143,31 +141,31 @@ public class EditIssue extends LoadableComponent<EditIssue> {
   }
 }
 
-}}}
+```
 
 That doesn't seem to have bought us much, right? One thing it has done is encapsulate the information about how to navigate to the page into the page itself, meaning that this information's not scattered through the code base. It also means that we can do this in our tests:
 
-{{{
+```
 EditIssue page = new EditIssue(driver).get();
-}}}
+```
 
 This call will cause the driver to navigate to the page if that's necessary.
 
-== Advanced Usage: Nested Components ==
+## Advanced Usage: Nested Components
 
 LoadableComponents start to become more useful when they are used in conjunction with other LoadableComponents. Using our example, we could view the "edit issue" page as a component within a project's website (after all, we access it via a tab on that site). You also need to be logged in to file an issue. We could model this as a tree of nested components:
 
-{{{
+```
  + ProjectPage
  +---+ SecuredPage
      +---+ EditIssue
-}}}
+```
 
 What would this look like in code? For a start, each logical component would have its own class. The "load" method in each of them would "get" the parent. The end result, in addition to the EditIssue class above is:
 
 ProjectPage.java:
 
-{{{
+```
 package com.example.webdriver;
 
 import org.openqa.selenium.WebDriver;
@@ -196,11 +194,11 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     assertTrue(url.contains(projectName));
   }
 }
-}}}
+```
 
 and SecuredPage.java:
 
-{{{
+```
 package com.example.webdriver;
 
 import org.openqa.selenium.By;
@@ -253,22 +251,22 @@ public class SecuredPage extends LoadableComponent<SecuredPage> {
     }
   }
 }
-}}}
+```
 
 The "load" method in EditIssue now looks like:
 
-{{{
+```
   @Override
   protected void load() {
     securedPage.get();
 
     driver.get("http://code.google.com/p/selenium/issues/entry");
   }
-}}}
+```
 
 This shows that the components are all "nested" within each other. A call to `get()` in EditIssue will cause all its dependencies to load too. The example usage:
 
-{{{
+```
 public class FooTest {
   private EditIssue editIssue;
 
@@ -289,6 +287,6 @@ public class FooTest {
     editIssue.enterDescription("This is an example");
   }
 }
-}}}
+```
 
-If you're using a library such as [http://code.google.com/p/guiceberry/ Guiceberry] in your tests, the preamble of setting up the PageObjects can be omitted leading to nice, clear, readable tests.
+If you're using a library such as [Guiceberry](http://code.google.com/p/guiceberry/) in your tests, the preamble of setting up the PageObjects can be omitted leading to nice, clear, readable tests.
