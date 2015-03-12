@@ -1,14 +1,11 @@
-#summary A guide to using the JavaScript bindings for WebDriver.
-#labels WebDriver,JavaScript
+# WebDriverJS User’s Guide
 
-= WebDriverJS User’s Guide =
-<wiki:toc max_depth=4/>
 
-== Getting Started ==
+## Getting Started
 _(requires Node v0.8+)_
 
-To get started with WebDriverJS for Node, you will need to download a copy of the [https://code.google.com/p/chromedriver/downloads/list ChromeDriver] and ensure it can be found on your system PATH.  All other browsers can be tested using the [WebDriverJs#Using_the_Stand-alone_Selenium_Server stand-alone Selenium server].  Once you've obtained the ChromeDriver and placed it on your PATH, you can run your first test:
-{{{
+To get started with WebDriverJS for Node, you will need to download a copy of the [ChromeDriver](https://code.google.com/p/chromedriver/downloads/list) and ensure it can be found on your system PATH.  All other browsers can be tested using the [stand-alone Selenium server](WebDriverJs#Using_the_Stand-alone_Selenium_Server.md).  Once you've obtained the ChromeDriver and placed it on your PATH, you can run your first test:
+```
 var webdriver = require('selenium-webdriver');
 
 var driver = new webdriver.Builder().
@@ -25,26 +22,28 @@ driver.wait(function() {
 }, 1000);
 
 driver.quit();
-}}}
+```
 
-Reference [http://selenium.googlecode.com/git/docs/api/javascript/index.html API Docs]
-=== Installing from NPM ===
-{{{
+Reference [API Docs](http://selenium.googlecode.com/git/docs/api/javascript/index.html)
+### Installing from NPM
+```
 % npm install selenium-webdriver
-}}}
+```
 
-=== Building from Source ===
-{{{
+### Building from Source
+```
 % git clone https://code.google.com/p/selenium/
 % cd selenium
 % ./go //javascript/node:selenium-webdriver
-}}}
+```
 The commands above will clone the Selenium repository and build the `selenium-webdriver` module. This module will be placed in the `./build/javascript/node` directory of your Selenium client.
 
-----
-== Using the Stand-alone Selenium Server ==
-You can manage the life and death of the [https://code.google.com/p/selenium/downloads/list Selenium server] using the `selenium-webdriver/remote` module:
-{{{
+
+---
+
+## Using the Stand-alone Selenium Server
+You can manage the life and death of the [Selenium server](https://code.google.com/p/selenium/downloads/list) using the `selenium-webdriver/remote` module:
+```
 var webdriver = require('selenium-webdriver'),
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer;
 
@@ -59,14 +58,16 @@ var driver = new webdriver.Builder().
     withCapabilities(webdriver.Capabilities.firefox()).
     build();
 // ...
-}}}
+```
 
-----
-== Writing Tests ==
+
+---
+
+## Writing Tests
 _(since 2.32.0)_
 
-The `selenium-webdriver/testing` module may be used to write tests that may be run with [http://visionmedia.github.com/mocha/ Mocha]:
-{{{
+The `selenium-webdriver/testing` module may be used to write tests that may be run with [Mocha](http://visionmedia.github.com/mocha/):
+```
 var assert = require('assert'),
     test = require('selenium-webdriver/testing'),
     webdriver = require('selenium-webdriver');
@@ -84,27 +85,29 @@ test.describe('Google Search', function() {
     driver.quit();
   });
 });
-}}}
+```
 
 A full example is provided in the `selenium-webdriver/example` package. You may also find `selenium-webdriver`'s self-tests informative:
-{{{
+```
 % npm install mocha selenium-webdriver
 % mocha -R list --recursive node_modules/selenium-webdriver/test
-}}}
+```
 
-----
-== Understanding the API ==
-Unlike the other language bindings, which all provide blocking APIs, WebDriverJS is purely asynchronous. This document describes the libraries used to simplify working with !WebDriver and !JavaScript's asynchronous event loop.
 
-The simplest asynchronous APIs use basic continuation passing to indicate when an operation has completed.  Unfortunately, this can quickly lead to excessively verbose code that is difficult to understand.  For instance, consider the canonical !WebDriver example, a simple Google search:
-{{{
+---
+
+## Understanding the API
+Unlike the other language bindings, which all provide blocking APIs, WebDriverJS is purely asynchronous. This document describes the libraries used to simplify working with WebDriver and JavaScript's asynchronous event loop.
+
+The simplest asynchronous APIs use basic continuation passing to indicate when an operation has completed.  Unfortunately, this can quickly lead to excessively verbose code that is difficult to understand.  For instance, consider the canonical WebDriver example, a simple Google search:
+```
 driver.get("http://www.google.com");
 driver.findElement(By.name("q")).sendKeys("webdriver");
 driver.findElement(By.name("btnG")).click();
 assertEquals("webdriver - Google Search", driver.getTitle());
-}}}
-Rewritten in !JavaScript with continuation passing, this example quickly gets out of hand:
-{{{
+```
+Rewritten in JavaScript with continuation passing, this example quickly gets out of hand:
+```
 driver.get("http://www.google.com", function() {
  driver.findElement(By.name("q"), function(q) {
    q.sendKeys("webdriver", function() {
@@ -118,22 +121,22 @@ driver.get("http://www.google.com", function() {
    });
  });
 });
-}}}
+```
 Instead of using continuation passing, WebDriverJS uses "promises" to track the state of each operation.  Using promises, the Google search example can be rewritten as follows
-{{{
+```
 driver.get("http://www.google.com");
 driver.findElement(By.name("q")).sendKeys("webdriver");
 driver.findElement(By.name("btnG")).click();
 driver.getTitle().then(function(title) {
  assertEquals("webdriver - Google Search", title);
 });
-}}}
+```
 
-=== Promises ===
+### Promises
 A promise is an object that represents a value, or the eventual computation of a value. Every promise starts in a _pending_ state and may either be successfully _resolved_ with a value or it may be _rejected_ to designate an error.  Once a promise transitions from the pending state, it becomes immutable and cannot change state again.
 
 You can register observers with a promise using the `then()` function. This function takes two (optional) functions as arguments: a callback to invoke with the resolved value and an errback to invoke if the promise was rejected. The observer will be invoked immediately if the promise has already been resolved. Otherwise, it will be invoked as soon as it is resolved. If multiple observers have been registered, they will be called in the order added:
-{{{
+```
 var promise = webdriver.getTitle();
 
 promise.then(function(title) {
@@ -146,11 +149,11 @@ promise.then(function(title) {
 
 // title is: foo
 // title still is: foo
-}}}
+```
 
-==== Value Propagation and Chaining ====
+#### Value Propagation and Chaining
 Each call to `then()` will return a new promise that represents the observer's result.  If the callback (or errback) returns a value (no return is treated as returning undefined), the promise will be resolved. Conversely, if the handler function throws an error, the promise will be rejected.  If you omit one of the handler functions from a call to `then()`, the corresponding value/error will simply propagate to the resulting promise.  With these properties, you can construct processing pipelines:
-{{{
+```
 loadWebApp().
    then(login).
    then(openUserPreferences).
@@ -158,47 +161,47 @@ loadWebApp().
    then(null, function(err) {
      console.error("An error was thrown! " + err);
     });
-}}}
+```
 In the example above, the first three calls to `then()` omit an errback function. If any of these actions (or the initial `loadWebApp`) throws, the error will propagate to the final call to `then()`, effectively defining the catch clause in a try-catch:
-<table align=center>
-<tr valign=top>
+<table align='center'>
+<tr valign='top'>
 <td>
-<code>try {
- loadWebApp();
- login();
- openUserPreferences();
- changePassword();
-} catch (err) {
- console.error(
-     "An error was thrown! " + err);
-}</code>
+<pre><code>try {<br>
+loadWebApp();<br>
+login();<br>
+openUserPreferences();<br>
+changePassword();<br>
+} catch (err) {<br>
+console.error(<br>
+"An error was thrown! " + err);<br>
+}</code></pre>
 </td>
-<td><code>
-loadWebApp().
-   then(login).
-   then(openUserPreferences).
-   then(changePassword).
-   then(null, function(err) {
-     console.error(
-         "An error was thrown! " + err);
-   });
-</code>
+<td><pre><code><br>
+loadWebApp().<br>
+then(login).<br>
+then(openUserPreferences).<br>
+then(changePassword).<br>
+then(null, function(err) {<br>
+console.error(<br>
+"An error was thrown! " + err);<br>
+});<br>
+</code></pre>
 </td>
 </tr>
 </table>
 
-==== Error Handling ====
+#### Error Handling
 A rejected promise is considered handled if an observer with an errback function has been registered.  Chained promises are implicitly handled by the next promise in the chain.
-{{{
+```
 webdriver.promise.rejected(new Error('boom')).  // (1)
    then(callback1).                             // (2)
    then(callback2).                             // (3)
    then(null, onError);                         // (4)
-}}}
+```
 The example above defines a chain on a rejected promise.  The first three promises in the chain (lines 1-3) are all implicitly handled by the next. The final promise, on line 4, is explicitly handled by the onError function.
 
-If a rejected promise is left unhandled, the offending error will be passed to the active [WebDriverJs#Control_Flows control flow] in the next turn of the !JavaScript event loop.  You can receive notifications of unhandled rejections by listening for an `"uncaughtException"` event on the `ControlFlow` object:
-{{{
+If a rejected promise is left unhandled, the offending error will be passed to the active [control flow](WebDriverJs#Control_Flows.md) in the next turn of the JavaScript event loop.  You can receive notifications of unhandled rejections by listening for an `"uncaughtException"` event on the `ControlFlow` object:
+```
 webdriver.promise.controlFlow().on('uncaughtException', function(e) {
  console.error('Unhandled error: ' + e);
 });
@@ -208,14 +211,14 @@ console.log('Leaving rejection unhandled');
 
 // Leaving rejection unhandled
 // Unhandled error: Error: boom
-}}}
+```
 If no event listeners have been registered, the `ControlFlow` will rethrow the error to the global error handler.  In Node.js, this will trigger an `"uncaughtException"` event on the global `process` object; in a browser, `window.onerror` will be notified.
 
-==== Deferred Objects ====
-There are two halves to !WebDriver's promise API: a promise, and a deferred.  The promises discussed so far represent the _consumer_ half of the API and provide functions for interacting with a computed value. Sometimes you will need to _produce_ a promise and control when its value is set. For this, you will use a `Deferred` object.
+#### Deferred Objects
+There are two halves to WebDriver's promise API: a promise, and a deferred.  The promises discussed so far represent the _consumer_ half of the API and provide functions for interacting with a computed value. Sometimes you will need to _produce_ a promise and control when its value is set. For this, you will use a `Deferred` object.
 
 A deferred object is a special version of a promise that provides two additional functions for setting a promise's value: `fulfill()` and `reject()`.  Calling `fulfill()` will set the promise value and invoke the callback chain. Likewise, call `reject()` to set an error and trigger any error-handlers.  The example below demonstrates how to create a promise that will resolve after a set amount of time:
-{{{
+```
 function timeout(ms) {
  var d = webdriver.promise.defer();
  var start = Date.now();
@@ -234,11 +237,11 @@ timeout(500).then(printElapsed);
 
 // time: 500 ms
 // time: 750 ms
-}}}
+```
 In the example above, the `timeout()` function returns the deferred object's promise property.  This property provides consumers access to the `then()` function while reserving `reject()` and `fulfill()` for `timeout()`.
 
 Two functions are provided for quickly creating promises from known values:
-{{{
+```
 // This...
 var p1 = webdriver.promise.fulfilled(123);
 var p2 = webdriver.promise.rejected(new Error('boom'));
@@ -251,13 +254,13 @@ var p1 = d1.promise;
 var d2 = webdriver.promise.defer();
 d2.reject(new Error('boom'));
 var p2 = d2.promise;
-}}}
+```
 
-==== Cancelling a Promise ====
+#### Cancelling a Promise
 Occasionally, the need arises to cancel the computation of a promised value.  This can be accomplished using the `cancel()` function.  Calling `cancel()` will cause the promise to be rejected.  A cancellation handler may be provided when creating a `Deferred` object; upon calling `cancel()`, this handler will be invoked before rejecting the promise.
 
 The example below demonstrates using `cancel()` to abort a repeating timer:
-{{{
+```
 function logForever() {
  var key = setInterval(function() {
    console.log('hello');
@@ -282,10 +285,10 @@ setTimeout(function() {
 // hello
 // hello
 // goodbye
-}}}
+```
 
 Cancellation handlers are inherited by chained promises.  When you call `cancel()`, the root promise will cancelled, allowing the resulting rejection to propagate through the chain:
-{{{
+```
 function onCancel() {
  console.log('The promise was cancelled');
 }
@@ -301,9 +304,9 @@ webdriver.promise.defer(onCancel).
 
 // The promise was cancelled
 // There was an error: Error boom
-}}}
+```
 Note the `cancel()` operation is available on both the `Promise` and `Deferred` objects. To prevent a promise consumer from cancelling an operation, simply define a custom handler that throws.
-{{{
+```
 function foo() {
  var d = webdriver.promise.defer(function() {
    throw Error('nice try!');
@@ -314,19 +317,19 @@ function foo() {
 foo().cancel();
 
 // Error: nice try!
-}}}
+```
 
-=== Control Flows ===
+### Control Flows
 Recall the Google search example:
-{{{
+```
 // In Java
 driver.get("http://www.google.com");
 driver.findElement(By.name("q")).sendKeys("webdriver");
 driver.findElement(By.name("btnG")).click();
 assertEquals("webdriver - Google Search", driver.getTitle());
-}}}
+```
 This can be rewritten using the promise library as:
-{{{
+```
 driver.get("http://www.google.com").
    then(function() {
      return driver.findElement(By.name("q"));
@@ -346,20 +349,20 @@ driver.get("http://www.google.com").
    then(function(title) {
      assertEquals("webdriver - Google Search", title);
     });
-}}}
+```
 Unfortunately, this is really verbose, even for such a simple example - longer scripts could easily get out of hand.  In order to provide an API that cleanly handles asynchronous actions _without impeding readability_, WebDriverJS uses a promise "manager" to coordinate the scheduling and execution of all commands.
 
-The promise manager maintains a queue of scheduled tasks, executing each once the one before it in the queue is finished.  The !WebDriver API is layered on top of the promise manager, allowing us to simplify the search example:
-{{{
+The promise manager maintains a queue of scheduled tasks, executing each once the one before it in the queue is finished.  The WebDriver API is layered on top of the promise manager, allowing us to simplify the search example:
+```
 driver.get("http://www.google.com");
 driver.findElement(webdriver.By.name("q")).sendKeys("webdriver");
 driver.findElement(webdriver.By.name("btnG")).click();
 driver.getTitle().then(function(title) {
  assertEquals("webdriver - Google Search", title);
 });
-}}}
+```
 At the heart of the promise manager is the `ControlFlow` class.  You can obtain an instance of this class using `webdriver.promise.controlFlow()`.  Tasks are enqueued using the `execute()` function.  Tasks always execute in a future turn of the event loop, once those before it in the queue (if there are any) have completed.
-{{{
+```
 var flow = webdriver.promise.controlFlow(),
    num = 0,
    start = Date.now();
@@ -383,11 +386,11 @@ console.log("All tasks scheduled!");
 // task #2
 // task #3
 // All done; elapsed time: 750 ms
-}}}
+```
 Each command in the WebDriverJS API wraps a call to `ControlFlow#execute()`, ensuring that all commands execute in the correct order - no extra effort required.
 
-*Manual promise chaining*
-{{{
+**Manual promise chaining**
+```
 driver.get(“http://www.google.com”).
     then(function() {
       return driver.findElement(webdriver.By.name('q'));
@@ -409,9 +412,9 @@ driver.get(“http://www.google.com”).
     });
 
 // webdriver - Google Search
-}}}
-*Using the promise manager*
-{{{
+```
+**Using the promise manager**
+```
 driver.get(“http://www.google.com”);
 driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
 driver.findElement(webdriver.By.name('btnG')).click();
@@ -420,10 +423,10 @@ driver.getTitle().then(function(title) {
 });
 
 // webdriver - Google Search
-}}}
-==== Framing ====
+```
+#### Framing
 The `ControlFlow` class's execution queue ensures tasks are executed in order, but what about nested tasks?  Nested calls to `execute()` push a new frame to the `ControlFlow`'s internal call stack.  Upon each turn of its execution loop, the `ControlFlow` will pull a task to execute from the queue of the top-most frame.
-{{{
+```
 flow.execute(function() {
  console.log('a');
 
@@ -445,9 +448,9 @@ flow.execute(function() {
 // b
 // c
 // d
-}}}
+```
 A new frame will also be allocated for promise callbacks and errbacks, logically grouping tasks:
-{{{
+```
 flow.execute(function() {
  console.log('a');
 
@@ -465,9 +468,9 @@ flow.execute(function() {
 // a
 // c
 // b
-}}}
+```
 Consider the following example written with the Java API:
-{{{
+```
 1| driver.get(MY_APP_URL);
 2|
 3| String title = driver.getTitle();
@@ -478,9 +481,9 @@ Consider the following example written with the Java API:
 8| }
 9|
 10| driver.findElement(By.id("userPreferences")).click();
-}}}
+```
 This example can be rewritten in JavaScript as:
-{{{
+```
 1| driver.get(MY_APP_URL);
 2| driver.getTitle().then(function(title) {
 3|   if ("Login Page" === title) {
@@ -490,12 +493,12 @@ This example can be rewritten in JavaScript as:
 7|   }
 8| });
 9| driver.findElement(By.id("userPreferences")).click();
-}}}
+```
 Since lines 4-6 are executed within a callback, the `ControlFlow` class will ensure they execute before line 9.
 
-==== Error Handling ====
-When an [WebDriverJs#Error_Handling unhandled rejection] is reported to the `ControlFlow` class, it will check if there is more than one frame on the stack.  If so, the `ControlFlow` will abort the current frame and propagate the rejection to the previous frame.
-{{{
+#### Error Handling
+When an [unhandled rejection](WebDriverJs#Error_Handling.md) is reported to the `ControlFlow` class, it will check if there is more than one frame on the stack.  If so, the `ControlFlow` will abort the current frame and propagate the rejection to the previous frame.
+```
 flow.execute(function() {
  console.log('a');
 
@@ -523,9 +526,9 @@ flow.execute(function() {
 // b
 // c
 // There was an error! boom
-}}}
-If an unhandled rejection propagates all the way to the top-most frame, the `ControlFlow` will use [WebDriverJs#Error_Handling previously described] behavior of emitting an uncaughtException event or notifying the global error handler if there are no registered listeners:
-{{{
+```
+If an unhandled rejection propagates all the way to the top-most frame, the `ControlFlow` will use [previously described](WebDriverJs#Error_Handling.md) behavior of emitting an uncaughtException event or notifying the global error handler if there are no registered listeners:
+```
 flow.execute(function() {
  flow.execute(function() {
    flow.execute(function() {
@@ -539,9 +542,9 @@ flow.on('uncaughtException', function(err) {
 });
 
 // There was an uncaught exception: Error: No soup for you!
-}}}
+```
 You can error propagation to model try-catch blocks.  Consider the Java example below:
-{{{
+```
 try {
   driver.switchTo().alert().dismiss();
 } catch (NoAlertPresentException ignored) {
@@ -552,9 +555,9 @@ try {
 } finally {
   logOut();
 }
-}}}
+```
 This could be rewritten using WebDriverJS as:
-{{{
+```
 driver.switchTo().alert().dismiss().then(null, function(e) {
   if (e.code !== webdriver.ErrorCode.NO_SUCH_ALERT) {
     throw e;
@@ -562,11 +565,11 @@ driver.switchTo().alert().dismiss().then(null, function(e) {
 });
 
 saveButton.click().then(logOut, logOut);
-}}}
+```
 
-==== Defining Multiple Flows ====
+#### Defining Multiple Flows
 WebDriverJS supports defining "parallel" flows using `webdriver.promise.createFlow()`. This function accepts a callbac which will be passed the newly created flow.  Tasks scheduled within this flow will be synchronized with each other, but will remain independent of any other control flows.  Each call to `createFlow()` returns a promise that will resolve when the flow has completed.
-{{{
+```
 var flow1 = webdriver.promise.createFlow(function(flow) {
  flow.execute(function() {
    console.log("flow 1 a");
@@ -611,9 +614,9 @@ flow2.then(function() {
 // flow 2 b
 // Flow 1 finished
 // Flow 2 finished
-}}}
+```
 If an error propagates to the top of a control flow's stack, the promise returned by `createFlow()` will be rejected.
-{{{
+```
 var result = webdriver.promise.createFlow(function() {
  throw Error('fail');
 });
@@ -622,9 +625,9 @@ result.then(function() { console.log('Success!'); },
            function(e) { console.log('Failure: ' + e); });
 
 // Failure: Error: fail
-}}}
+```
 The `webdriver.Builder` class will automatically attach the created `WebDriver` instance to the active flow. The following example uses multiple flows to test Google search using various search terms:
-{{{
+```
 var terms = [
    'javascript',
    'selenium',
@@ -650,16 +653,18 @@ webdriver.promise.fullyResolved(flows).then(function() {
  console.log('All tests passed!');
 });
 
-}}}
+```
 
-----
-== Working in a Browser ==
+
+---
+
+## Working in a Browser
 In addition to node, WebDriverJS may also be used directly in the browser. To compile the browser module, which has a smaller set of dependencies than node, run:
-{{{
+```
 % ./go //javascript/webdriver:webdriver
-}}}
-The WebDriverJS client must be used with the [http://code.google.com/p/selenium/downloads/list Selenium server].  Just as with node, you can create a WebDriver instance using the `webdriver.Builder` class:
-{{{
+```
+The WebDriverJS client must be used with the [Selenium server](http://code.google.com/p/selenium/downloads/list).  Just as with node, you can create a WebDriver instance using the `webdriver.Builder` class:
+```
 <!DOCTYPE html>
 <script src="webdriver.js"></script>
 <script>
@@ -680,11 +685,11 @@ The WebDriverJS client must be used with the [http://code.google.com/p/selenium/
 
  driver.quit();
 </script>
-}}}
+```
 
-=== Controlling the Host Browser ===
-Launching a browser to run a !WebDriver test against another browser is a tad redundant (compared to simply using [WebDriverJs#Node node]). Instead, using WebDriverJS in the browser is intended for automating the browser actually running the script. This can be accomplished as long as the URL for the server and session ID for the browser are known. While these values may be passed to the builder directly, they may also be defined using the `wdurl` and `wdsid` "environment variables", which are parsed from the loading page's URL query data:
-{{{
+### Controlling the Host Browser
+Launching a browser to run a WebDriver test against another browser is a tad redundant (compared to simply using [node](WebDriverJs#Node.md)). Instead, using WebDriverJS in the browser is intended for automating the browser actually running the script. This can be accomplished as long as the URL for the server and session ID for the browser are known. While these values may be passed to the builder directly, they may also be defined using the `wdurl` and `wdsid` "environment variables", which are parsed from the loading page's URL query data:
+```
 <!-- Assuming HTML URL is
  -- /test.html?wdurl=http://localhost:4444/wd/hub&wdsid=foo1234
  -->
@@ -701,14 +706,14 @@ Launching a browser to run a !WebDriver test against another browser is a tad re
        document.getElementById('input').value);
  });
 </script>
-}}}
+```
 
-=== Caveats ===
-There are a few caveats to using WebDriverJS in the browser. First, the `webdriver.Builder` class may only be used to attach to an existing session. In order to create a new session, you must manually create a session, as shown in the first [WebDriverJs#In_the_Browser browser-based] example. Second, there are commands which may impact the page running the WebDriverJS script.
+### Caveats
+There are a few caveats to using WebDriverJS in the browser. First, the `webdriver.Builder` class may only be used to attach to an existing session. In order to create a new session, you must manually create a session, as shown in the first [browser-based](WebDriverJs#In_the_Browser.md) example. Second, there are commands which may impact the page running the WebDriverJS script.
 
   * `webdriver.WebDriver#quit`: The quit command will terminate the entire browser process, including the window running WebDriverJS. Do not use this command unless you are absolutely sure you want to lose everything.
-  * `webdriver.WebDriver#get`: !WebDriver is designed to emulate a user as closely as possible. This means that regardless of which frame a !WebDriver client is currently focused on, navigation commands (_e.g._, `driver.get(url)`) always target the top-most frame. When controlling its host browser, a WebDriverJS script could navigate away from itself by issuing a `WebDriver.get` command while focused on its own window. If you wish to automate the host browser and still navigate between pages, focus your !WebDriver client on a second window (this is similar in concept to Selenium RC's multi-window mode):
-{{{
+  * `webdriver.WebDriver#get`: WebDriver is designed to emulate a user as closely as possible. This means that regardless of which frame a WebDriver client is currently focused on, navigation commands (_e.g._, `driver.get(url)`) always target the top-most frame. When controlling its host browser, a WebDriverJS script could navigate away from itself by issuing a `WebDriver.get` command while focused on its own window. If you wish to automate the host browser and still navigate between pages, focus your WebDriver client on a second window (this is similar in concept to Selenium RC's multi-window mode):
+```
 <!DOCTYPE html>
 <script src="webdriver.js"></script>
 <script>
@@ -720,9 +725,9 @@ There are a few caveats to using WebDriverJS in the browser. First, the `webdriv
  driver.findElement(webdriver.By.name('q')).sendKeys('webdriver');
  driver.findElement(webdriver.By.name('btnG')).click();
 </script>
-}}}
+```
 
-=== Supported Browsers ===
+### Supported Browsers
 WebDriverJS is supported in the following browsers:
   * IE 8+
   * Firefox 10+
