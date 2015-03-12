@@ -1,14 +1,12 @@
-#summary Using a command-based approach for testing
-
-= Bot Style Tests =
+# Bot Style Tests
 
 Although PageObjects are a useful way of reducing duplication in your tests, it's not always a pattern that teams feel comfortable following. An alternative approach is to follow a more "command-like" style of testing.
 
-== Example ==
+## Example
 
 A "bot" is an action-oriented abstraction over the raw Selenium APIs. This means that if you find that commands aren't doing the Right Thing for your app, it's easy to change them. As an example:
 
-{{{
+```
 public class ActionBot {
   private final WebDriver driver;
 
@@ -35,6 +33,6 @@ public class ActionBot {
     element.sendKeys(text + "\n");
   }
 }
-}}}
+```
 
 Once these abstractions have been built and duplication in your tests identified, it's possible to layer PageObjects on top of bots.
