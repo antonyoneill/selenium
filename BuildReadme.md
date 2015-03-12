@@ -1,8 +1,6 @@
-#summary Questions to be answered after someone checks out the source code in order to build and run tests.
- 
-= Build Questions =
+# Build Questions
 
-  * Why do the docs say "{{{type go}}}"
+  * Why do the docs say "`type go`"
 
 CrazyFun is 'just' Rake. But there was some environment setup stuff to make it work in a self-contained manner so a shell / batch script was created. Those scripts needed to be something and since I (Adam Goucher) didn't write them they used something other than FlyingMonkey.bat.
 
@@ -14,4 +12,3 @@ Well, that depends on what you are trying to build of course. Don't know? Since 
   * How do I use the Python bindings?
 These are both covered in the PythonBindings wiki page.
 
-  
