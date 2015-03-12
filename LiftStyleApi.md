@@ -1,22 +1,21 @@
-#labels WebDriver
-= Introduction =
+# Introduction
 
 A higher level API integrating WebDriver and Hamcrest to give something in the style of LiFT is provided in the support project. We aim to allow writing tests that are very readable, almost like English sentences.
 
 Note: to use LiFT-style API you may want to add the Hamcrest library to the classpath unless you use "all-inclusive" selenium-selver-standalone distribution package.
 
-= Details =
+# Details
 
 This is very much work in progress at the moment, and the set of HTML tags that can be matched is quite limited at the moment, but easily expanded by following the patterns of what is there. Here's a quick start guide and an example:
 
-  * Extend {{{HamcrestWebDriverTestCase}}}
-  * Implement the {{{createDriver()}}} method to select a WebDriver implementation
+  * Extend `HamcrestWebDriverTestCase`
+  * Implement the `createDriver()` method to select a WebDriver implementation
   * Use verbs like goTo(...) or clickOn(...) to navigate pages
   * Use assertPresenceOf(...) to test the current page
-  * Use _Finder_s to identify different elements in the page
-  * Use _Matcher_s to test conditions of elements (mix webdriver and hamcrest at will)
+  * Use _Finder\_s to identify different elements in the page
+  * Use_Matcher\_s to test conditions of elements (mix webdriver and hamcrest at will)
 
-{{{
+```
 package org.openqa.selenium.lift;
 
 import static org.openqa.selenium.lift.Finders.*;
@@ -48,4 +47,4 @@ public class GoogleTest extends HamcrestWebDriverTestCase {
   }
 
 }
-}}}
+```
