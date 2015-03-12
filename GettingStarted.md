@@ -1,20 +1,17 @@
-#summary Getting started with WebDriver
-#labels Featured,WebDriver
-
-= The 5 Minute Getting Started Guide =
+# The 5 Minute Getting Started Guide
 
 WebDriver is a tool for automating testing web applications, and in particular to verify that they work as expected. It aims to provide a friendly API that's easy to explore and understand, which will help make your tests easier to read and maintain. It's not tied to any particular test framework, so it can be used equally well with JUnit, TestNG or from a plain old "main" method. This "Getting Started" guide introduces you to WebDriver's Java API and helps get you started becoming familiar with it.
 
-Start by [http://code.google.com/p/selenium/downloads/list downloading] the latest binaries and unpack them into a directory. A safe choice is the latest version of {{{selenium-server-standalone-}}}_x.y.z_{{{.jar}}}  _x_, _y_ and _z_ will be digits e.g. 2.4.0 at the time of writing. From now on, we'll refer to this directory as {{{$WEBDRIVER_HOME}}}. Now, open your favourite IDE and:
+Start by [downloading](http://code.google.com/p/selenium/downloads/list) the latest binaries and unpack them into a directory. A safe choice is the latest version of `selenium-server-standalone-`_x.y.z_`.jar`  _x_, _y_ and _z_ will be digits e.g. 2.4.0 at the time of writing. From now on, we'll refer to this directory as `$WEBDRIVER_HOME`. Now, open your favourite IDE and:
 
- * Start a new Java project in your favourite IDE
- * Add all the JAR files under {{{$WEBDRIVER_HOME}}} to the {{{CLASSPATH}}}
+  * Start a new Java project in your favourite IDE
+  * Add all the JAR files under `$WEBDRIVER_HOME` to the `CLASSPATH`
 
-You can see that WebDriver acts just as a normal Java library does: it's entirely self-contained, and you don't need to remember to start any additional processes or run any installers before using it. 
+You can see that WebDriver acts just as a normal Java library does: it's entirely self-contained, and you don't need to remember to start any additional processes or run any installers before using it.
 
-You're now ready to write some code. An easy way to get started is this example, which searches for the term "Cheese" on Google and then outputs the result page's title to the console. You'll start by using the HtmlUnitDriver. This is a pure Java driver that runs entirely in-memory. Because of this, you won't see a new browser window open. 
+You're now ready to write some code. An easy way to get started is this example, which searches for the term "Cheese" on Google and then outputs the result page's title to the console. You'll start by using the HtmlUnitDriver. This is a pure Java driver that runs entirely in-memory. Because of this, you won't see a new browser window open.
 
-{{{
+```
 package org.openqa.selenium.example;
 
 import org.openqa.selenium.By;
@@ -48,7 +45,7 @@ public class Example  {
     }
 }
 
-}}}
+```
 
 Compile and run it. You should see a line with the title of the Google search results as output. Congratulations, you've managed to get started with WebDriver!
 
@@ -56,7 +53,7 @@ In this next example, let's use a page that requires Javascript to work properly
 
 Once that's done, create a new class called GoogleSuggest, which looks like:
 
-{{{
+```
 package org.openqa.selenium.example;
 
 import java.util.List;
@@ -99,8 +96,8 @@ public class GoogleSuggest {
         driver.quit();
     }
 }
-}}}
+```
 
-When you run this program, you'll see the list of suggestions being printed to the console. That's all there is to using WebDriver! 
+When you run this program, you'll see the list of suggestions being printed to the console. That's all there is to using WebDriver!
 
 Hopefully, this will have whet your appetite for more. In the NextSteps page, you will learn how more about how to use WebDriver. It covers aspects such as navigating forward and backward in your browser's history, how to use frames and windows and it provides a more complete discussion of the examples than has been done as you've been GettingStarted. If you're ready, let's take the NextSteps!
