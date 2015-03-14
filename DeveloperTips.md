@@ -1,5 +1,3 @@
-
-
 # Developer Tips
 
 ## Running an Individual Test
@@ -16,7 +14,11 @@ You can also run a single test directly from the command line by typing:
 ./go test_firefox method=foo
 ```
 
-## Reviewing the logs for the tests
+## Not Halting On Errors Or Failures
+
+The test suite will halt on errors and failures by default.  You can disable this behaviour by setting the `haltonerror` or `haltonfailure` environmental variables to `0`.
+
+## Reviewing the Logs For the Tests
 
 When you run the tests, the test results don't appear on the screen. They are written to the `./build/test\_logs' folder. A pair of files are written. Their names are relatively consistent and include the details of the tests which were run. The pair comprise a txt file and an xml file. The xml file contains more information about the runtime environment such as the path, Ant version, etc. These files are overwritten the next time the same test target is executed so you may want to archive results if they're important to you.
 
