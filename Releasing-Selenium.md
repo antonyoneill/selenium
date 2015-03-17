@@ -20,18 +20,13 @@ Known issues can be added to the release notes.
 
 # For Java
 
-  1. Update the docs. I do this on a UNIX variant (**TODO: modify for git**):
-    1. `./go javadocs`
-    1. `rm -rf docs/api/java/*`
-    1. `cp -r build/javadoc/* docs/api/java`
-    1. `git add docs/api/java`
-    1. `git commit docs/api`
   1. Update the Java CHANGELOG under `java/CHANGELOG`. Do this by finding the revision number of the last release and running `git log oldRev..HEAD >> java/CHANGELOG`. You'll then need to edit the file by hand.
   1. Update the SeHQ downloads page with updated links, release numbers and dates
   1. Run `./go clean release`
   1. Upload the new versions of the ZIP files from "build/dist" to the downloads page. Alternatively, run `./go push_release` to have the artifacts uploaded for you.
   1. Upload the new Android APK from build/android/app/android-server.apk to the downloads page.
   1. Add a git tag: `git tag selenium-2.<REVISION> hash` where "hash" refers to the revision to tag. This creates a lightweight tag, so there's no need to add a log message. You'll need to push that change to the origin repo with `git push origin --tags`
+  1. Update the api docs. See [Update API Docs for Java and python](#update-api-docs-for-java-and-python)
 
 
 
@@ -114,10 +109,11 @@ Known issues can be added to the release notes.
   1. `./go py_release` ~ have your credentials stored in ~/.pypirc
   1. Bump the version number to the next version with dev e.g. 2.(n+1).0 and commit changes
   1. Update the SeHQ downloads page with updated links, release numbers and dates
-  1. Update the pydoc:
-    1. `./go py_docs`
-    1. check in docs/api/py
+  1. See [Update API Docs for Java and python](#update-api-docs-for-java-and-python)
 
+# Update API Docs for Java and python
+
+  1. from the root of the repo run: `./generate_api_docs.sh`
 
 # Areas to Improve
 
