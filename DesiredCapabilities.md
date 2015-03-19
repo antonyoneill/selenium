@@ -73,24 +73,6 @@ Not all server implementations will support every WebDriver feature. Therefore, 
 
 # Browser Specific Capabilities
 
-## Opera specific
-| opera.binary | string | Path to Opera binary |
-|:-------------|:-------|:---------------------|
-| opera.guess\_binary\_path | boolean | Whether to guess the path to Opera if it isn't set in opera.binary |
-| opera.no\_restart | boolean | Whether to restart Opera |
-| opera.product | string | Which Opera product we're using, e.g. "desktop", "core" |
-| opera.no\_quit | boolean | Whether to quit Opera when OperaDriver is shut down. If enabled, it will keep the browser running after the driver is shut down. |
-| opera.autostart | boolean | Whether to auto-start the Opera binary. If false, OperaDriver will wait for a connection from the browser. Go to "opera:debug", enter the correct port number, and hit "Connect" to connect manually. |
-| opera.display | integer | Which X display to use (`*`nix only) |
-| opera.idle   | boolean | Whether to use Opera's alternative implicit wait implementation. It will use an in-browser heuristic to guess when a page has finished loading, allowing us with great accuracy tell whether there are any planned events in the document. This functionality is useful for very simple test cases, but not designed for real-world testing. It is disabled by default. |
-| opera.profile | object|string | Directory to use for the Opera profile. If an OperaProfile object, that will be used when starting opera. If null a random temporary directory is used. If "", an empty string, then the default .autotest profile directory will be used (for backwards compatibility with Opera < 11.60). |
-| opera.launcher | string | Path to the launcher binary to use. The launcher is a gateway between OperaDriver and the Opera browser, and is being used for controlling the binary and taking external screenshots. If left blank, OperaDriver will use the launcher supplied with the package. |
-| opera.port   | integer | The port to Opera should connect to. 0 = Random, -1 = Opera default (for use with Opera < 11.60) |
-| opera.host   | string | The host Opera should connect to. Unless you're starting Opera manually you won't need this. |
-| opera.arguments | string | Arguments to pass to Opera, separated by spaces. See `opera -help` for available command-line switches. |
-| opera.logging.file | string | Where to send the output of the logging. Default is to not write to file. |
-| opera.logging.level | string |  How verbose the logging should be. Available levels are: SEVERE (highest value), WARNING, INFO, CONFIG, FINE, FINER, FINEST (lowest value), ALL. Default is INFO. TODO: These seem the wrong way around. Also what about off. Also, unify with firefox loggingPrefs. |
-
 ## Chrome specific
 See [Chrome capabilities](https://sites.google.com/a/chromium.org/chromedriver/capabilities)
 
