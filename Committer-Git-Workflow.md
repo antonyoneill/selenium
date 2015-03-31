@@ -8,7 +8,7 @@ The state-machine of day-to-day git use looks like this:
 
 ![http://wiki.selenium.googlecode.com/git/img/git-rebase-state-machine.png](http://wiki.selenium.googlecode.com/git/img/git-rebase-state-machine.png)
 
-If you loose your confidence anywhere in steps on the right hand side,run  git rebase --abort to restore initial state
+If you lose your confidence anywhere in steps on the right hand side,run  git rebase --abort to restore initial state
 
 
 # Handling a pull request
