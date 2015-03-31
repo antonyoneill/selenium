@@ -15,7 +15,6 @@ Not all server implementations will support every WebDriver feature. Therefore, 
 
 | **Key** | **Type** | **Description** |
 |:--------|:---------|:----------------|
-| takesScreenshot | boolean  | Whether the session supports taking screenshots of the current page. |
 | handlesAlerts | boolean  | Whether the session can interact with modal popups, such as `window.alert` and `window.confirm`. |
 | cssSelectorsEnabled | boolean  | Whether the session supports CSS selectors when searching for elements. |
 
