@@ -81,7 +81,7 @@ See [Chrome capabilities](https://sites.google.com/a/chromium.org/chromedriver/c
 |:-----------------|:-------|:-----------------------------------------------|
 | loggingPrefs     | LoggingPreferences object | Preferences for logging                        |
 | firefox\_binary  | string | Path to firefox binary file to use.            |
-
+| pageLoadingStrategy | string | See https://w3c.github.io/webdriver/webdriver-spec.html#the-page-load-strategy |
 ### RC
 | mode | string | Mode for browser. Possible values: chrome, proxyInjection, proxy. Defaults to chrome, if not set. proxyInjection requires -proxyInjection to be passed to server command line. |
 |:-----|:-------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
