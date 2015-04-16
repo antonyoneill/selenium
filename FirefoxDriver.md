@@ -51,12 +51,3 @@ Download the firebug xpi file from mozilla and start the profile as follows:
 
    WebDriver driver = new FirefoxDriver(firefoxProfile);
 ```
-
-### -Beta- load fast preference
-
-There is beta feature to make firefox not wait for the full page to load after calling .get or .click. This may cause immediate find's to break, so please be sure to use an implicit or explicit wait too. This is only available for Firefox and not other browsers.
-```
-   FirefoxProfile fp = new FirefoxProfile();
-   fp.setPreference("webdriver.load.strategy", "unstable"); // As of 2.19. from 2.9 - 2.18 use 'fast'
-   WebDriver driver = new FirefoxDriver(fp);
-```
