@@ -168,6 +168,7 @@ See the documentation of each driver for what browser specific logging component
 
 ## FirefoxProfile settings
 Preferences accepted by the FirefoxProfile with special meaning, in the WebDriver API:
+
 | **Key** | **Type** | **Description** |
 |:--------|:---------|:----------------|
 | webdriver\_accept\_untrusted\_certs | boolean  | Whether to trust all SSL certificates. TODO: Maybe in some way different to the acceptSslCerts or trustAllSSLCertificates capabilities. |
