@@ -2,7 +2,7 @@
 
 ## From a New Download
 
-There are two [downloads](http://code.google.com/p/selenium/downloads/list) that you will generally want to chose:
+There are two [downloads](http://selenium-release.storage.googleapis.com/index.html) that you will generally want to chose:
 
   * `selenium-server-standalone.jar` - This contains the Selenium server (required if you want to use the Selenium 1.x classes) and the RemoteWebDriver server as a standalone jar, that can be executed using `java -jar`. Note that this JAR contains _all_ of the required dependencies. If you'd prefer to manage the classpath yourself, then download the "selenium-server-XXX.zip" file.
 

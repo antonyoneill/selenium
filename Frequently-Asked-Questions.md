@@ -240,7 +240,7 @@ WebDriver driver = new FirefoxDriver(profile);
 
 ### Q: I'd like it if WebDriver did....
 
-A: If there's something that you'd like WebDriver to do, or you've found a bug, then please add an [add an issue](http://code.google.com/p/webdriver/issues/list) to the WebDriver project page.
+A: If there's something that you'd like WebDriver to do, or you've found a bug, then please add an [add an issue](https://github.com/SeleniumHQ/selenium/issues) to the WebDriver project page.
 
 ### Q: Selenium server sometimes takes a long time to start a new session ?
 

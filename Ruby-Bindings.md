@@ -152,7 +152,7 @@ See also ChromeDriver.
 
 ## Remote
 
-The RemoteWebDriver makes it easy to control a browser running on another machine. Download the jar (from [Downloads](http://code.google.com/p/selenium/downloads/list)) and launch the server:
+The RemoteWebDriver makes it easy to control a browser running on another machine. Download the jar (from [Downloads](http://selenium-release.storage.googleapis.com/index.html)) and launch the server:
 
 `java -jar selenium-server-standalone.jar`
 
@@ -206,7 +206,7 @@ client.proxy = Selenium::Proxy.new(:http => "proxy.org:8080")
 driver = Selenium::WebDriver.for(:remote, :http_client => client)
 ```
 
-See [`Selenium::WebDriver::Proxy`](http://code.google.com/p/selenium/source/browse/trunk/rb/lib/selenium/webdriver/common/proxy.rb) for more options.
+See [`Selenium::WebDriver::Proxy`](https://github.com/SeleniumHQ/selenium/blob/master/rb/lib/selenium/webdriver/common/proxy.rb) for more options.
 
 For the remote Firefox driver you can configure the profile, see the section [Tweaking Firefox preferences](#Tweaking_Firefox_preferences.md).
 
@@ -329,7 +329,7 @@ Experimental support for native events is available on Linux. Set `profile.nativ
 
 The OperaDriver is always run as a RemoteWebDriver server which the Ruby bindings connect to.
 
-To get started, first [download](http://code.google.com/p/selenium/downloads/list) the _selenium-server-standalone_ jar and set the `SELENIUM_SERVER_JAR` environmental variable to point to its location:
+To get started, first [download](http://selenium-release.storage.googleapis.com/index.html) the _selenium-server-standalone_ jar and set the `SELENIUM_SERVER_JAR` environmental variable to point to its location:
 
 `export SELENIUM_SERVER_JAR=/path/to/server-standalone.jar`
 

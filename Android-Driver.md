@@ -12,7 +12,7 @@ Android WebDriver allows to run automated end-to-end tests that ensure your site
 We try to stay as close as possible to what the user interaction with the browser is. To do so, Android WebDriver runs the tests against a WebView (rendering component used by the Android browser) configured like the Android browser. To interact with the page Android WebDriver uses native touch and key events. To query the DOM, it uses the JavaScript Atoms libraries.
 
 ## Supported Platforms
-  * The [current apk](http://code.google.com/p/selenium/downloads/list) will only work with Gingerbread (2.3.x), Honeycomb (3.x), Ice Cream Sandwich (4.0.x) and later.
+  * The [current apk](http://selenium-release.storage.googleapis.com/index.html) will only work with Gingerbread (2.3.x), Honeycomb (3.x), Ice Cream Sandwich (4.0.x) and later.
     * Note that there is an **emulator bug on Gingerbread** that might cause WebDriver to crash.
   * The last version to support Froyo (2.2) is [2.16](http://code.google.com/p/selenium/downloads/detail?name=android-server-2.16.apk).
 
@@ -81,7 +81,7 @@ Every device or emulator has a serial ID. Run this command to get the serial ID 
 $~/android_sdk/platform-tools/adb devices
 ```
 
-Download the Android server from our [downloads page](http://code.google.com/p/selenium/downloads/list). To install the application do:
+Download the Android server from our [downloads page](http://selenium-release.storage.googleapis.com/index.html). To install the application do:
 ```
 $./adb -s <serialId> -e install -r  android-server.apk
 ```
@@ -141,7 +141,7 @@ public class OneTest extends TestCase {
 ```
 
 To compile and run this example you will need the selenium-java-X.zip (client side piece of selenium).
-Download the selenium-java-X.zip from our [download page](http://code.google.com/p/selenium/downloads/list), unzip and include all jars in your IDE project. For Eclipse, right click on project -> Build Path -> Configure Build Path -> Libraries -> Add External Jars.
+Download the selenium-java-X.zip from our [download page](http://selenium-release.storage.googleapis.com/index.html), unzip and include all jars in your IDE project. For Eclipse, right click on project -> Build Path -> Configure Build Path -> Libraries -> Add External Jars.
 
 
 ## Using the Android Test Framework

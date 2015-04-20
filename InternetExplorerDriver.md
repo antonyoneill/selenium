@@ -7,7 +7,7 @@ The driver supports running 32-bit and 64-bit versions of the browser. The choic
 ## Installing
 
 You do not need to run an installer before using the InternetExplorerDriver, though some configuration is required.
-The standalone server executable must be downloaded from the [Downloads](http://code.google.com/p/selenium/downloads/list) page and placed in your [PATH](http://en.wikipedia.org/wiki/PATH_(variable)).
+The standalone server executable must be downloaded from the [Downloads](http://selenium-release.storage.googleapis.com/index.html) page and placed in your [PATH](http://en.wikipedia.org/wiki/PATH_(variable)).
 
 ## Pros
 
@@ -46,7 +46,7 @@ The following system properties (read using `System.getProperty()` and set using
 
 ## Required Configuration
 
-  * The IEDriverServer exectuable must be [downloaded](http://code.google.com/p/selenium/downloads/list) and placed in your [PATH](http://en.wikipedia.org/wiki/PATH_(variable)).
+  * The IEDriverServer exectuable must be [downloaded](http://selenium-release.storage.googleapis.com/index.html) and placed in your [PATH](http://en.wikipedia.org/wiki/PATH_(variable)).
   * On IE 7 or higher on Windows Vista or Windows 7, you must set the Protected Mode settings for each zone to be the same value. The value can be on or off, as long as it is the same for every zone. To set the Protected Mode settings, choose "Internet Options..." from the Tools menu, and click on the Security tab. For each zone, there will be a check box at the bottom of the tab labeled "Enable Protected Mode".
   * Additionally, "Enhanced Protected Mode" must be disabled for IE 10 and higher. This option is found in the Advanced tab of the Internet Options dialog.
   * The browser zoom level must be set to 100% so that the native mouse events can be set to the correct coordinates.

@@ -72,11 +72,11 @@ If you're using a copy of the extension [built from source](SafariDriverInternal
 
 ## Known Issues
 
-All known issues with the SafariDriver may be found on our [issue tracker](http://code.google.com/p/selenium/issues/list?can=1&q=browser%3DSafari+component%3DWebDriver+status%3ANew%2CAccepted%2CWorkingAsIntended%2CWontFix%2CNotFeasible&colspec=ID+Stars+Type+Status+Priority+Owner+Summary+Browser+Component&cells=tiles).
+All known issues with the SafariDriver may be found on our [issue tracker](https://github.com/SeleniumHQ/selenium/issues).
 
 ## Reporting Bugs
 
-If you think you've found a bug, please open a [bug](http://code.google.com/p/selenium/issues/list) on our issue tracker.  When filing a bug, please adhere to the following guidelines:
+If you think you've found a bug, please open a [bug](https://github.com/SeleniumHQ/selenium/issues) on our issue tracker.  When filing a bug, please adhere to the following guidelines:
   1. Prefix your summary line with "`[SafariDriver]`."  For example: "`[SafariDriver] Unable to execute JavaScript`".
   1. Include the injected script's log output (see [above](#Debugging.md)).
   1. Include the global page's log output (again, see [above](#Debugging.md)).

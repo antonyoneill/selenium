@@ -149,13 +149,13 @@ The browserTimeout **should** be:
 
 > java -jar selenium-server-standalone.jar -role node -nodeConfig nodeconfig.json
 
-A sample nodeconfig file can be seen at https://code.google.com/p/selenium/source/browse/java/server/src/org/openqa/grid/common/defaults/DefaultNode.json
+A sample nodeconfig file can be seen at https://github.com/SeleniumHQ/selenium/blob/master/java/server/src/org/openqa/grid/common/defaults/DefaultNode.json
 
 ## Configuring the hub by JSON
 
 > java -jar selenium-server-standalone.jar -role hub -hubConfig hubconfig.json
 
-A sample hubconfig.json file can be seen at https://code.google.com/p/selenium/source/browse/java/server/src/org/openqa/grid/common/defaults/DefaultHub.json
+A sample hubconfig.json file can be seen at https://github.com/SeleniumHQ/selenium/blob/master/java/server/src/org/openqa/grid/common/defaults/DefaultHub.json
 
 
 # Hub diagnostic messages

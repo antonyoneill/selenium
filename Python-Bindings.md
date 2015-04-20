@@ -5,7 +5,7 @@ The python bindings for Selenium 2 are now available. The bindings include the f
 _note_ : Currently Selenium only supports Python 2.6, 2.7, 3.2, 3.3
 
 
-If using selenium 1, before attempting to run a test, be sure to [download the Selenium Server jar](http://code.google.com/p/selenium/downloads/list) file, and run it via
+If using selenium 1, before attempting to run a test, be sure to [download the Selenium Server jar](http://selenium-release.storage.googleapis.com/index.html) file, and run it via
 ```
 java -jar selenium-server-standalone.jar
 ```
@@ -23,7 +23,7 @@ The first version, is the latest official release, which is available on the Pyt
 
 ## Development Version
 
-The second version, is the current code from trunk. To use this, checkout the trunk repository at http://code.google.com/p/selenium/source/checkout.
+The second version, is the current code from trunk. To use this, checkout the trunk repository at https://github.com/SeleniumHQ/selenium.
 After the download is completed, cd to the root of the downloaded directory via terminal/cmd prompt, then cd to the `py` folder. Perform the following command:
 
 `(sudo) ./go py_install`.

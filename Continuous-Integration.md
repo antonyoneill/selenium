@@ -15,7 +15,7 @@ When this build is successful, it triggers downstream builds for each OS/browser
 
 Apart from "Maven build" which runs on the same build node as the compile (a beefy, 8-CPU machine with 32GB RAM), all downstream builds run on separate build nodes.
 
-The downstream builds are configured using environment variables, as per the [SauceDriver](https://code.google.com/p/selenium/source/browse/trunk/java/client/test/org/openqa/selenium/testing/drivers/SauceDriver.java) class.  The downstream builds download the selenium-trunk tar from the build master, and then run tests (which should already have been compiled by the Build All Java rule).  Two of these downstream builds are special; "HtmlUnit Java Tests" and "Small Tests" just run headless locally.  The others use [SauceLabs](http://saucelabs.com).
+The downstream builds are configured using environment variables, as per the [SauceDriver](https://github.com/SeleniumHQ/selenium/blob/master/java/client/test/org/openqa/selenium/testing/drivers/SauceDriver.java) class.  The downstream builds download the selenium-trunk tar from the build master, and then run tests (which should already have been compiled by the Build All Java rule).  Two of these downstream builds are special; "HtmlUnit Java Tests" and "Small Tests" just run headless locally.  The others use [SauceLabs](http://saucelabs.com).
 
 A note about networking: The build nodes are set up on an internal network 10.1.0/24, so network communication between them is incredibly fast and free.
 

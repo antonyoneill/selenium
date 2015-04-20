@@ -32,7 +32,7 @@ Reference [API Docs](http://selenium.googlecode.com/git/docs/api/javascript/inde
 
 ### Building from Source
 ```
-% git clone https://code.google.com/p/selenium/
+% git clone https://github.com/SeleniumHQ/selenium.git
 % cd selenium
 % ./go //javascript/node:selenium-webdriver
 ```
@@ -42,7 +42,7 @@ The commands above will clone the Selenium repository and build the `selenium-we
 ---
 
 ## Using the Stand-alone Selenium Server
-You can manage the life and death of the [Selenium server](https://code.google.com/p/selenium/downloads/list) using the `selenium-webdriver/remote` module:
+You can manage the life and death of the [Selenium server](http://selenium-release.storage.googleapis.com/index.html) using the `selenium-webdriver/remote` module:
 ```
 var webdriver = require('selenium-webdriver'),
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer;
@@ -663,7 +663,7 @@ In addition to node, WebDriverJS may also be used directly in the browser. To co
 ```
 % ./go //javascript/webdriver:webdriver
 ```
-The WebDriverJS client must be used with the [Selenium server](http://code.google.com/p/selenium/downloads/list).  Just as with node, you can create a WebDriver instance using the `webdriver.Builder` class:
+The WebDriverJS client must be used with the [Selenium server](http://selenium-release.storage.googleapis.com/index.html).  Just as with node, you can create a WebDriver instance using the `webdriver.Builder` class:
 ```
 <!DOCTYPE html>
 <script src="webdriver.js"></script>

@@ -61,7 +61,7 @@ The GTK way would be to create GTK signals. The GDK way would be creating GdkEve
 
 All of the methods above had the same problem: Firefox, when not having the focus, ignores events sent to it. Just as when trying to feed a four years-old child, it is inappropriate to try and shove food down his throat when it is not paying attention, so trying to force Firefox to handle events when in the background is deeply futile.
 
-Like with a four years-old, trickery will get you much further: trick Firefox into constantly thinking it's in the foreground by never letting the FocusOut events reach it. X events are captured in the same way described above (See [Events](NativeEventsOnLinux#X11.md)) and when a FocusOut detected it is replaced by another event. The exact code can be found in http://code.google.com/p/selenium/source/browse/trunk/firefox/src/cpp/linux-specific/x_ignore_nofocus.c
+Like with a four years-old, trickery will get you much further: trick Firefox into constantly thinking it's in the foreground by never letting the FocusOut events reach it. X events are captured in the same way described above (See [Events](NativeEventsOnLinux#X11.md)) and when a FocusOut detected it is replaced by another event. The exact code can be found in https://github.com/SeleniumHQ/selenium/blob/master/cpp/linux-specific/x_ignore_nofocus.c
 
 ## GDK Events
 

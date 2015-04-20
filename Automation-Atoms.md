@@ -52,4 +52,4 @@ Each of the atoms listed here is exposed via the list **method name**, which del
 | toggle          |                 |
 | type            |                 |
 
-The canonical list of atoms that are implemented for the webdriver APIs are located in this [build file](http://code.google.com/p/selenium/source/browse/trunk/javascript/webdriver-atoms/build.desc). The names of the `js_fragment` rules relate to the names of the methods.
+The canonical list of atoms that are implemented for the webdriver APIs are located in this [build file](https://github.com/SeleniumHQ/selenium/blob/master/javascript/webdriver-atoms/build.desc). The names of the `js_fragment` rules relate to the names of the methods.

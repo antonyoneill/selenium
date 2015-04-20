@@ -5,7 +5,7 @@
 The Advanced User Interactions API is a new, more comprehensive API for describing actions a user can perform on a web page. This includes actions such as drag and drop or clicking multiple elements while holding down the Control key.
 
 ## Getting started (short how-to)
-In order to generate a sequence of actions, use the [Actions](http://code.google.com/p/selenium/source/browse/trunk/java/client/src/org/openqa/selenium/interactions/Actions.java) generator to build it. First, configure it:
+In order to generate a sequence of actions, use the [Actions](https://github.com/SeleniumHQ/selenium/blob/master/java/client/src/org/openqa/selenium/interactions/Actions.java) generator to build it. First, configure it:
 ```
    Actions builder = new Actions(driver);
 
@@ -43,7 +43,7 @@ The API is (mostly) finalized for the actions and actions generator. It is fully
 
 # Outline
 ## A single action
-All actions implement the [Action](http://code.google.com/p/selenium/source/browse/trunk/common/src/java/org/openqa/selenium/interactions/Action.java) interface. This action only has one method: `perform()`. The idea being that each action gets the required information passed in the Constructor. When invoked, the action then figures out how it should interact with the page (for example, finding out the active element to send the key to or calculating the screen coordinates of an element for a click) and calls the underlying implementation to actually carry out the interaction.
+All actions implement the [Action](https://github.com/SeleniumHQ/selenium/blob/master/common/src/java/org/openqa/selenium/interactions/Action.java) interface. This action only has one method: `perform()`. The idea being that each action gets the required information passed in the Constructor. When invoked, the action then figures out how it should interact with the page (for example, finding out the active element to send the key to or calculating the screen coordinates of an element for a click) and calls the underlying implementation to actually carry out the interaction.
 
 There are currently several actions:
   * ButtonReleaseAction - Releasing a held mouse button.

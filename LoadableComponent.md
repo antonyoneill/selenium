@@ -10,7 +10,7 @@ There is currently an implementation in Java that ships as part of Selenium 2, b
 
 ## Simple Usage
 
-As an example of a UI that we'd like to model, take a look at the [new issue](http://code.google.com/p/selenium/issues/entry) page. From the point of view of a test author, this offers the service of being able to file a new issue. A basic Page Object would look like:
+As an example of a UI that we'd like to model, take a look at the [new issue](https://github.com/SeleniumHQ/selenium/issues/new) page. From the point of view of a test author, this offers the service of being able to file a new issue. A basic Page Object would look like:
 
 ```
 package com.example.webdriver;
@@ -64,13 +64,13 @@ By extending this base class, we need to implement two new methods:
 ```
   @Override
   protected void load() {
-    driver.get("http://code.google.com/p/selenium/issues/entry");
+    driver.get("https://github.com/SeleniumHQ/selenium/issues/new");
   }
 
   @Override
   protected void isLoaded() throws Error {
     String url = driver.getCurrentUrl();
-    assertTrue("Not on the issue entry page: " + url, url.endsWith("/entry"));
+    assertTrue("Not on the issue entry page: " + url, url.endsWith("/new"));
   }
 ```
 
@@ -113,13 +113,13 @@ public class EditIssue extends LoadableComponent<EditIssue> {
 
   @Override
   protected void load() {
-    driver.get("http://code.google.com/p/selenium/issues/entry");
+    driver.get("https://github.com/SeleniumHQ/selenium/issues/new");
   }
 
   @Override
   protected void isLoaded() throws Error {
     String url = driver.getCurrentUrl();
-    assertTrue("Not on the issue entry page: " + url, url.endsWith("/entry"));
+    assertTrue("Not on the issue entry page: " + url, url.endsWith("/new"));
   }
   
   public void setSummary(String issueSummary) {
@@ -260,7 +260,7 @@ The "load" method in EditIssue now looks like:
   protected void load() {
     securedPage.get();
 
-    driver.get("http://code.google.com/p/selenium/issues/entry");
+    driver.get("https://github.com/SeleniumHQ/selenium/issues/new");
   }
 ```
 

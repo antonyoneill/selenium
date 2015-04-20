@@ -4,7 +4,7 @@
 
 WebDriver is a large project: if we tried to push everything into a single monolithic build file it eventually becomes unmanageable. We know this. We've tried it. So we broke the single Rakefile into a series of `build.desc` files. Each of these describe a part of the build.
 
-Let's take a look at a build.desc file. This is part of the [main test build.desc](http://code.google.com/p/selenium/source/browse/trunk/java/client/test/org/openqa/selenium/build.desc):
+Let's take a look at a build.desc file. This is part of the [main test build.desc](https://github.com/SeleniumHQ/selenium/blob/master/java/client/test/org/openqa/selenium/build.desc):
 
 ```
 java_test(name = "single",
