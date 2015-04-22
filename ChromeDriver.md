@@ -9,6 +9,7 @@ The ChromeDriver consists of three separate pieces. There is the browser itself 
 ## Requirements
 
 The server expects you to have Chrome installed in the default location for each system:
+
 | **OS** | **Expected Location of Chrome** |
 |:-------|:--------------------------------|
 | Linux  | /usr/bin/google-chrome<sup>1</sup> |
