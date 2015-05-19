@@ -2,11 +2,6 @@
 
 The release notes has moved to [https://github.com/SeleniumHQ/selenium/wiki/SeIDE-Release-Notes](https://github.com/SeleniumHQ/selenium/wiki/SeIDE-Release-Notes). Here is a copy:
 
-## 2.9.1
-
-  * Fix - Changed Google code links to GitHub.
-  * Enh - Merged official language plugins into the main xpi eliminating the need for multi-xpi with the main xpi and multiple language plugin xpis.
-
 ## 2.9.0
 
   * Enh - Schedule tests for automatic playback at a certain time or periodic intervals. (http://blog.reallysimplethoughts.com/2015/03/09/selenium-ide-scheduler-has-arrived-part-1/)
