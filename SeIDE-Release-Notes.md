@@ -1,7 +1,8 @@
 # Selenium IDE - Release Notes
 
-## 2.9.1
+## 2.9.1 - to be released
 
+  * Fix - Fixes https://github.com/SeleniumHQ/selenium/issues/396
   * Fix - Changed Google code links to GitHub.
   * Enh - Merged official language plugins into the main xpi eliminating the need for multi-xpi with the main xpi and multiple language plugin xpis.
 
