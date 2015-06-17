@@ -95,7 +95,8 @@ The node can be configured in 2 different ways; one is by specifying
 command line parameters, the other is by specifying a json file.
 
 ## Configuring the nodes by command line
-By default, this starts 11 browsers : 5 Firefox, 5 Chrome, 1 Internet Explorer.  The maximum number of concurrent tests is set to 5 by default. To change this and other browser settings, you can pass in parameters to each -browser switch (each switch represents a node based on your parameters). If you use the -browser parameter, the default browsers will be ignored and only what you specify command line will be used.
+By default, starting the node allows for concurrent use of 11
+browsers... : 5 Firefox, 5 Chrome, 1 Internet Explorer.  The maximum number of concurrent tests is set to 5 by default. To change this and other browser settings, you can pass in parameters to each -browser switch (each switch represents a node based on your parameters). If you use the -browser parameter, the default browsers will be ignored and only what you specify command line will be used.
 ```
 -browser browserName=firefox,version=3.6,maxInstances=5,platform=LINUX
 ```
