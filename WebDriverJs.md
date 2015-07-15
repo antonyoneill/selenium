@@ -4,7 +4,7 @@
 ## Getting Started
 _(requires Node v0.8+)_
 
-To get started with WebDriverJS for Node, you will need to download a copy of the [ChromeDriver](https://code.google.com/p/chromedriver/downloads/list) and ensure it can be found on your system PATH.  All other browsers can be tested using the [stand-alone Selenium server](WebDriverJs#Using_the_Stand-alone_Selenium_Server.md).  Once you've obtained the ChromeDriver and placed it on your PATH, you can run your first test:
+To get started with WebDriverJS for Node, you will need to download a copy of the [ChromeDriver](http://chromedriver.storage.googleapis.com/index.html) and ensure it can be found on your system PATH.  All other browsers can be tested using the [stand-alone Selenium server](WebDriverJs#Using_the_Stand-alone_Selenium_Server.md).  Once you've obtained the ChromeDriver and placed it on your PATH, you can run your first test:
 ```
 var webdriver = require('selenium-webdriver');
 
