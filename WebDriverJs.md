@@ -74,7 +74,11 @@ var assert = require('assert'),
 
 test.describe('Google Search', function() {
   test.it('should work', function() {
-    var driver = new webdriver.Builder().build();
+    var driver = new webdriver.Builder()
+        .forBrowser('firefox')
+        .build();
+
+    driver.get('http://www.google.com/ncr');
 
     var searchBox = driver.findElement(webdriver.By.name('q'));
     searchBox.sendKeys('webdriver');
