@@ -66,7 +66,7 @@ var driver = new webdriver.Builder().
 ## Writing Tests
 _(since 2.32.0)_
 
-The `selenium-webdriver/testing` module may be used to write tests that may be run with [Mocha](http://visionmedia.github.com/mocha/):
+The [selenium-webdriver/testing](https://github.com/SeleniumHQ/selenium/tree/master/javascript/webdriver/testing) module may be used to write tests that may be run with [Mocha](http://mochajs.org):
 ```
 var assert = require('assert'),
     test = require('selenium-webdriver/testing'),
@@ -91,7 +91,7 @@ test.describe('Google Search', function() {
 });
 ```
 
-A full example is provided in the `selenium-webdriver/example` package. You may also find `selenium-webdriver`'s self-tests informative:
+A full example is provided in the [selenium-webdriver/example](https://github.com/SeleniumHQ/selenium/tree/master/javascript/node/selenium-webdriver/example) package. You may also find `selenium-webdriver`'s self-tests informative:
 ```
 % npm install mocha selenium-webdriver
 % mocha -R list --recursive node_modules/selenium-webdriver/test
