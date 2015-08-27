@@ -1,6 +1,6 @@
 # Internet Explorer Driver
 
-The InternetExplorerDriver is a standalone server which implements WebDriver's wire protocol. This driver has been tested with IE 6, 7, 8, 9, and 10 on appropriate combinations of XP, Vista and Windows 7.
+The InternetExplorerDriver is a standalone server which implements WebDriver's wire protocol. This driver has been tested with IE 7, 8, 9, 10, and 11 on appropriate combinations of Vista, Windows 7, Windows 8, and Windows 8.1. As of 15 April 2014, IE 6 is no longer supported.
 
 The driver supports running 32-bit and 64-bit versions of the browser. The choice of how to determine which "bit-ness" to use in launching the browser depends on which version of the IEDriverServer.exe is launched. If the 32-bit version of IEDriverServer.exe is launched, the 32-bit version of IE will be launched. Similarly, if the 64-bit version of IEDriverServer.exe is launched, the 64-bit version of IE will be launched.
 
