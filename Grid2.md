@@ -114,14 +114,15 @@ Tip: If you need to provide a space somewhere in your browser parameters, then s
 
 ## Optional parameters
 
-  * -port 4444 (4444 is default)
-  * -timeout 30 (300 is default) The timeout in seconds before the hub automatically releases a node that hasn't received any requests for more than the specified number of seconds. After this time, the node will be released for another test in the queue. This helps to clear client crashes without manual intervention. To remove the timeout completely, specify -timeout 0 and the hub will never release the node.
+  * `-port 4444` (4444 is default)
+  * `-host <IP | hostname>` specify the host name or IP. usually not needed and determined automatically. For exotic network configuration, network with VPN, specifying the host might be necessary. 
+  * `-timeout 30` (300 is default) The timeout in seconds before the hub automatically releases a node that hasn't received any requests for more than the specified number of seconds. After this time, the node will be released for another test in the queue. This helps to clear client crashes without manual intervention. To remove the timeout completely, specify -timeout 0 and the hub will never release the node.
 
 > Note: This is NOT the WebDriver timeout for all ”wait for WebElement” type of commands.
 
-  * -maxSession 5	(5 is default) The maximum number of browsers that can run in parallel on the node. This is different from the maxInstance of supported browsers (Example: For a node that supports Firefox 3.6, Firefox 4.0  and Internet Explorer 8, maxSession=1 will ensure that you never have more than 1 browser running. With maxSession=2 you can have 2 Firefox tests at the same time, or 1 Internet Explorer and 1 Firefox test).
+  * `-maxSession 5`	(5 is default) The maximum number of browsers that can run in parallel on the node. This is different from the maxInstance of supported browsers (Example: For a node that supports Firefox 3.6, Firefox 4.0  and Internet Explorer 8, maxSession=1 will ensure that you never have more than 1 browser running. With maxSession=2 you can have 2 Firefox tests at the same time, or 1 Internet Explorer and 1 Firefox test).
 
-  * -browser < params >	If -browser is not set, a node will start with 5 firefox, 1 chrome, and 1 internet explorer instance (assuming it’s on a windows box). This parameter can be set multiple times on the same line to define multiple types of browsers.
+  * `-browser < params >`	If -browser is not set, a node will start with 5 firefox, 1 chrome, and 1 internet explorer instance (assuming it’s on a windows box). This parameter can be set multiple times on the same line to define multiple types of browsers.
 Parameters allowed for -browser:
 browserName={android, chrome, firefox, htmlunit, internet explorer, iphone, opera}
 version={browser version}
@@ -130,9 +131,9 @@ chrome\_binary={path to executable binary}
 maxInstances={maximum number of browsers of this type}
 platform={WINDOWS, LINUX, MAC}
 
-  * -registerCycle = how often in ms the node will try to register itself again.Allow to restart the hub without having to restart the nodes.
+  * `-registerCycle N` = how often in ms the node will try to register itself again.Allow to restart the hub without having to restart the nodes.
 
-  * Relly large (>50 node) Hub installations may need to increase the jetty threads by setting -DPOOL\_MAX=512 (or larger) on the java command line.
+  * Really large (>50 node) Hub installations may need to increase the jetty threads by setting -DPOOL\_MAX=512 (or larger) on the java command line.
 
 ## Configuring timeouts (Version 2.21 required)
 
