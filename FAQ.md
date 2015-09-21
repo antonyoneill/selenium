@@ -1,6 +1,9 @@
-- [Why am I getting a NoSuchElementException](#org.openqa.selenium.NoSuchElementException)?
-- [Why am I getting a StaleElementReferenceException](#org.openqa.selenium.StaleElementReferenceException)
-
+- [Why am I getting a NoSuchElementException](#orgopenqaseleniumNoSuchElementException)?
+- [Why am I getting a StaleElementReferenceException](#orgopenqaseleniumStaleElementReferenceException)
+  
+  
+  
+  
 ### org.openqa.selenium.NoSuchElementException
 
 A NoSuchElementException appears when the element you are attempting to find does not satisfy your selector strategy.  
