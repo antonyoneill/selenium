@@ -1,5 +1,5 @@
-- [Why am I getting a NoSuchElementException](#orgopenqaseleniumNoSuchElementException)?
-- [Why am I getting a StaleElementReferenceException](#orgopenqaseleniumStaleElementReferenceException)
+- [Why am I getting a NoSuchElementException](#orgopenqaseleniumnosuchelementexception)?
+- [Why am I getting a StaleElementReferenceException](#orgopenqaseleniumstaleelementreferenceexception)
   
   
   
