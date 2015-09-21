@@ -4,7 +4,7 @@ Getting involved with an Open Source project can seem like a daunting task. Some
 
 ## For Developers
 
-If you can write code you can get involved by picking up one of the ["Getting Involved" issues](https://github.com/SeleniumHQ/selenium/issues?q=is%3Aopen+is%3Aissue+label%3AE-easy). These are issues that should provide an easier way to get familiar with the code and its structure.
+If you can write code you can get involved by picking up one of the ["Getting Involved" issues](https://github.com/SeleniumHQ/selenium/issues?q=is%3Aopen+is%3Aissue+label%3AE-easy). These are issues that should provide an easier way to get familiar with the code and its structure.  Another tag that can be useful, is the [I-needs investigation](https://github.com/SeleniumHQ/selenium/labels/I-needs%20investigation).  These are issues that a team member may think is a bug, but needs further research into the problem.
 
 If you run into problems or want some help, then please join the [Google Group](http://groups.google.com/group/webdriver) and send us an email. Once you think an issue is complete, just create a patch and associate it with the issue. If you'd like to be able to commit directly, then the process starts by helping us to resolve some of the open issues and letting us know that you're keen to accept some more responsibility (you don't need to do that on the list: feel free to send an email to Simon Stewart directly!)
 
