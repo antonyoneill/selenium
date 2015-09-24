@@ -59,6 +59,7 @@ Known issues can be added to the release notes.
              </manifestEntries>
 ```
   1. Update the version number in all pom.xml files under the maven directory (but do not check in those changes) (`mvn versions:set -DnewVersion=2.3.0` inside the "maven" folder)
+  1. *MAKE SURE YOU HAVE JAVA 7 DEFAULTED ON YOUR PATH* (at least until the javadoc's are fixed to work with java 8)
   1. Execute:
     1. `./go release`
     1. `cd maven`
