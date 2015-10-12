@@ -8,7 +8,7 @@ The SafariDriver requires Safari 5.1+
 
 ## Getting Started
 
-Starting with Selenium 2.45.0, you must manually install the SafariDriver browser extension. Simply open the latest copy of [SafariDriver.safariextz](http://selenium-release.storage.googleapis.com/index.html) in Safari and click the "install" button. Once installed, writing a test for Safari is just as straightforward as using the FirefoxDriver:
+Starting with Selenium 2.48.0, you must manually install the SafariDriver browser extension. Simply open the latest copy of [SafariDriver.safariextz](http://selenium-release.storage.googleapis.com/index.html) in Safari and click the "install" button. Once installed, writing a test for Safari is just as straightforward as using the FirefoxDriver:
 
 ```
 import static org.junit.Assume.assumeTrue;
@@ -60,7 +60,7 @@ public class SafariDriverTests {
 
 ## Desired Capabilities
 
-See the DesiredCapabilities page for [Safari specific](DesiredCapabilities#Safari_specific.md) capability options.
+See the DesiredCapabilities page for [Safari specific](DesiredCapabilities#safari-specific) capability options.
 
 ## Debugging
 
@@ -68,7 +68,7 @@ Sometimes, a test may hang after sending a command to the SafariDriver. This usu
 
 First open the WebKit inspector on the page under test and check the console output. The console is cleared each time a page is loaded, so you'll only be able to see the logs for the most recent injected script. You can select the injected script and set break points inside the inspector, but it is sandboxed from the page, so you can't play with it using the inspector's REPL.
 
-If you're using a copy of the extension [built from source](SafariDriverInternals.md), you can also check the logs for the global page:  Develop > Show Extension Builder. Select the WebDriver extension, and click "Inspect global page." Again, the SafariDriver is super chatty, so you should see what went wrong on the console.  You can set script break points for the injected page and interact with it using the REPL.
+If you're using a copy of the extension [built from source](SafariDriver-Internals), you can also check the logs for the global page:  Develop > Show Extension Builder. Select the WebDriver extension, and click "Inspect global page." Again, the SafariDriver is super chatty, so you should see what went wrong on the console.  You can set script break points for the injected page and interact with it using the REPL.
 
 ## Known Issues
 
