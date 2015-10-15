@@ -1,23 +1,3 @@
-<!--
-========================================================
-========================================================
-
-DO NOT EDIT THIS WIKI PAGE THROUGH THE UI.
-
-Instead, use http://selenium.googlecode.com/git/wire.py
-
-$ svn co https://selenium.googlecode.com/svn/ --depth=empty wire_protocol
-$ cd wire_protocol
-$ svn update --depth=infinity ./wiki
-$ svn update --depth=files ./trunk
-# modify ./trunk/wire.py
-$ python ./trunk/wire.py
-$ svn commit ./trunk/wire.py ./wiki/JsonWireProtocol.wiki
-
-========================================================
-========================================================
--->
-
 <font size='6'><b>The WebDriver Wire Protocol</b></font>
 
 <font size='3'><b>Status:</b> <i>DRAFT</i></font>
