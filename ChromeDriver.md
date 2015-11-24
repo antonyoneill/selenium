@@ -17,7 +17,7 @@ The server expects you to have Chrome installed in the default location for each
 | Windows XP | %HOMEPATH%\Local Settings\Application Data\Google\Chrome\Application\chrome.exe |
 | Windows Vista | C:\Users\%USERNAME%\AppData\Local\Google\Chrome\Application\chrome.exe |
 
-<sup>1</sup> For Linux systems, the ChromeDriver expects /usr/bin/google-chrome to be a symlink to the actual Chrome binary. See also the section on [overriding the Chrome binary location](ChromeDriver#Overriding_the_Chrome_binary_location.md) .
+<sup>1</sup> For Linux systems, the ChromeDriver expects /usr/bin/google-chrome to be a symlink to the actual Chrome binary. See also the section on [overriding the Chrome binary location](https://sites.google.com/a/chromium.org/chromedriver/capabilities#TOC-Using-a-Chrome-executable-in-a-non-standard-location) .
 
 ## Getting Started
 
