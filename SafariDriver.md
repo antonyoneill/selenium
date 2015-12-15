@@ -4,7 +4,7 @@
 
 The SafariDriver is implemented as a Safari browser extension.  The driver inverts the traditional client/server relationship and communicates with the WebDriver client using [WebSockets](http://en.wikipedia.org/wiki/WebSocket).
 
-The SafariDriver requires Safari 5.1+
+The SafariDriver requires Safari 5.1+.  Consequently, SafariDriver on Windows will most likely **not** work on newer versions of Safari and/or Windows because of Apple's decision to [drop Safari on Windows](http://appleinsider.com/articles/12/07/25/apple_kills_windows_pc_support_in_safari_60).
 
 ## Getting Started
 
@@ -26,19 +26,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
 public class SafariDriverTests {
 
   private WebDriver driver = null;
 
-  private static boolean isSupportedPlatform() {
-    Platform current = Platform.getCurrent();
-    return Platform.MAC.is(current) || Platform.WINDOWS.is(current);
-  }
-
   @Before
   public void createDriver() {
-    assumeTrue(isSupportedPlatform());
     driver = new SafariDriver();
   }
 
