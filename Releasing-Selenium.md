@@ -13,8 +13,8 @@ Known issues can be added to the release notes.
 
   1. Gather feedback from other developers about the release: Define a time for the release, ask for release blockers and provide additional details that will help developers participate in the release process. This should be emailed to  'selenium-developers' though working on IRC alone is just fine.
   1. Bump the revision numbers at the top of the Rakefile.
-  1. Bump the revision number in "javascript/firefox-driver/extension/install.rdf"
-  1. Bump the revision number in "java/server/src/org/openqa/selenium/server/VERSION.txt" and "javascript/selenium-core/scripts/selenium-version.js"
+  1. Bump the revision number in: 
+       ```javascript/firefox-driver/extension/install.rdf java/server/src/org/openqa/selenium/server/VERSION.txt javascript/selenium-core/scripts/selenium-version.js```
   1. Commit version number bump.
   1. To find out the revision of the last release: `git log --tags --simplify-by-decoration --pretty="format:%ci %d %h" | sort | tail -1 | awk '{print $NF}'`. This will give you the abbreviated hashcode for the last revision.
 
