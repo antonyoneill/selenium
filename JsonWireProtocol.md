@@ -293,101 +293,101 @@ Given these mappings, the server should always route requests whose final path s
 | GET             | [/status](#status) | Query the server's current status. |
 | POST            | [/session](#session) | Create a new session. |
 | GET             | [/sessions](#sessions) | Returns a list of the currently active sessions. |
-| GET             | [/session/:sessionId](#sessionsessionId) | Retrieve the capabilities of the specified session. |
-| DELETE          | [/session/:sessionId](#sessionsessionId) | Delete the session. |
-| POST            | [/session/:sessionId/timeouts](#sessionsessionIdtimeouts) | Configure the amount of time that a particular type of operation can execute for before they are aborted and a |Timeout| error is returned to the client. |
-| POST            | [/session/:sessionId/timeouts/async\_script](#sessionsessionIdtimeoutsasync_script) | Set the amount of time, in milliseconds, that asynchronous scripts executed by `/session/:sessionId/execute_async` are permitted to run before they are aborted and a |Timeout| error is returned to the client. |
-| POST            | [/session/:sessionId/timeouts/implicit\_wait](#sessionsessionIdtimeoutsimplicit_wait) | Set the amount of time the driver should wait when searching for elements. |
-| GET             | [/session/:sessionId/window\_handle](#sessionsessionIdwindow_handle) | Retrieve the current window handle. |
-| GET             | [/session/:sessionId/window\_handles](#sessionsessionIdwindow_handles) | Retrieve the list of all window handles available to the session. |
-| GET             | [/session/:sessionId/url](#sessionsessionIdurl) | Retrieve the URL of the current page. |
-| POST            | [/session/:sessionId/url](#sessionsessionIdurl) | Navigate to a new URL. |
-| POST            | [/session/:sessionId/forward](#sessionsessionIdforward) | Navigate forwards in the browser history, if possible. |
-| POST            | [/session/:sessionId/back](#sessionsessionIdback) | Navigate backwards in the browser history, if possible. |
-| POST            | [/session/:sessionId/refresh](#sessionsessionIdrefresh) | Refresh the current page. |
-| POST            | [/session/:sessionId/execute](#sessionsessionIdexecute) | Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. |
-| POST            | [/session/:sessionId/execute\_async](#sessionsessionIdexecute_async) | Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. |
-| GET             | [/session/:sessionId/screenshot](#sessionsessionIdscreenshot) | Take a screenshot of the current page. |
-| GET             | [/session/:sessionId/ime/available\_engines](#sessionsessionIdimeavailable_engines) | List all available engines on the machine. |
-| GET             | [/session/:sessionId/ime/active\_engine](#sessionsessionIdimeactive_engine) | Get the name of the active IME engine. |
-| GET             | [/session/:sessionId/ime/activated](#sessionsessionIdimeactivated) | Indicates whether IME input is active at the moment (not if it's available. |
-| POST            | [/session/:sessionId/ime/deactivate](#sessionsessionIdimedeactivate) | De-activates the currently-active IME engine. |
-| POST            | [/session/:sessionId/ime/activate](#sessionsessionIdimeactivate) | Make an engines that is available (appears on the listreturned by getAvailableEngines) active. |
-| POST            | [/session/:sessionId/frame](#sessionsessionIdframe) | Change focus to another frame on the page. |
-| POST            | [/session/:sessionId/frame/parent](#sessionsessionIdframeparent) | Change focus to the parent context. |
-| POST            | [/session/:sessionId/window](#sessionsessionIdwindow) | Change focus to another window. |
-| DELETE          | [/session/:sessionId/window](#sessionsessionIdwindow) | Close the current window. |
-| POST            | [/session/:sessionId/window/:windowHandle/size](#sessionsessionIdwindowwindowHandlesize) | Change the size of the specified window. |
-| GET             | [/session/:sessionId/window/:windowHandle/size](#sessionsessionIdwindowwindowHandlesize) | Get the size of the specified window. |
-| POST            | [/session/:sessionId/window/:windowHandle/position](#sessionsessionIdwindowwindowHandleposition) | Change the position of the specified window. |
-| GET             | [/session/:sessionId/window/:windowHandle/position](#sessionsessionIdwindowwindowHandleposition) | Get the position of the specified window. |
-| POST            | [/session/:sessionId/window/:windowHandle/maximize](#sessionsessionIdwindowwindowHandlemaximize) | Maximize the specified window if not already maximized. |
-| GET             | [/session/:sessionId/cookie](#sessionsessionIdcookie) | Retrieve all cookies visible to the current page. |
-| POST            | [/session/:sessionId/cookie](#sessionsessionIdcookie) | Set a cookie. |
-| DELETE          | [/session/:sessionId/cookie](#sessionsessionIdcookie) | Delete all cookies visible to the current page. |
-| DELETE          | [/session/:sessionId/cookie/:name](#sessionsessionIdcookiename) | Delete the cookie with the given name. |
-| GET             | [/session/:sessionId/source](#sessionsessionIdsource) | Get the current page source. |
-| GET             | [/session/:sessionId/title](#sessionsessionIdtitle) | Get the current page title. |
-| POST            | [/session/:sessionId/element](#sessionsessionIdelement) | Search for an element on the page, starting from the document root. |
-| POST            | [/session/:sessionId/elements](#sessionsessionIdelements) | Search for multiple elements on the page, starting from the document root. |
-| POST            | [/session/:sessionId/element/active](#sessionsessionIdelementactive) | Get the element on the page that currently has focus. |
-| GET             | [/session/:sessionId/element/:id](#sessionsessionIdelementid) | Describe the identified element. |
-| POST            | [/session/:sessionId/element/:id/element](#sessionsessionIdelementidelement) | Search for an element on the page, starting from the identified element. |
-| POST            | [/session/:sessionId/element/:id/elements](#sessionsessionIdelementidelements) | Search for multiple elements on the page, starting from the identified element. |
-| POST            | [/session/:sessionId/element/:id/click](#sessionsessionIdelementidclick) | Click on an element. |
-| POST            | [/session/:sessionId/element/:id/submit](#sessionsessionIdelementidsubmit) | Submit a `FORM` element. |
-| GET             | [/session/:sessionId/element/:id/text](#sessionsessionIdelementidtext) | Returns the visible text for the element. |
-| POST            | [/session/:sessionId/element/:id/value](#sessionsessionIdelementidvalue) | Send a sequence of key strokes to an element. |
-| POST            | [/session/:sessionId/keys](#sessionsessionIdkeys) | Send a sequence of key strokes to the active element. |
-| GET             | [/session/:sessionId/element/:id/name](#sessionsessionIdelementidname) | Query for an element's tag name. |
-| POST            | [/session/:sessionId/element/:id/clear](#sessionsessionIdelementidclear) | Clear a `TEXTAREA` or `text INPUT` element's value. |
-| GET             | [/session/:sessionId/element/:id/selected](#sessionsessionIdelementidselected) | Determine if an `OPTION` element, or an `INPUT` element of type `checkbox` or `radiobutton` is currently selected. |
-| GET             | [/session/:sessionId/element/:id/enabled](#sessionsessionIdelementidenabled) | Determine if an element is currently enabled. |
-| GET             | [/session/:sessionId/element/:id/attribute/:name](#sessionsessionIdelementidattribute/:name) | Get the value of an element's attribute. |
-| GET             | [/session/:sessionId/element/:id/equals/:other](#sessionsessionIdelementidequals/:other) | Test if two element IDs refer to the same DOM element. |
-| GET             | [/session/:sessionId/element/:id/displayed](#sessionsessionIdelementiddisplayed) | Determine if an element is currently displayed. |
-| GET             | [/session/:sessionId/element/:id/location](#sessionsessionIdelementidlocation) | Determine an element's location on the page. |
-| GET             | [/session/:sessionId/element/:id/location\_in\_view](#sessionsessionIdelementidlocation_in_view) | Determine an element's location on the screen once it has been scrolled into view. |
-| GET             | [/session/:sessionId/element/:id/size](#sessionsessionIdelementidsize) | Determine an element's size in pixels. |
-| GET             | [/session/:sessionId/element/:id/css/:propertyName](#sessionsessionIdelementidcss/:propertyName) | Query the value of an element's computed CSS property. |
-| GET             | [/session/:sessionId/orientation](#sessionsessionIdorientation) | Get the current browser orientation. |
-| POST            | [/session/:sessionId/orientation](#sessionsessionIdorientation) | Set the browser orientation. |
-| GET             | [/session/:sessionId/alert\_text](#sessionsessionIdalert_text) | Gets the text of the currently displayed JavaScript `alert()`, `confirm()`, or `prompt()` dialog. |
-| POST            | [/session/:sessionId/alert\_text](#sessionsessionIdalert_text) | Sends keystrokes to a JavaScript `prompt()` dialog. |
-| POST            | [/session/:sessionId/accept\_alert](#sessionsessionIdaccept_alert) | Accepts the currently displayed alert dialog. |
-| POST            | [/session/:sessionId/dismiss\_alert](#sessionsessionIddismiss_alert) | Dismisses the currently displayed alert dialog. |
-| POST            | [/session/:sessionId/moveto](#sessionsessionIdmoveto) | Move the mouse by an offset of the specificed element. |
-| POST            | [/session/:sessionId/click](#sessionsessionIdclick) | Click any mouse button (at the coordinates set by the last moveto command). |
-| POST            | [/session/:sessionId/buttondown](#sessionsessionIdbuttondown) | Click and hold the left mouse button (at the coordinates set by the last moveto command). |
-| POST            | [/session/:sessionId/buttonup](#sessionsessionIdbuttonup) | Releases the mouse button previously held (where the mouse is currently at). |
-| POST            | [/session/:sessionId/doubleclick](#sessionsessionIddoubleclick) | Double-clicks at the current mouse coordinates (set by moveto). |
-| POST            | [/session/:sessionId/touch/click](#sessionsessionIdtouchclick) | Single tap on the touch enabled device. |
-| POST            | [/session/:sessionId/touch/down](#sessionsessionIdtouchdown) | Finger down on the screen. |
-| POST            | [/session/:sessionId/touch/up](#sessionsessionIdtouchup) | Finger up on the screen. |
-| POST            | [session/:sessionId/touch/move](#POST_sessionsessionIdtouchmove) | Finger move on the screen. |
-| POST            | [session/:sessionId/touch/scroll](#POST_sessionsessionIdtouchscroll) | Scroll on the touch screen using finger based motion events. |
-| POST            | [session/:sessionId/touch/scroll](#POST_sessionsessionIdtouchscroll) | Scroll on the touch screen using finger based motion events. |
-| POST            | [session/:sessionId/touch/doubleclick](#POST_sessionsessionIdtouchdoubleclick) | Double tap on the touch screen using finger motion events. |
-| POST            | [session/:sessionId/touch/longclick](#POST_sessionsessionIdtouchlongclick) | Long press on the touch screen using finger motion events. |
-| POST            | [session/:sessionId/touch/flick](#POST_sessionsessionIdtouchflick) | Flick on the touch screen using finger motion events. |
-| POST            | [session/:sessionId/touch/flick](#POST_sessionsessionIdtouchflick) | Flick on the touch screen using finger motion events. |
-| GET             | [/session/:sessionId/location](#sessionsessionIdlocation) | Get the current geo location. |
-| POST            | [/session/:sessionId/location](#sessionsessionIdlocation) | Set the current geo location. |
-| GET             | [/session/:sessionId/local\_storage](#sessionsessionIdlocal_storage) | Get all keys of the storage. |
-| POST            | [/session/:sessionId/local\_storage](#sessionsessionIdlocal_storage) | Set the storage item for the given key. |
-| DELETE          | [/session/:sessionId/local\_storage](#sessionsessionIdlocal_storage) | Clear the storage. |
-| GET             | [/session/:sessionId/local\_storage/key/:key](#sessionsessionIdlocal_storagekeykey) | Get the storage item for the given key. |
-| DELETE          | [/session/:sessionId/local\_storage/key/:key](#sessionsessionIdlocal_storagekeykey) | Remove the storage item for the given key. |
-| GET             | [/session/:sessionId/local\_storage/size](#sessionsessionIdlocal_storagesize) | Get the number of items in the storage. |
-| GET             | [/session/:sessionId/session\_storage](#sessionsessionIdsession_storage) | Get all keys of the storage. |
-| POST            | [/session/:sessionId/session\_storage](#sessionsessionIdsession_storage) | Set the storage item for the given key. |
-| DELETE          | [/session/:sessionId/session\_storage](#sessionsessionIdsession_storage) | Clear the storage. |
-| GET             | [/session/:sessionId/session\_storage/key/:key](#sessionsessionIdsession_storagekeykey) | Get the storage item for the given key. |
-| DELETE          | [/session/:sessionId/session\_storage/key/:key](#sessionsessionIdsession_storagekeykey) | Remove the storage item for the given key. |
-| GET             | [/session/:sessionId/session\_storage/size](#sessionsessionIdsession_storagesize) | Get the number of items in the storage. |
-| POST            | [/session/:sessionId/log](#sessionsessionIdlog) | Get the log for a given log type. |
-| GET             | [/session/:sessionId/log/types](#sessionsessionIdlogtypes) | Get available log types. |
-| GET             | [/session/:sessionId/application\_cache/status](#sessionsessionIdapplication_cachestatus) | Get the status of the html5 application cache. |
+| GET             | [/session/:sessionId](#sessionsessionid) | Retrieve the capabilities of the specified session. |
+| DELETE          | [/session/:sessionId](#sessionsessionid) | Delete the session. |
+| POST            | [/session/:sessionId/timeouts](#sessionsessionidtimeouts) | Configure the amount of time that a particular type of operation can execute for before they are aborted and a |Timeout| error is returned to the client. |
+| POST            | [/session/:sessionId/timeouts/async\_script](#sessionsessionidtimeoutsasync_script) | Set the amount of time, in milliseconds, that asynchronous scripts executed by `/session/:sessionId/execute_async` are permitted to run before they are aborted and a |Timeout| error is returned to the client. |
+| POST            | [/session/:sessionId/timeouts/implicit\_wait](#sessionsessionidtimeoutsimplicit_wait) | Set the amount of time the driver should wait when searching for elements. |
+| GET             | [/session/:sessionId/window\_handle](#sessionsessionidwindow_handle) | Retrieve the current window handle. |
+| GET             | [/session/:sessionId/window\_handles](#sessionsessionidwindow_handles) | Retrieve the list of all window handles available to the session. |
+| GET             | [/session/:sessionId/url](#sessionsessionidurl) | Retrieve the URL of the current page. |
+| POST            | [/session/:sessionId/url](#sessionsessionidurl) | Navigate to a new URL. |
+| POST            | [/session/:sessionId/forward](#sessionsessionidforward) | Navigate forwards in the browser history, if possible. |
+| POST            | [/session/:sessionId/back](#sessionsessionidback) | Navigate backwards in the browser history, if possible. |
+| POST            | [/session/:sessionId/refresh](#sessionsessionidrefresh) | Refresh the current page. |
+| POST            | [/session/:sessionId/execute](#sessionsessionidexecute) | Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. |
+| POST            | [/session/:sessionId/execute\_async](#sessionsessionidexecute_async) | Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame. |
+| GET             | [/session/:sessionId/screenshot](#sessionsessionidscreenshot) | Take a screenshot of the current page. |
+| GET             | [/session/:sessionId/ime/available\_engines](#sessionsessionidimeavailable_engines) | List all available engines on the machine. |
+| GET             | [/session/:sessionId/ime/active\_engine](#sessionsessionidimeactive_engine) | Get the name of the active IME engine. |
+| GET             | [/session/:sessionId/ime/activated](#sessionsessionidimeactivated) | Indicates whether IME input is active at the moment (not if it's available. |
+| POST            | [/session/:sessionId/ime/deactivate](#sessionsessionidimedeactivate) | De-activates the currently-active IME engine. |
+| POST            | [/session/:sessionId/ime/activate](#sessionsessionidimeactivate) | Make an engines that is available (appears on the listreturned by getAvailableEngines) active. |
+| POST            | [/session/:sessionId/frame](#sessionsessionidframe) | Change focus to another frame on the page. |
+| POST            | [/session/:sessionId/frame/parent](#sessionsessionidframeparent) | Change focus to the parent context. |
+| POST            | [/session/:sessionId/window](#sessionsessionidwindow) | Change focus to another window. |
+| DELETE          | [/session/:sessionId/window](#sessionsessionidwindow) | Close the current window. |
+| POST            | [/session/:sessionId/window/:windowHandle/size](#sessionsessionidwindowwindowhandlesize) | Change the size of the specified window. |
+| GET             | [/session/:sessionId/window/:windowHandle/size](#sessionsessionidwindowwindowhandlesize) | Get the size of the specified window. |
+| POST            | [/session/:sessionId/window/:windowHandle/position](#sessionsessionidwindowwindowhandleposition) | Change the position of the specified window. |
+| GET             | [/session/:sessionId/window/:windowHandle/position](#sessionsessionidwindowwindowhandleposition) | Get the position of the specified window. |
+| POST            | [/session/:sessionId/window/:windowHandle/maximize](#sessionsessionidwindowwindowhandlemaximize) | Maximize the specified window if not already maximized. |
+| GET             | [/session/:sessionId/cookie](#sessionsessionidcookie) | Retrieve all cookies visible to the current page. |
+| POST            | [/session/:sessionId/cookie](#sessionsessionidcookie) | Set a cookie. |
+| DELETE          | [/session/:sessionId/cookie](#sessionsessionidcookie) | Delete all cookies visible to the current page. |
+| DELETE          | [/session/:sessionId/cookie/:name](#sessionsessionidcookiename) | Delete the cookie with the given name. |
+| GET             | [/session/:sessionId/source](#sessionsessionidsource) | Get the current page source. |
+| GET             | [/session/:sessionId/title](#sessionsessionidtitle) | Get the current page title. |
+| POST            | [/session/:sessionId/element](#sessionsessionidelement) | Search for an element on the page, starting from the document root. |
+| POST            | [/session/:sessionId/elements](#sessionsessionidelements) | Search for multiple elements on the page, starting from the document root. |
+| POST            | [/session/:sessionId/element/active](#sessionsessionidelementactive) | Get the element on the page that currently has focus. |
+| GET             | [/session/:sessionId/element/:id](#sessionsessionidelementid) | Describe the identified element. |
+| POST            | [/session/:sessionId/element/:id/element](#sessionsessionidelementidelement) | Search for an element on the page, starting from the identified element. |
+| POST            | [/session/:sessionId/element/:id/elements](#sessionsessionidelementidelements) | Search for multiple elements on the page, starting from the identified element. |
+| POST            | [/session/:sessionId/element/:id/click](#sessionsessionidelementidclick) | Click on an element. |
+| POST            | [/session/:sessionId/element/:id/submit](#sessionsessionidelementidsubmit) | Submit a `FORM` element. |
+| GET             | [/session/:sessionId/element/:id/text](#sessionsessionidelementidtext) | Returns the visible text for the element. |
+| POST            | [/session/:sessionId/element/:id/value](#sessionsessionidelementidvalue) | Send a sequence of key strokes to an element. |
+| POST            | [/session/:sessionId/keys](#sessionsessionidkeys) | Send a sequence of key strokes to the active element. |
+| GET             | [/session/:sessionId/element/:id/name](#sessionsessionidelementidname) | Query for an element's tag name. |
+| POST            | [/session/:sessionId/element/:id/clear](#sessionsessionidelementidclear) | Clear a `TEXTAREA` or `text INPUT` element's value. |
+| GET             | [/session/:sessionId/element/:id/selected](#sessionsessionidelementidselected) | Determine if an `OPTION` element, or an `INPUT` element of type `checkbox` or `radiobutton` is currently selected. |
+| GET             | [/session/:sessionId/element/:id/enabled](#sessionsessionidelementidenabled) | Determine if an element is currently enabled. |
+| GET             | [/session/:sessionId/element/:id/attribute/:name](#sessionsessionidelementidattribute/:name) | Get the value of an element's attribute. |
+| GET             | [/session/:sessionId/element/:id/equals/:other](#sessionsessionidelementidequals/:other) | Test if two element IDs refer to the same DOM element. |
+| GET             | [/session/:sessionId/element/:id/displayed](#sessionsessionidelementiddisplayed) | Determine if an element is currently displayed. |
+| GET             | [/session/:sessionId/element/:id/location](#sessionsessionidelementidlocation) | Determine an element's location on the page. |
+| GET             | [/session/:sessionId/element/:id/location\_in\_view](#sessionsessionidelementidlocation_in_view) | Determine an element's location on the screen once it has been scrolled into view. |
+| GET             | [/session/:sessionId/element/:id/size](#sessionsessionidelementidsize) | Determine an element's size in pixels. |
+| GET             | [/session/:sessionId/element/:id/css/:propertyName](#sessionsessionidelementidcss/:propertyName) | Query the value of an element's computed CSS property. |
+| GET             | [/session/:sessionId/orientation](#sessionsessionidorientation) | Get the current browser orientation. |
+| POST            | [/session/:sessionId/orientation](#sessionsessionidorientation) | Set the browser orientation. |
+| GET             | [/session/:sessionId/alert\_text](#sessionsessionidalert_text) | Gets the text of the currently displayed JavaScript `alert()`, `confirm()`, or `prompt()` dialog. |
+| POST            | [/session/:sessionId/alert\_text](#sessionsessionidalert_text) | Sends keystrokes to a JavaScript `prompt()` dialog. |
+| POST            | [/session/:sessionId/accept\_alert](#sessionsessionidaccept_alert) | Accepts the currently displayed alert dialog. |
+| POST            | [/session/:sessionId/dismiss\_alert](#sessionsessioniddismiss_alert) | Dismisses the currently displayed alert dialog. |
+| POST            | [/session/:sessionId/moveto](#sessionsessionidmoveto) | Move the mouse by an offset of the specificed element. |
+| POST            | [/session/:sessionId/click](#sessionsessionidclick) | Click any mouse button (at the coordinates set by the last moveto command). |
+| POST            | [/session/:sessionId/buttondown](#sessionsessionidbuttondown) | Click and hold the left mouse button (at the coordinates set by the last moveto command). |
+| POST            | [/session/:sessionId/buttonup](#sessionsessionidbuttonup) | Releases the mouse button previously held (where the mouse is currently at). |
+| POST            | [/session/:sessionId/doubleclick](#sessionsessioniddoubleclick) | Double-clicks at the current mouse coordinates (set by moveto). |
+| POST            | [/session/:sessionId/touch/click](#sessionsessionidtouchclick) | Single tap on the touch enabled device. |
+| POST            | [/session/:sessionId/touch/down](#sessionsessionidtouchdown) | Finger down on the screen. |
+| POST            | [/session/:sessionId/touch/up](#sessionsessionidtouchup) | Finger up on the screen. |
+| POST            | [session/:sessionId/touch/move](#sessionsessionidtouchmove) | Finger move on the screen. |
+| POST            | [session/:sessionId/touch/scroll](#sessionsessionidtouchscroll) | Scroll on the touch screen using finger based motion events. |
+| POST            | [session/:sessionId/touch/scroll](#sessionsessionidtouchscroll) | Scroll on the touch screen using finger based motion events. |
+| POST            | [session/:sessionId/touch/doubleclick](#sessionsessionidtouchdoubleclick) | Double tap on the touch screen using finger motion events. |
+| POST            | [session/:sessionId/touch/longclick](#sessionsessionidtouchlongclick) | Long press on the touch screen using finger motion events. |
+| POST            | [session/:sessionId/touch/flick](#sessionsessionidtouchflick) | Flick on the touch screen using finger motion events. |
+| POST            | [session/:sessionId/touch/flick](#sessionsessionidtouchflick) | Flick on the touch screen using finger motion events. |
+| GET             | [/session/:sessionId/location](#sessionsessionidlocation) | Get the current geo location. |
+| POST            | [/session/:sessionId/location](#sessionsessionidlocation) | Set the current geo location. |
+| GET             | [/session/:sessionId/local\_storage](#sessionsessionidlocal_storage) | Get all keys of the storage. |
+| POST            | [/session/:sessionId/local\_storage](#sessionsessionidlocal_storage) | Set the storage item for the given key. |
+| DELETE          | [/session/:sessionId/local\_storage](#sessionsessionidlocal_storage) | Clear the storage. |
+| GET             | [/session/:sessionId/local\_storage/key/:key](#sessionsessionidlocal_storagekeykey) | Get the storage item for the given key. |
+| DELETE          | [/session/:sessionId/local\_storage/key/:key](#sessionsessionidlocal_storagekeykey) | Remove the storage item for the given key. |
+| GET             | [/session/:sessionId/local\_storage/size](#sessionsessionidlocal_storagesize) | Get the number of items in the storage. |
+| GET             | [/session/:sessionId/session\_storage](#sessionsessionidsession_storage) | Get all keys of the storage. |
+| POST            | [/session/:sessionId/session\_storage](#sessionsessionidsession_storage) | Set the storage item for the given key. |
+| DELETE          | [/session/:sessionId/session\_storage](#sessionsessionidsession_storage) | Clear the storage. |
+| GET             | [/session/:sessionId/session\_storage/key/:key](#sessionsessionidsession_storagekeykey) | Get the storage item for the given key. |
+| DELETE          | [/session/:sessionId/session\_storage/key/:key](#sessionsessionidsession_storagekeykey) | Remove the storage item for the given key. |
+| GET             | [/session/:sessionId/session\_storage/size](#sessionsessionidsession_storagesize) | Get the number of items in the storage. |
+| POST            | [/session/:sessionId/log](#sessionsessionidlog) | Get the log for a given log type. |
+| GET             | [/session/:sessionId/log/types](#sessionsessionidlogtypes) | Get available log types. |
+| GET             | [/session/:sessionId/application\_cache/status](#sessionsessionidapplication_cachestatus) | Get the status of the html5 application cache. |
 
 
 ## Command Detail
