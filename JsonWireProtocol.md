@@ -1,6 +1,6 @@
 <font size='6'><b>The WebDriver Wire Protocol</b></font>
 
-<font size='3'><b>Status:</b> <i>DRAFT</i></font>
+<font size='3'><b>Status:</b> <i>OBSOLETE</i> [See current W3C specification for WebDriver](https://w3c.github.io/webdriver/webdriver-spec.html)</font>
 
 
 
