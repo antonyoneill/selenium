@@ -1,20 +1,14 @@
 # WebDriver RoadMap
 
-The following issues need to be resolved before the final release:
+Impending Selenium 3.0 initial beta release scheduled for March 15th.
 
-| **Issue** | **Summary** | **HtmlUnitDriver Progress** | **FirefoxDriver Progress** | **InternetExplorerDriver Progress** | **ChromeDriver Progress** |
-|:----------|:------------|:----------------------------|:---------------------------|:------------------------------------|:--------------------------|
-| [27](http://code.google.com/p/webdriver/issues/detail?id=27)  | Handle alerts in Javascript-enabled browsers | n/a                         | Started                    | Started                             | Not Started               |
-| [32](http://code.google.com/p/webdriver/issues/detail?id=32) | User guide  | Started                     | | | |
-| [34](http://code.google.com/p/webdriver/issues/detail?id=34)  | Support HTTP Basic and Digest Authentication | Not Started                 | | | |
-| [35](http://code.google.com/p/webdriver/issues/detail?id=35)  | [Selenium](http://www.openqa.org/selenium-rc) emulation | Done for Java and C#        | | | |
-| [36](http://code.google.com/p/webdriver/issues/detail?id=36) | Support for drag and drop behaviour | n/a                         | Done                       | Done                                | Started                   |
-| none      | Example tests | Not Started                 | | | |
+Issues that need to be resolved before a 3.0.0 release is made are tracked with this milestone:
 
-A final release will be made once these are implemented in Firefox, IE and at least one webkit-based browser.
+https://github.com/SeleniumHQ/selenium/milestones/3.0
 
-## The Future
 
-The following are also planned:
+## W3C spec
 
-  * **JsonWireProtocol** --- The formalisation of the current RemoteWebDriver wire protocol in [JSON](http://www.json.org/).
+Currently still in 1.0 Draft. Efforts to publish 1.0 version underway.
+
+https://w3c.github.io/webdriver/webdriver-spec.html
