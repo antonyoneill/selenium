@@ -2,13 +2,11 @@
 
 We have a number of Google Compute Engine virtual machines running Ubuntu, currently hosted at {0..29}.ci.seleniumhq.org - they have publicly addressable DNS set up to point [ab](ab.md).{0..29}.ci.seleniumhq.org pointing at them as well, so that cookie tests can do subdomain lookups.
 
-One of these machines, ci.seleniumhq.org, is running jenkins. If you want a login on jenkins, get in touch with dawagner.  The Build All Java job polls SCM for changes, and does the following:
-  * Pings http://dashboard.ci.seleniumhq.org/ to let it know a build is happening
+One of these machines, ci.seleniumhq.org, is running jenkins. If you want a login on jenkins, get in touch with juangj.  The Build All Java job polls SCM for changes, and does the following:
   * Does a clean build of the 'release' target, any tests which are going to be run, and any artifacts (e.g. the IEDriverServer executable) which will be required to run those tests
   * Tars up the entire built working directory and publishes it to http://ci.seleniumhq.org/selenium-trunk-r${REVISION}.tgz - this is used later by test runs
   * Publishes the selenium-server-standalone jar to http://ci.seleniumhq.org/selenium-server-standalone-r${REVISION}.tgz - this is copied down directly by [SauceLabs](http://saucelabs.com) when running tests.
   * Zips up the IEDriverServer and publishes it to http://ci.seleniumhq.org/IEDriverServer-Win32-r${REVISION}.zip - this is copied down directly by [SauceLabs](http://saucelabs.com) to run IE tests
-  * Publishes an updated ignores.json to http://ci.seleniumhq.org/jarib/ignores.json
 This machine is backed by a 1TB persistent disk, which can hold many build artifacts, but they should be cleared out occasionally (particularly when moving disk between zones).
 
 When this build is successful, it triggers downstream builds for each OS/browser/test combination we care about.  It also triggers a downstream clean build to ensure our maven poms are still in order ("Maven build").
@@ -42,7 +40,3 @@ Jenkins doesn't have a great concept of templates.  I (dawagner) have some selen
   * Go to the Build All Java task, configure it, add your new build to the "Projects to build" field where there are many others listed.**
 
 If it's a firefox update, you probably also want to delete an existing build.
-
-## Why doesn't Android run on the CI?
-
-Android is pretty painful to set up.  Sauce now supports it, so we should try that out, when someone finds time.
