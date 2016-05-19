@@ -4,6 +4,7 @@
 
 This document provides a primer on the browser extension that powers the SafariDriver. It is not intended to be a full-fledged design document. When in doubt, refer to the source!
 
+> ***NOTE:*** The SafariDriver is deprecated. All code has been removed from master, but is still available in the [safari branch](https://github.com/SeleniumHQ/selenium/tree/safari)
 
 ---
 
