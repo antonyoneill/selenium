@@ -23,8 +23,7 @@ Known issues can be added to the release notes.
   1. Update the SeHQ downloads page with updated links, release numbers and dates
   1. Run `./go clean release`
   1. Upload the new versions of the ZIP files from "build/dist" to the downloads page. Alternatively, run `./go push_release` to have the artifacts uploaded for you.
-  1. Upload the new Android APK from build/android/app/android-server.apk to the downloads page.
-  1. Add a git tag: `git tag selenium-2.<REVISION> hash` where "hash" refers to the revision to tag. This creates a lightweight tag, so there's no need to add a log message. You'll need to push that change to the origin repo with `git push origin --tags`
+  1. Add a git tag: `git tag selenium-3.<REVISION> hash` where "hash" refers to the revision to tag. This creates a lightweight tag, so there's no need to add a log message. You'll need to push that change to the origin repo with `git push origin --tags`
   1. Update the api docs. See [Update API Docs for Java and python](#update-api-docs-for-java-and-python)
 
 
