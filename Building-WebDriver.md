@@ -4,7 +4,7 @@
 
 For all versions of WebDriver:
 
-  * The Java JDK 7 or above (download it from [Oracle's site](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it's not already on your computer)
+  * The Java JDK 8 or above (download it from [Oracle's site](http://www.oracle.com/technetwork/java/javase/downloads/index.html) if it's not already on your computer)
   * The source code (you may need to CheckOut the source from source control)
 
 In addition, the InternetExplorerDriver needs some additional components and can only be fully built on Windows
