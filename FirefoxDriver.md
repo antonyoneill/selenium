@@ -18,17 +18,11 @@ The following system properties (read using `System.getProperty()` and set using
 
 | **Property** | **What it means** |
 |:-------------|:------------------|
-| webdriver.accept.untrusted.certs | ?                 |
-| webdriver.assume.untrusted.issuer | ?                 |
-| webdriver.development | **Never use in production** Indicates that we're in development mode. |
-| webdriver.enable.native.events | ?                 |
 | webdriver.firefox.bin | The location of the binary used to control firefox. |
-| webdriver.firefox.port | ?                 |
+| webdriver.firefox.marionette | Boolean value, if set on standalone-server will ignore any "marionette" desired capability requested and force firefox to use GeckoDriver (true) or Legacy Firefox Driver (false) |
 | webdriver.firefox.profile | The name of the profile to use when starting firefox. This defaults to webdriver creating an anonymous profile |
-| webdriver.firefox.useExisting | **Never use in production** Use a running instance of firefox if one is present |
 | webdriver.log.file | Log file to dump javascript console logging to |
 | webdriver.firefox.logfile | Log file to dump firefox stdout/stderr to |
-| webdriver.reap\_profile | Should be "true" if temporary files and profiles should not be deleted |
 
 Normally the Firefox binary is assumed to be in the default location for your particular operating system:
 
