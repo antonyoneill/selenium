@@ -151,7 +151,12 @@ The browserTimeout **should** be:
 
 > java -jar selenium-server-standalone.jar -role node -nodeConfig nodeconfig.json
 
-A sample nodeconfig file can be seen at https://github.com/SeleniumHQ/selenium/blob/master/java/server/src/org/openqa/grid/common/defaults/DefaultNode.json
+A sample nodeconfig file for server version 3.x.x (>= beta4) can be seen at https://github.com/SeleniumHQ/selenium/blob/master/java/server/src/org/openqa/grid/common/defaults/DefaultNodeWebDriver.json
+
+A sample nodeconfig file for server version 2.x.x can be seen at
+https://github.com/SeleniumHQ/selenium/blob/selenium-2.53.0/java/server/src/org/openqa/grid/common/defaults/DefaultNode.json
+
+Note: the `configuration { ... }` object in version 2.x.x has been flattened in version 3.x.x (>= beta4)
 
 ## Configuring the hub by JSON
 
