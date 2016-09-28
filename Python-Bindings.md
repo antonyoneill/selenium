@@ -24,48 +24,51 @@ The first version, is the latest official release, which is available on the Pyt
 ## Development Version
 
 The second version, is the current code from trunk. To use this, checkout the trunk repository at https://github.com/SeleniumHQ/selenium.
-After the download is completed, cd to the root of the downloaded directory via terminal/cmd prompt, then cd to the `py` folder. Perform the following command:
+After the download is completed, cd to the root of the downloaded directory via terminal/cmd prompt. Perform the following commands:
 
-`(sudo) ./go py_install`.
+```
+./go py_prep_for_install_release
+python setup.py install
+```
 
 Upon completion, the package should be installed successfully.
 
 One advantage of using trunk as of writing, is the reorganization of the package. Previously, to initialize a browser you had to perform,
 
-```
+```python
 from selenium.firefox.webdriver import WebDriver
-
 driver = WebDriver()
 ```
 
 This has been changed, so now all that is required is:
 
-```
+```python
 from selenium import webdriver
-
 driver = webdriver.Firefox()
-
 ```
-
 
 ## Testing Source
 
-When developing Selenium, it is recommended you run the tests before and after making any changes to the code base. To perform these tests, run
+When developing Selenium, it is recommended you run the tests before and after making any changes to the code base. To perform these tests, you will first need to install [Tox](http://tox.readthedocs.io/).
+
+By default, running `tox` will attempt to execute all of the defined environments. This means the tests for python 2.7 and 3.5 will run for each of the supported drivers. This is most likely not what you want, as some drivers will not run on certain platforms. It is therefore recommended that you specify the environments you wish to execute. To list all environments available, run `tox -l`, and to execute a single environment, use `tox -e`.
+
+As an example, this command will run the tests for Firefox against python 2.7:
+
 ```
-./go //py:firefox_test:run
+tox -e py27-firefox
 ```
-from the root of your local copy. Other browsers can be tested by changing `firefox` to the browser you wish to test, for example:
+
+The tests are executed using [pytest](http://docs.pytest.org/), and you can pass positional arguments through Tox by specifying `--` before them. In addition to other things, this allows you to filter tests. For example, to run a single test file:
+
 ```
-./go //py:chrome_test:run
-./go //py:phantomjs_test:run
+tox -e py27-firefox -- py/test/selenium/webdriver/common/visibility_tests.py
 ```
-To rerun a single test method that may have failed, you can do that like this:
+
+To run a single test, you can use the keyword filter, such as:
+
 ```
-./go //py:firefox_test:run method=testShouldExplicitlyWaitForASingleElement
-```
-To run as a different version of python (for example if your default is 2.7 and you have 3 installed)
-```
-./go test_py pyversion=python3
+tox -e py27-firefox -- -k testShouldShowElementNotVisibleWithHiddenAttribute
 ```
 
 # Usage
@@ -73,13 +76,14 @@ To run as a different version of python (for example if your default is 2.7 and 
 Depending on the driver you wish to utilize, importing the module is performed by entering the following in your python shell:
 
 Selenium 1:
-`from selenium import selenium`
 
+```python
+from selenium import selenium
+```
 
 Selenium 2:
 
-Using the latest official release:
-```
+```python
 from selenium import webdriver
 ```
 
@@ -90,24 +94,27 @@ To read the API documentation of the Python Bindings go to the [Python bindings 
 Alternatively use your python shell to view all commands available to you, after importing perform:
 
 Selenium 1:
-```
+
+```python
 dir(selenium)
 ```
 
 Selenium 2:
-```
+
+```python
 dir(webdriver)
 ```
 
 To view the docstrings (documentation text attached to a function or method), perform
-```
-print 'functionname'.__doc__
+
+```python
+print('functionname'.__doc__)
 ```
 
-where functionname is the function you wish to view more information on. For example,
+where `functionname` is the function you wish to view more information on. For example,
 
-```
-print selenium.open.__doc__
+```python
+print(selenium.open.__doc__)
 ```
 
 ## Comparison with Java Bindings
@@ -116,75 +123,55 @@ Here is a summary of the major differences between the python and Java bindings.
 
 ### Function Names
 
-Function names separate compound terms with underscores, rather than using Java's camelCase formatting. For example, in python
-```
-title
-```
-is the equivalent of
-```
-getTitle()
-```
-in Java.
+Function names separate compound terms with underscores, rather than using Java's camelCase formatting. For example, in python `title` is the equivalent of `getTitle()` in Java.
 
 ### Flatter Structures
 
-To reflect pythonic behavior of flat object hierarchies the python bindings e.g.
-```
-find_element_by_xpath("//h1")
-```
-rather than
-```
-findElement(By.xpath("//h1"));
-```
-
-but it does give you the freedom of doing find\_element(by=By.XPATH, value='//h1')
+To reflect pythonic behavior of flat object hierarchies the python bindings e.g. `find_element_by_xpath("//h1")` rather than `findElement(By.xpath("//h1"));` but it does give you the freedom of doing `find_element(by=By.XPATH, value='//h1')`
 
 # Browser Support
 
 All of the browsers supported by the Java implementation of Selenium are available in the Python bindings. For example:
 
 ### Selenium 1 - Internet Explorer
-```
-from selenium import selenium
 
+```python
+from selenium import selenium
 selenium = selenium("localhost", 4444, "*iexplore", "http://google.com/")
 selenium.start()
 ```
 
 ### Selenium 1 - Firefox
-```
-from selenium import selenium
 
+```python
+from selenium import selenium
 selenium = selenium("localhost", 4444, "*firefox", "http://google.com/")
 selenium.start()
 ```
 
 ### Selenium 2 - Firefox
-Latest Official Release:
-```
-from selenium import webdriver
 
+```python
+from selenium import webdriver
 driver = webdriver.Firefox()
 ```
 
 ### Selenium 2 - Chrome
-Latest Official Release:
-```
-from selenium import webdriver
 
+```python
+from selenium import webdriver
 driver = webdriver.Chrome()
 ```
-### Selenium 2 - Remote
-Latest Official Release:
-```
-from selenium import webdriver
 
-driver = webdriver.Remote( browser_name="firefox", platform="any")
+### Selenium 2 - Remote
+
+```python
+from selenium import webdriver
+driver = webdriver.Remote(browser_name="firefox", platform="any")
 ```
 ### Selenium 2 - IE
-Latest Official Release:
-```
-from selenium import webdriver
 
+```python
+from selenium import webdriver
 driver = webdriver.Ie()
 ```
