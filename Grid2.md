@@ -1,4 +1,4 @@
-#Selenium grid for selenium1 and webdriver
+# Selenium grid for RC and WebDriver
 
 # Introduction
 
