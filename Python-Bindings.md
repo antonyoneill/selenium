@@ -73,7 +73,7 @@ tox -e py27-firefox -- -k testShouldShowElementNotVisibleWithHiddenAttribute
 
 ### Expected Failures
 
-Unfortuantely, there will be some tests that are expected to fail due to known issues. You can mark these tests using the [standard pytest methods](http://docs.pytest.org/en/latest/skipping.html#mark-a-test-function-as-expected-to-fail), however this will mark the tests for all drivers. If a test is only expected to fail in a subset of drivers, you can extend the xfail mark with the name of the driver. For example, to mark a test as expected to fail in Chrome and Firefox (but pass using any other driver):
+Unfortunately, there will be some tests that are expected to fail due to known issues. You can mark these tests using the [standard pytest methods](http://docs.pytest.org/en/latest/skipping.html#mark-a-test-function-as-expected-to-fail), however if the test uses the `driver` fixture to run against multiple drivers, this will mark the tests for all of those drivers. If a test is only expected to fail in a subset of drivers, you can extend the xfail mark with the name of the driver. For example, to mark a test as expected to fail in Chrome and Firefox (but pass using any other driver):
 
 ```python
 import pytest
