@@ -47,7 +47,7 @@ from selenium import webdriver
 driver = webdriver.Firefox()
 ```
 
-## Testing Source
+## Tests
 
 When developing Selenium, it is recommended you run the tests before and after making any changes to the code base. To perform these tests, you will first need to install [Tox](http://tox.readthedocs.io/).
 
@@ -69,6 +69,46 @@ To run a single test, you can use the keyword filter, such as:
 
 ```
 tox -e py27-firefox -- -k testShouldShowElementNotVisibleWithHiddenAttribute
+```
+
+### Expected Failures
+
+Unfortuantely, there will be some tests that are expected to fail due to known issues. You can mark these tests using the [standard pytest methods](http://docs.pytest.org/en/latest/skipping.html#mark-a-test-function-as-expected-to-fail), however this will mark the tests for all drivers. If a test is only expected to fail in a subset of drivers, you can extend the xfail mark with the name of the driver. For example, to mark a test as expected to fail in Chrome and Firefox (but pass using any other driver):
+
+```python
+import pytest
+
+@pytest.mark.xfail_chrome
+@pytest.mark.xfail_firefox
+def test_something(driver):
+   assert something is True
+```
+
+All of the same arguments from pytest's [xfail mark](http://docs.pytest.org/en/latest/skipping.html#mark-a-test-function-as-expected-to-fail) are available to these extended marks. Wherever possible you should provide a `reason` with a reference to the raised issue/bug. If the test raises an unexpected exception you should also provide the `raises` argument, as this will still cause a failure if the test starts failing for another reason.
+
+If the expected failure is dependent on the platform, you should also include the `condition` argument so that the test will be allowed to pass on other environments. For example, to mark a test as expected to fail when run against Firefox on macOS:
+
+```python
+import sys
+import pytest
+from selenium.common.exceptions import WebDriverException
+
+@pytest.mark.xfail_firefox(
+    condition=sys.platform == 'darwin',
+    reason='https://myissuetracker.com/issue?id=1234',
+    raises=WebDriverException
+def test_something(driver):
+   assert something is True
+```
+
+You should avoid using [imperative xfail](http://docs.pytest.org/en/latest/skipping.html#imperative-xfail-from-within-a-test-or-setup-function) as these will never allow the test an opportunity to unexpectedly pass (when the issue is resolved).
+
+We also recommend against using [skip](http://docs.pytest.org/en/latest/skipping.html#marking-a-test-function-to-be-skipped) unless there is good reason. If your test failure causes a hang or some other undesirable side-effect you can pass `run=False` to the xfail mark.
+
+To run expected failures locally, pass the `--runxfail` command line option to pytest. If you want to run all expected failures for a specific driver you can do this by filtering on the xfail mark:
+
+```
+tox -e py27-firefox -- -m xfail_firefox --runxfail
 ```
 
 # Usage
