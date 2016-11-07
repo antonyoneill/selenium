@@ -127,9 +127,11 @@ Selenium 2:
 from selenium import webdriver
 ```
 
-## API Documentation / Viewing Available Functionality
+# Documentation
 
-To read the API documentation of the Python Bindings go to the [Python bindings API doc page](http://selenium.googlecode.com/svn/trunk/docs/api/py/index.html).
+The documentation is available online [here](http://seleniumhq.github.io/selenium/docs/api/py/) and can by built locally using the command `tox -e docs`.
+
+## Interactive
 
 Alternatively use your python shell to view all commands available to you, after importing perform:
 
