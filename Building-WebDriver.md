@@ -87,7 +87,7 @@ For Java:
 Useful parameters:
 
 | **Parameter** | **Purpose** | **Example**|
-|:--------------|:------------|:|
+|:--------------|:------------|:-----------|
 | haltonerror   | This flag indicates if "go" should halt at an error. Default is true. | ./go test\_firefox haltonerror=false |
 | haltonfailure | This flag indicates if "go" should halt at a failure. Default is true. | ./go test\_firefox haltonfailure=false |
 | method        | If set, only the specified test will be executed. | ./go test\_firefox method=testDoubleClick |
