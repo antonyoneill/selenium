@@ -1,50 +1,101 @@
-# Introduction
-
-The python bindings for Selenium 2 are now available. The bindings include the full functionality of Selenium 1 and 2 (WebDriver). The package currently supports the Remote, Firefox, Chrome and IE protocols natively.
-
-_note_ : Currently Selenium only supports Python 2.6, 2.7, 3.2, 3.3
-
-
-If using selenium 1, before attempting to run a test, be sure to [download the Selenium Server jar](http://selenium-release.storage.googleapis.com/index.html) file, and run it via
-```
-java -jar selenium-server-standalone.jar
-```
-in your terminal/cmd prompt, before attempting to run a test. Selenium 2 however, does not require the jar file.
-
 # Installation
 
-Currently, there are two versions of Selenium available for use.
+Selenium officially supports python 2.7 and 3.5, however other versions should also work.
 
-## Latest Official Release
-The first version, is the latest official release, which is available on the Python Package Index http://python.org/pypi/selenium. To use this version, in your terminal type:
-
-`[sudo] easy_install selenium` or `[sudo] pip install selenium`
-
-
-## Development Version
-
-The second version, is the current code from trunk. To use this, checkout the trunk repository at https://github.com/SeleniumHQ/selenium.
-After the download is completed, cd to the root of the downloaded directory via terminal/cmd prompt. Perform the following commands:
+The latest official release is available on the [Python Package Index](http://python.org/pypi/selenium). It's a good practice to install python packages into [virtual environments](https://packaging.python.org/installing/#creating-and-using-virtual-environments) rather than in your global site packages. To install this using [pip](https://pip.pypa.io/en/stable/installing/), run the following command:
 
 ```
-./go py_prep_for_install_release
-python setup.py install
+pip install selenium
 ```
 
-Upon completion, the package should be installed successfully.
+# Usage
 
-One advantage of using trunk as of writing, is the reorganization of the package. Previously, to initialize a browser you had to perform,
+Importing the module is performed by entering the following in your python shell:
 
-```python
-from selenium.firefox.webdriver import WebDriver
-driver = WebDriver()
-```
-
-This has been changed, so now all that is required is:
+### Firefox
 
 ```python
 from selenium import webdriver
 driver = webdriver.Firefox()
+```
+
+### Google Chrome
+
+```python
+from selenium import webdriver
+driver = webdriver.Chrome()
+```
+
+### Remote
+
+```python
+from selenium import webdriver
+driver = webdriver.Remote(browser_name="firefox", platform="any")
+```
+### Internet Explorer
+
+```python
+from selenium import webdriver
+driver = webdriver.Ie()
+```
+
+### Microsoft Edge
+
+```python
+from selenium import webdriver
+driver = webdriver.Edge()
+```
+
+### Safari
+
+```python
+from selenium import webdriver
+driver = webdriver.Safari()
+```
+
+# Documentation
+
+The documentation is available online [here](http://seleniumhq.github.io/selenium/docs/api/py/) and can by built locally using the command `tox -e docs`.
+
+## Interactive
+
+Alternatively use your python shell to view all commands available to you, after importing perform:
+
+```python
+dir(webdriver)
+```
+
+To view the docstrings (documentation text attached to a function or method), perform
+
+```python
+print('functionname'.__doc__)
+```
+
+Where `functionname` is the function you wish to view more information on. For example,
+
+```python
+print(selenium.open.__doc__)
+```
+
+## Comparison with Java Bindings
+
+Here is a summary of the major differences between the python and Java bindings.
+
+### Function Names
+
+Function names separate compound terms with underscores, rather than using Java's camelCase formatting. For example, in python `title` is the equivalent of `getTitle()` in Java.
+
+### Flatter Structures
+
+To reflect pythonic behavior of flat object hierarchies the python bindings e.g. `find_element_by_xpath("//h1")` rather than `findElement(By.xpath("//h1"));` but it does give you the freedom of doing `find_element(by=By.XPATH, value='//h1')`
+
+# Development
+
+To install the latest unreleased version, [clone](https://help.github.com/articles/cloning-a-repository/) https://github.com/SeleniumHQ/selenium and run the following commands from the repository root directory:
+
+```
+./go py_prep_for_install_release
+python setup.py install
 ```
 
 ## Tests
@@ -111,109 +162,12 @@ To run expected failures locally, pass the `--runxfail` command line option to p
 tox -e py27-firefox -- -m xfail_firefox --runxfail
 ```
 
-# Usage
+## Releases
 
-Depending on the driver you wish to utilize, importing the module is performed by entering the following in your python shell:
+To perform a release you will need to be a maintainer of the package on PyPI. Before pushing a new release you will need to update the version number and [change log](https://github.com/SeleniumHQ/selenium/blob/master/py/CHANGES). The version number is in the form of `X.Y.Z`, where `X.Y` is taken from the latest [GitHub release](https://github.com/SeleniumHQ/selenium/releases), and `Z` increments for each release.
 
-Selenium 1:
+When you're readu, the release can be made by running the following command:
 
-```python
-from selenium import selenium
 ```
-
-Selenium 2:
-
-```python
-from selenium import webdriver
-```
-
-# Documentation
-
-The documentation is available online [here](http://seleniumhq.github.io/selenium/docs/api/py/) and can by built locally using the command `tox -e docs`.
-
-## Interactive
-
-Alternatively use your python shell to view all commands available to you, after importing perform:
-
-Selenium 1:
-
-```python
-dir(selenium)
-```
-
-Selenium 2:
-
-```python
-dir(webdriver)
-```
-
-To view the docstrings (documentation text attached to a function or method), perform
-
-```python
-print('functionname'.__doc__)
-```
-
-where `functionname` is the function you wish to view more information on. For example,
-
-```python
-print(selenium.open.__doc__)
-```
-
-## Comparison with Java Bindings
-
-Here is a summary of the major differences between the python and Java bindings.
-
-### Function Names
-
-Function names separate compound terms with underscores, rather than using Java's camelCase formatting. For example, in python `title` is the equivalent of `getTitle()` in Java.
-
-### Flatter Structures
-
-To reflect pythonic behavior of flat object hierarchies the python bindings e.g. `find_element_by_xpath("//h1")` rather than `findElement(By.xpath("//h1"));` but it does give you the freedom of doing `find_element(by=By.XPATH, value='//h1')`
-
-# Browser Support
-
-All of the browsers supported by the Java implementation of Selenium are available in the Python bindings. For example:
-
-### Selenium 1 - Internet Explorer
-
-```python
-from selenium import selenium
-selenium = selenium("localhost", 4444, "*iexplore", "http://google.com/")
-selenium.start()
-```
-
-### Selenium 1 - Firefox
-
-```python
-from selenium import selenium
-selenium = selenium("localhost", 4444, "*firefox", "http://google.com/")
-selenium.start()
-```
-
-### Selenium 2 - Firefox
-
-```python
-from selenium import webdriver
-driver = webdriver.Firefox()
-```
-
-### Selenium 2 - Chrome
-
-```python
-from selenium import webdriver
-driver = webdriver.Chrome()
-```
-
-### Selenium 2 - Remote
-
-```python
-from selenium import webdriver
-driver = webdriver.Remote(browser_name="firefox", platform="any")
-```
-### Selenium 2 - IE
-
-```python
-from selenium import webdriver
-driver = webdriver.Ie()
+./go py_release
 ```
