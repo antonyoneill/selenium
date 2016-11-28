@@ -166,7 +166,7 @@ tox -e py27-firefox -- -m xfail_firefox --runxfail
 
 To perform a release you will need to be a maintainer of the package on PyPI. Before pushing a new release you will need to update the version number and [change log](https://github.com/SeleniumHQ/selenium/blob/master/py/CHANGES). The version number is in the form of `X.Y.Z`, where `X.Y` is taken from the latest [GitHub release](https://github.com/SeleniumHQ/selenium/releases), and `Z` increments for each release.
 
-When you're readu, the release can be made by running the following command:
+When you're ready, the release can be made by running the following command:
 
 ```
 ./go py_release
