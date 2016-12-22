@@ -213,5 +213,15 @@ transcript: https://botbot.me/freenode/selenium/2016-12-21/?msg=78265715&page=6
 
 * 2.40 is wow much automate so fixes such awe
 * 2.41 - the last ie6 "supported" release
+* 
+* 2.45.0 - released w/ FF36 support
+* 2.46.0 - released w/ FF38 support 
+* 2.47.0 - released w/ Edge support
+* 2.48.0 - released w/ Marionette support in all languages
+* 2.49.0 Released - w/ FF 43 support 
+* 2.50.0 Released - "It's all bloody edge cases!" - D.W-H
+* 2.51.0 Released - "It's all bloody edge cases!" - D.W-H
+* 2.52.0 Released - Now you can disable "all bloody edge cases!" 
+* 2.53.0 The FINAL RC RELEASE
 
 * 3.0 The Christmas Release! FF48 now requires GeckoDriver
