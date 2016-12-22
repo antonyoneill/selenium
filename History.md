@@ -183,33 +183,35 @@ transcript: https://botbot.me/freenode/selenium/2016-12-21/?msg=78265715&page=6
 
 <h2>An informal naming of our releases (by channel topic in IRC)</h2>
 
-<ul><li>Selenium 2 beta 3 'the next generation browser release' now available - <a href='http://bit.ly/i9bkC2'>http://bit.ly/i9bkC2</a>
-</li><li>Selenium 2 RC1 'the grid release' now available - <a href='http://bit.ly/jgZxW8'>http://bit.ly/jgZxW8</a>
-</li><li>Selenium 2 RC2 the 'works better release' now available - <a href='http://bit.ly/mJJX1z'>http://bit.ly/mJJX1z</a>
-</li><li>Selenium RC3 - "the next one is the 'big' one" release - <a href='http://bit.ly/kpiACx'>http://bit.ly/kpiACx</a>
-</li><li>Selenium 2.0 Final unleashed upon the unspecting masses<br>
-</li><li>Selenium 2.1.0 now available (yes, even for maven users now)<br>
-</li><li>Selenium 2.2.0 now available (in nuget .. and yes, even maven)<br>
-</li><li>Selenium 2.3.0 available now. A new tradition!<br>
-</li><li>Selenium 2.4.0 is out -- stuff changed, but there is no blog post yet<br>
-</li><li>Selenium 2.5.0. mmmm. bacon.<br>
-</li><li>Selenium 2.6.0 is now available. Switch and save 15% or more on car insurance<br>
-</li><li>Ruby bindings for Selenium 2.7.0 first out of the gate (on twitter at any rate). Jari is a machine...<br>
-</li><li>Selenium 2.8.0 is out now -- day old bacon is still bacon</li></ul>
+* Selenium 2 beta 3 'the next generation browser release' now available - <a href='http://bit.ly/i9bkC2'>http://bit.ly/i9bkC2</a>
+* Selenium 2 RC1 'the grid release' now available - <a href='http://bit.ly/jgZxW8'>http://bit.ly/jgZxW8</a>
+* Selenium 2 RC2 the 'works better release' now available - <a href='http://bit.ly/mJJX1z'>http://bit.ly/mJJX1z</a>
+* Selenium RC3 - "the next one is the 'big' one" release - <a href='http://bit.ly/kpiACx'>http://bit.ly/kpiACx</a>
+* Selenium 2.0 Final unleashed upon the unspecting masses
+* Selenium 2.1.0 now available (yes, even for maven users now)
+* Selenium 2.2.0 now available (in nuget .. and yes, even maven)
+* Selenium 2.3.0 available now. A new tradition!
+* Selenium 2.4.0 is out -- stuff changed, but there is no blog post yet
+* Selenium 2.5.0. mmmm. bacon.
+* Selenium 2.6.0 is now available. Switch and save 15% or more on car insurance
+* Ruby bindings for Selenium 2.7.0 first out of the gate (on twitter at any rate). Jari is a machine...
+* Selenium 2.8.0 is out now -- day old bacon is still bacon
 
-<ul><li>sadly we are missing IRC logs...</li></ul>
+* sadly we are missing IRC logs...
 
-<ul><li>Selenium 2.22: The month long weekly release is finally here!<br>
-</li><li>Selenium 2.23: "Now with awesome!" Wait. What? Now?!<br>
-</li><li>Selenium 2.24: Now with more, erm, stuff?<br>
-</li><li>Selenium 2.25: Tracking nicely<br>
-</li><li>2.26 is out!<br>
-</li><li>Selenium 2.27 has been released with fixes for Firefox 17. Get it while it's hot!<br>
-</li><li>(there was no 2.28 topic update) code.google.com/p/selenium mirrored on github.com/seleniumHQ/selenium - we're on git now!<br>
-</li><li>2.29.0 is out now! First git release with FF18 support!<br>
-</li><li>BOOM! 2.31 is released with native event support for Firefox 19 even.<br>
-</li><li>"correlation does not imply causation" 2.32.0 released with Firefox 20 support.<br>
-</li><li>the US government is open again! Let's celebrate with 2.36 newly released, with FF24 support</li></ul>
+* Selenium 2.22: The month long weekly release is finally here!
+* Selenium 2.23: "Now with awesome!" Wait. What? Now?!
+* Selenium 2.24: Now with more, erm, stuff?
+* Selenium 2.25: Tracking nicely
+* 2.26 is out!
+* Selenium 2.27 has been released with fixes for Firefox 17. Get it while it's hot!
+* (there was no 2.28 topic update) code.google.com/p/selenium mirrored on github.com/seleniumHQ/selenium - we're on git now!
+* 2.29.0 is out now! First git release with FF18 support!
+* BOOM! 2.31 is released with native event support for Firefox 19 even.
+* "correlation does not imply causation" 2.32.0 released with Firefox 20 support.
+* the US government is open again! Let's celebrate with 2.36 newly released, with FF24 support
 
-<ul><li>2.40 is wow much automate so fixes such awe<br>
-</li><li>2.41 - the last ie6 "supported" release
+* 2.40 is wow much automate so fixes such awe
+* 2.41 - the last ie6 "supported" release
+
+* 3.0.1 The Christmas Release! FF48 now requires GeckoDriver
