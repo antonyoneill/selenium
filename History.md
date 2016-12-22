@@ -214,4 +214,4 @@ transcript: https://botbot.me/freenode/selenium/2016-12-21/?msg=78265715&page=6
 * 2.40 is wow much automate so fixes such awe
 * 2.41 - the last ie6 "supported" release
 
-* 3.0.1 The Christmas Release! FF48 now requires GeckoDriver
+* 3.0 The Christmas Release! FF48 now requires GeckoDriver
