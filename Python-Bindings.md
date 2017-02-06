@@ -1,6 +1,6 @@
 # Installation
 
-Selenium officially supports python 2.7 and 3.5, however other versions should also work.
+Selenium officially supports python 2.7 and 3.6, however other versions should also work.
 
 The latest official release is available on the [Python Package Index](http://python.org/pypi/selenium). It's a good practice to install python packages into [virtual environments](https://packaging.python.org/installing/#creating-and-using-virtual-environments) rather than in your global site packages. To install this using [pip](https://pip.pypa.io/en/stable/installing/), run the following command:
 
@@ -95,6 +95,7 @@ To install the latest unreleased version, [clone](https://help.github.com/articl
 
 ```
 ./go py_prep_for_install_release
+cd py
 python setup.py install
 ```
 
@@ -102,7 +103,9 @@ python setup.py install
 
 When developing Selenium, it is recommended you run the tests before and after making any changes to the code base. To perform these tests, you will first need to install [Tox](http://tox.readthedocs.io/).
 
-By default, running `tox` will attempt to execute all of the defined environments. This means the tests for python 2.7 and 3.5 will run for each of the supported drivers. This is most likely not what you want, as some drivers will not run on certain platforms. It is therefore recommended that you specify the environments you wish to execute. To list all environments available, run `tox -l`, and to execute a single environment, use `tox -e`.
+> Note that you will either need to change to the `py` subdirectory when running `tox`, or point to the configuration file using `tox -c py/tox.ini`.
+
+By default, running `tox` will attempt to execute all of the defined environments. This means the tests for python 2.7 and 3.6 will run for each of the supported drivers. This is most likely not what you want, as some drivers will not run on certain platforms. It is therefore recommended that you specify the environments you wish to execute. To list all environments available, run `tox -l`, and to execute a single environment, use `tox -e`.
 
 As an example, this command will run the tests for Firefox against python 2.7:
 
