@@ -468,3 +468,23 @@ end
 ```
 
 The opposite of this, a Selenium-backed WebDriver, is not available from Ruby at the moment.
+
+## Logging
+
+There is built-in logger available, by default it prints only warning messages. If you want to enable more verbose logging, add this to your code:
+
+```ruby
+Selenium::WebDriver.logger.level = :info
+```
+
+If you want full logging enabled:
+
+```ruby
+Selenium::WebDriver.logger.level = :debug
+```
+
+By default, logger prints messages to standard output, but you can also write to a file:
+
+```ruby
+Selenium::WebDriver.logger.output = 'selenium.log'
+```
