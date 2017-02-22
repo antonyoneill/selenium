@@ -54,7 +54,7 @@ wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
 wait.until { driver.find_element(:id => "foo") }
 
 # switch to a frame
-driver.switch_to.frame "some-frame" # name or id
+driver.switch_to.frame "some-frame" # id
 driver.switch_to.frame driver.find_element(:id, 'some-frame') # frame element
 
 # switch back to the main document
