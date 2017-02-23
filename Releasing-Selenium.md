@@ -30,7 +30,7 @@ Known issues can be added to the release notes.
 
 ## Updating the Maven Repos
 
-  1. Prerequisite 1: Make sure Maven 2.2.1 and GnuPG are installed.
+  1. Prerequisite 1: Make sure GnuPG is installed.
   1. Prerequisite 2: Make sure your `~/.m2/settings.xml` contains the following lines in the `<servers>` section:
 ```
     <server>
@@ -45,25 +45,8 @@ Known issues can be added to the release notes.
     </server>
 ```
   1. Prerequisite 3: Make sure your GnuPG public key is distributed to `hkp://pgp.mit.edu`
-  1. Make sure the dependencies in all pom.xml files under the maven directory are correct -- if not, update them (Hint: check for changes in the third\_party directory)
-  1. Perform any manual steps/release hacks documented here:
-    1. To provide the correct version info in a WebDriverException you should also replace "unknown" in the maven/api/pom.xml with the Git commit number wich forked the version branch:
-```
-             <manifestEntries>
-                 <Selenium-Version>${version}</Selenium-Version>
--                <Selenium-Revision>unknown</Selenium-Revision>
-+                <Selenium-Revision>12345</Selenium-Revision>
-                 <Selenium-Build-Time>${maven.build.timestamp}</Selenium-Build-Time>
-             </manifestEntries>
-```
-  1. Update the version number in all pom.xml files under the maven directory (but do not check in those changes) (`mvn versions:set -DnewVersion=2.3.0` inside the "maven" folder)
-  1. *MAKE SURE YOU HAVE JAVA 7 DEFAULTED ON YOUR PATH* (at least until the javadoc's are fixed to work with java 8)
-  1. Execute:
-    1. `./go release`
-    1. `cd maven`
-    1. `mvn -Dtest=skip -DfailIfNoTests=false install`
-  1. Execute:
-> > `mvn source:jar javadoc:jar -Dtest=skip -DfailIfNoTests=false -Dgpg.passphrase=_your-GnuPG-key-passphrase_ -Psign deploy`
+  1. Prerequisite 4: Make sure you can build Selenium
+  1. Execute `./go publish-maven`
   1. Goto http://oss.sonatype.org, log in, close the staging repository.
   1. Test the artifacts, these are the _real_ files you will be irreversibly promoting to central. You can do this easily by cloning the repo at https://github.com/SeleniumHQ/selenium-maven-release-test and following the instructions there. (Once the staging repository has been closed you get the url to the repository by clicking on the repository. This url can be added to your project pom to test if you want to test using a different project. Remember that you may need to delete the artifacts in your local repository to make sure you re-download the staged artifacts).
   1. Promote that staged release in nexus (or drop it).
