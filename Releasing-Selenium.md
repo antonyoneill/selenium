@@ -47,7 +47,7 @@ Known issues can be added to the release notes.
   1. Prerequisite 3: Make sure your GnuPG public key is distributed to `hkp://pgp.mit.edu`
   1. Prerequisite 4: Make sure you can build Selenium
   1. Execute `./go publish-maven`
-  1. Goto http://oss.sonatype.org, log in, close the staging repository.
+  1. Go to http://oss.sonatype.org, log in, close the staging repository.
   1. Test the artifacts, these are the _real_ files you will be irreversibly promoting to central. You can do this easily by cloning the repo at https://github.com/SeleniumHQ/selenium-maven-release-test and following the instructions there. (Once the staging repository has been closed you get the url to the repository by clicking on the repository. This url can be added to your project pom to test if you want to test using a different project. Remember that you may need to delete the artifacts in your local repository to make sure you re-download the staged artifacts).
   1. Promote that staged release in nexus (or drop it).
   1. Make sure any other manual hacks you did are documented in step 5 or committed back on trunk.
