@@ -1,16 +1,27 @@
-# Quick Start Guide
+## Introduction
 
+The WebDriverJS library uses a [promise manager](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise.html) to ease the pain of working with a purely asynchronous API. Rather than writing a long chain of promises, the promise manager allows you to write code as if WebDriverJS had a synchronous, blocking API (like all of the other Selenium language bindings). For instance, instead of
+
+```js
+const {Builder, By, until} = require('selenium-webdriver');
+new Builder()
+    .forBrowser('firefox')
+    .build()
+    .then(driver => {
+      return driver.get('http://www.google.com/ncr')
+        .then(_ => driver.findElement(By.name('q')).sendKeys('webdriver'))
+        .then(_ => driver.findElement(By.name('btnG')).click())
+        .then(_ => driver.wait(until.titleIs('webdriver - Google Search'), 1000))
+        .then(_ => driver.quit());
+    });
 ```
-npm install selenium-webdriver
-```
 
-```javascript
-// google_search.js
-var webdriver = require('selenium-webdriver'),
-    By = webdriver.By,
-    until = webdriver.until;
+you can write
 
-var driver = new webdriver.Builder()
+```js
+const {Builder, By, until} = require('selenium-webdriver');
+
+let driver = new Builder()
     .forBrowser('firefox')
     .build();
 
@@ -21,23 +32,252 @@ driver.wait(until.titleIs('webdriver - Google Search'), 1000);
 driver.quit();
 ```
 
+Unforutnately, there is no such thing as a free lunch. With WebDriverJS, using the promise manager comes at the cost of increased complexity (for the Selenium maintainers--the [promise module](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/lib/promise.js) is a 3300 line beast) and reduced debuggability. For debugging, suppose you inserted a `debugger` statement:
+
+```js
+driver.get('http://www.google.com/ncr');
+debugger;
+driver.findElement(By.name('q')).sendKeys('webdriver');
 ```
-node google_search
+
+When is this script going to pause - after WebDriver loads google.com, or after it _schedules the command to load google.com_? Since the promise manager abstracts away the async nature of the API, it hides that you need to expicitly use a callback to break after a command _executes_:
+
+```js
+driver.get('http://www.google.com/ncr').then(() => debugger);
+driver.findElement(By.name('q')).sendKeys('webdriver');
 ```
 
-# API Documentation
+JavaScript has evolved in many ways since WebDriverJS was originally created. Not only did the community standardize the behavior and API for promises, but promises were added to the language itself. The next version of JavaScript, ES2017, adds support for [async functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), greatly simplyfing the process of writing and maintaining asynchronous code. At this point, the benefits of the promise manager no longer outweigh its costs, so it will [soon be deprecated](https://github.com/SeleniumHQ/selenium/issues/2969) and removed from WebDriverJS. The remainder of this guide will explain how users can migrate off the promise manager and effectively use the async constructs available today.
 
-The JavaScript API documentation is published with each release and available [here](http://seleniumhq.github.io/selenium/docs/api/javascript/). Please file [bug reports](https://github.com/SeleniumHQ/selenium/issues) for any missing or unclear information in the API docs.
+## Moving to async/await
 
-* For general setup, see the [main landing page](http://seleniumhq.github.io/selenium/docs/api/javascript/)
-* For configuring and creating new WebDriver sessions, use the [Builder](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/builder_exports_Builder.html) class
-* For browser-specific configuration, refer to the relevant browser sub-modules:
-  - [selenium-webdriver/chrome](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/chrome.html)
-  - [selenium-webdriver/edge](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/edge.html)
-  - [selenium-webdriver/firefox](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/index.html)
-  - [selenium-webdriver/opera](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/opera.html)
-  - [selenium-webdriver/phantomjs](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/phantomjs.html)
+### Step 1: Disabling the Promise Manager
 
-## Understanding the Promise Manager
+As outlined in [issue 2969](https://github.com/SeleniumHQ/selenium/issues/2969), WebDriverJS' promise manager will be deprecated and disabled by default with the first [Node LTS](https://github.com/nodejs/LTS#lts-schedule) release that includes native support for async functions. This feature is currently available in Node 7.x, hidden behind the `--harmony_async_await` flag.
 
-WebDriver's JavaScript API is entirely asynchronous and every command results in a promise. Promise-heavy APIs will be a lot easier to work with once Node supports [ES2017's async functions](http://www.2ality.com/2016/02/async-functions.html), but in the meantime, WebDriverJS uses a custom promise library with a promise manager called the ControlFlow. The ControlFlow implicitly synchronizes asynchronous actions, making it so you only have to register a promise callback when you want to catch an error or access a return value. Detailed information on the ControlFlow and WebDriverJS's [promise library](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise.html) is included with the API docs.
+Instead of waiting for the LTS, you can disable the promise manager today either by setting an environment variable, `SELENIUM_PROMISE_MANAGER=0`, or through the promise module's API ([`promise.USE_PROMISE_MANAGER = false`](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise.html#USE_PROMISE_MANAGER)).
+
+When the promise manager is disabled, any attempt to create a [managed promise](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise_exports_Promise.html) will generate an error, so expect your scripts to fail the first time you try running with the promise manager.
+
+### Step 2: Migrate Direct Usages of Managed Promises
+
+Search your code for every instance where you create a `promise.Promise` object, either using the constructor, or the `resolve`/`reject` factories. Replace these calls with the equivalent listed in the table below. These functions will automatically switch from managed to native promises when the promise manager is disabled.
+
+| Original | Replacement |
+| -------- | ----------- |
+| [new promise.Promise()](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise_exports_Promise.html) | [promise.createPromise()](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise.html#createPromise) |
+| [promise.Promise.resolve()](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise_exports_Promise.html#Promise.resolve) | [promise.fulfilled()](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise.html#fulfilled) |
+| [promise.Promise.reject()](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise_exports_Promise.html#Promise.reject) | [promise.rejected()](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/promise.html#rejected) |
+
+### Step 3: Migrate Off of the Promise Manager
+
+At this point, you should be ready to migrate off of the promise manager. Unfortunately, there's no automated way to update your code; you basically have to disable the promise manager, see what fails, update some code, and try again. To understand how your code will, fail, consider a test for our Google Search example:
+
+```js
+const {Builder, By, until} = require('selenium-webdriver');
+const test = require('selenium-webdriver/testing');
+
+describe('Google Search', function() {
+  let driver;
+
+  test.before(function() {
+    driver = new Builder().forBrowser('firefox').build();
+  });
+
+  test.it('example', function theTestFunction() {
+    driver.get('http://www.google.com/ncr');                          // (1)
+    driver.findElement(By.name('q')).sendKeys('webdriver');           // (2)
+    driver.findElement(By.name('btnG')).click();                      // (3)
+    driver.wait(until.titleIs('webdriver - Google Search'), 1000);    // (4)
+  });
+
+  test.after(function() {
+    driver.quit();
+  });
+});
+```
+
+Inside `theTestFunction`, when the promise manager is enabled, it will capture every WebDriver command and block its execution until those before it have completed. Thus, even though `driver.findElement()` on line `(2)` is immediately _scheduled_, it will not start execution until the command on line `(1)` completes.
+
+When you disable the promise manager, every command will start executing as soon as its scheduled. The exact behavior depends on the specific browser, but essentially, the command to find an element on line `(2)` will start executing before the page requested on line `(1)` has loaded.
+
+You will need to update your code to explicitly link each action so it does not start until previous commands have finished. Presented below are three options for how to update your code.
+
+#### Option 1: Use classic promise chaining
+
+Your first option is to adopt classic promise chaining (yes, the very thing the promise manager was created to avoid). This will make your code far more verbose, but it will work with and without the promise manager and you won't need to use the `selenium-webdriver/testing` module for mocha-based tests.
+
+```js
+const {Builder, By, until} = require('selenium-webdriver');
+const test = require('selenium-webdriver/testing');
+
+describe('Google Search', function() {
+  let driver;
+
+  before(function() {
+    return new Builder().forBrowser('firefox').build().then(d => {
+      driver = d;
+    });
+  });
+
+  it('example', function theTestFunction() {
+    return driver.get('http://www.google.com/ncr')
+        .then(_ => driver.findElement(By.name('q')))
+        .then(q => q.sendKeys('webdriver'))
+        .then(_ => driver.findElement(By.name('btnG')))
+        .then(b => b.click())
+        .then(_ => driver.wait(until.titleIs('webdriver - Google Search'), 1000));
+  });
+
+  after(function() {
+    return driver.quit();
+  });
+});
+```
+
+#### Option 2: Migrate to Generators
+
+Your second option is to update your code to use asynchronouse generator functions. The `selenium-webdriver/testing` module already handles these out of the box. You can also use third-party libraries like [task.js](http://taskjs.org/) for the same effect. Basically, change each of your test functions to a generator, and `yield` on a promise. The generator wrapper will transparently wait for the promise to resolve before resuming the function. It's important to __note__, however, asynchronous generators are not currently supported natively in JavaScript, so you _will_ have to use `selenium-webdriver` or another library for this to work.
+
+```js
+const {Builder, By, until} = require('selenium-webdriver');
+const test = require('selenium-webdriver/testing');
+
+describe('Google Search', function() {
+  let driver;
+
+  test.before(function*() {
+    driver = yield new Builder().forBrowser('firefox').build();
+  });
+
+  test.it('example', function* theTestFunction() {
+    yield driver.get('http://www.google.com/ncr');                        // (1)
+    yield driver.findElement(By.name('q')).sendKeys('webdriver');         // (2)
+    yield driver.findElement(By.name('btnG')).click();                    // (3)
+    yield driver.wait(until.titleIs('webdriver - Google Search'), 1000);  // (4)
+  });
+
+  test.after(function*() {
+    yield driver.quit();
+  });
+});
+```
+
+The advantage to using generators with `selenium-webdriver/testing` is your code will work with and without the promise manager, so you can convert one test at a time. Another advantage to this approach is your code will work today with Node 6 & 7. When async/await support is added to Node (it's currently hidden behind a flag in Node 7), you can migrate from generators with find-and-replace, converting `function*()` to `async function()` and `yield` to `await`.
+
+The [`selenium-webdriver/example`](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/example/google_search_test.js) directory contains an example of our Google Search test written with and without generators so you can compare the two side-by-side.
+
+#### Option 3: Migrate to async/await
+
+Your final option is to switch to async/await. As mentioned above, these language features are currently hidden behind a flag in Node 7, so you will have to run with `--harmony_async_await` _or_ you will have to transpile your code with [Babel](https://babeljs.io/) (setting up Babel is left as an exercise for the reader).
+
+Compared to generators, there is one more catch to using async/await: they [do not play well with the promise manager](https://github.com/SeleniumHQ/selenium/issues/3037), so you must ensure the promise manager is disabled. There is a complete working example of a test written using async/await provided in the [`selenium-webdriver/example`](https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/example/async_await_test.js) directory:
+
+```js
+const {Builder, By, until} = require('selenium-webdriver');
+
+promise.USE_PROMISE_MANAGER = false;
+
+describe('Google Search', function() {
+  let driver;
+
+  beforeEach(async function() {
+    driver = await new Builder().forBrowser('firefox').build();
+  });
+
+  afterEach(async function() {
+    await driver.quit();
+  });
+
+  it('example', async function() {
+    await driver.get('https://www.google.com/ncr');
+
+    await driver.findElement(By.name('q')).sendKeys('webdriver');
+    await driver.findElement(By.name('btnG')).click();
+
+    await driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+  });
+});
+```
+
+This example disables the promise manager globally. In order to migrate tests bit-by-bit, you can selectively disable the promise manager in before/after blocks:
+
+```js
+promise.USE_PROMISE_MANAGER = false;
+
+function legacySuite(name, fn) {
+  describe(name, function() {
+    before(() => promise.USE_PROMISE_MANAGER = true);
+    after(() => promise.USE_PROMISE_MANAGER = false);
+
+    fn();
+  });
+}
+
+describe('Example', function() {
+  legacySuite('legacy tests', function() {
+    test.it('test 1', function() {
+      // ...
+    });
+  });
+
+  it('test 2', async function() {
+    // ...
+  });
+});
+```
+
+### Miscellaneous Tips
+
+#### Use Logging To Find Unmigrated Code
+
+While the promise manager can be easily toggled through an enviornment variable, constantly running your code in the two modes can be tedious. Selenium's promise module provides logging to report every instance of unsynchronized code running through the promise manager (which, in code, is actually called the `ControlFlow`). You can enable this logging, then work through the messages to update each instance of commands that have not be properly chained (depending on the option you chose above).
+
+Enabling logging is only two extra lines:
+
+```
+const {Builder, By, logging, until} = require('selenium-webdriver');
+
+logging.installConsoleHandler();
+logging.getLogger('promise.ControlFlow').setLevel(logging.Level.ALL);
+
+let driver = new Builder()
+    .forBrowser('firefox')
+    .build();
+
+driver.get('http://www.google.com/ncr');
+driver.findElement(By.name('q')).sendKeys('webdriver');
+driver.findElement(By.name('btnG')).click();
+driver.wait(until.titleIs('webdriver - Google Search'), 1000);
+driver.quit();
+```
+
+With logging, the example above will produce messages like:
+
+```sh
+[2017-03-06T02:18:14Z] [WARNING] [promise.ControlFlow] Detected scheduling of an unchained task.
+    When the promise manager is disabled, unchained tasks will not wait for
+    previously scheduled tasks to finish before starting to execute.
+    New task: Task: WebDriver.navigate().to(http://www.google.com/ncr)
+        at thenableWebDriverProxy.schedule (/Users/jleyba/Development/test/node_modules/selenium-webdriver/lib/webdriver.js:816:17)
+        at Navigation.to (/Users/jleyba/Development/test/node_modules/selenium-webdriver/lib/webdriver.js:1140:25)
+        at thenableWebDriverProxy.get (/Users/jleyba/Development/test/node_modules/selenium-webdriver/lib/webdriver.js:997:28)
+        at Object.<anonymous> (/Users/jleyba/Development/test/log.js:10:8)
+        at Module._compile (module.js:571:32)
+        at Object.Module._extensions..js (module.js:580:10)
+        at Module.load (module.js:488:32)
+        at tryModuleLoad (module.js:447:12)
+        at Function.Module._load (module.js:439:3)
+        at Module.runMain (module.js:605:10)
+    Previous task: Task: WebDriver.createSession()
+        at Function.createSession (/Users/jleyba/Development/test/node_modules/selenium-webdriver/lib/webdriver.js:777:24)
+        at Function.createSession (/Users/jleyba/Development/test/node_modules/selenium-webdriver/firefox/index.js:667:55)
+        at createDriver (/Users/jleyba/Development/test/node_modules/selenium-webdriver/index.js:167:33)
+        at Builder.build (/Users/jleyba/Development/test/node_modules/selenium-webdriver/index.js:642:16)
+        at Object.<anonymous> (/Users/jleyba/Development/test/log.js:8:6)
+        at Module._compile (module.js:571:32)
+        at Object.Module._extensions..js (module.js:580:10)
+        at Module.load (module.js:488:32)
+        at tryModuleLoad (module.js:447:12)
+        at Function.Module._load (module.js:439:3)
+```
