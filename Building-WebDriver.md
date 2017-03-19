@@ -125,7 +125,7 @@ Although it was necessary in the early days of webdriver development, it is now 
 
 ## The Build Works, but It's Very Slow
 
-There have been reports of problems involving slow builds. Every test that runs does a DNS lookup to determine an alternative host name. If your network is not configured correctly, then this lookup might be very slow. To rectify this, modify the `getAlternateHostName` method in `org.openqa.selenium.environment.webserver.Jetty7AppServer` and hard code it to return a string that resolves to your machine that isn't "localhost"
+There have been reports of problems involving slow builds. Every test that runs does a DNS lookup to determine an alternative host name. If your network is not configured correctly, then this lookup might be very slow. To rectify this, modify the `getAlternateHostName` method in `org.openqa.selenium.environment.webserver.JettyAppServer` and hard code it to return a string that resolves to your machine that isn't "localhost"
 
 ## I've Followed the Steps Above and All the Firefox Tests Still Fail
 
