@@ -33,7 +33,7 @@ Using/requiring the ruby code from `rb/lib` directly is not recommended.
 ## Testing
 
 | `./go //rb:unit-test` | Run unit tests for WebDriver. |
-|:----------------------|:------------------------------|
+|:----------------------------|:------------------------------|
 | `./go //rb:firefox-test` | Run integration tests for Firefox - replace "firefox" with any driver. |
 | `./go //rb:remote-firefox-test` | Run integration tests for Firefox on standalone server |
 
