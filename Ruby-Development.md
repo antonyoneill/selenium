@@ -35,8 +35,7 @@ Using/requiring the ruby code from `rb/lib` directly is not recommended.
 | `./go //rb:unit-test` | Run unit tests for WebDriver. |
 |:----------------------|:------------------------------|
 | `./go //rb:firefox-test` | Run integration tests for Firefox - replace "firefox" with any driver. |
-| `./go //rb:rc-client-unit-test` | Run unit tests for selenium-client (Se 1.x/RC) |
-| `./go //rb:rc-client-integration-test` | Run integration tests for selenium-client (Se 1.x/RC) |
+| `./go //rb:remote-firefox-test` | Run integration tests for Firefox on standalone server |
 
 Try `./go -T | grep //rb` to see all the Ruby targets.
 
