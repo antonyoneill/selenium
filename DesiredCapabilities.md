@@ -6,9 +6,9 @@ Not all server implementations will support every WebDriver feature. Therefore, 
 
 | **Key** | **Type** | **Description** |
 |:--------|:---------|:----------------|
-| browserName | string   | The name of the browser being used; should be one of `{android|chrome|firefox|htmlunit|internet explorer|iPhone|iPad|opera|safari}`. |
+| browserName | string   | The name of the browser being used; should be one of `android`,`chrome`,`firefox`,`htmlunit`,`internet explorer`,`iPhone`,`Pad`,`opera`,`safari`. |
 | version | string   | The browser version, or the empty string if unknown. |
-| platform | string   | A key specifying which platform the browser should be running on. This value should be one of `{WINDOWS|XP|VISTA|MAC|LINUX|UNIX|ANDROID}`. When requesting a new session, the client may specify `ANY` to indicate any available platform may be used. For more information see [[GridPlatforms](GridPlatforms.md)] |
+| platform | string   | A key specifying which platform the browser should be running on. This value should be one of `WINDOWS`,`XP`,`VISTA`,`MAC`,`LINUX`,`UNIX`,`ANDROID`. When requesting a new session, the client may specify `ANY` to indicate any available platform may be used. For more information see [[GridPlatforms](GridPlatforms.md)] |
 
 
 ## Read-only capabilities
